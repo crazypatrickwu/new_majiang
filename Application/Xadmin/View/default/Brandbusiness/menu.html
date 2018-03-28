@@ -1,0 +1,14 @@
+<ul>
+	<if condition="checkControllerAuth(array('Brandbusiness'))">
+		<li<if condition="in_array(CONTROLLER_NAME, array('Brandbusiness'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('Brandbusiness-personalInformation'))}" class="addons">个人中心</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('Brandbusiness-personalInformation')">
+					<li class="<if condition="in_array(ACTION_NAME, array('personalInformation'))">on</if>">
+						<a href="{:U('Brandbusiness/personalInformation')}">个人信息</a>
+					</li>
+				</if>
+			</ul>
+		</li>
+	</if>
+</ul>

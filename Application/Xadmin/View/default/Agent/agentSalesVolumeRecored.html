@@ -1,0 +1,76 @@
+<extend name="Common:base" />
+
+<block name="title">代理销售额</block>
+
+<block name="menu">
+    <include file="Common:left_menu" />
+</block>
+
+<block name="main">
+    <div class="pageheader">
+        <h1 class="pagetitle">代理销售额</h1>
+        <span class="pagedesc"></span>
+    </div>
+    <div id="contentwrapper" class="contentwrapper">
+        <div>
+            <form action="" metod="get">
+                玩家ID&nbsp;:&nbsp;<input type="text" name="userid" id="userid" value="{:remove_xss(I('get.userid'))}">
+                &nbsp;
+                时间&nbsp;:&nbsp;<input type="text" name="start_time" id="start_time" value="{:remove_xss(search_time_format(I('get.start_time')))}" class="sang_Calender">-<input type="text" name="end_time" id="end_time" value="{:remove_xss(search_time_format(I('get.end_time')))}" class="sang_Calender">
+                <input type="hidden" name="p" value="1" class="stdbtn">&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="查询" class="stdbtn">&nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- <input type="button" value="重置" class="stdbtn" id="resetForm">&nbsp;&nbsp;&nbsp;&nbsp; -->
+                <!-- <input type="button"  value="数据导出" class="stdbtn" id="export"> -->
+                 &nbsp;
+                 总计：<font color='red' size='6'>{$agent_sales_volume_total}</font><font size='4'>&nbsp;元</font>
+                <p></p>
+                <p></p>
+            </form>
+        </div>
+        <p></p>
+        <table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+            <tr>
+                <th width="20%">销售编号</th>
+                <th width="30%">玩家ID</th>
+                <th width="30%">销售额</th>
+                <th>消费时间</th>
+            </tr>
+            <php>$cols=4;</php>
+            <if condition="empty($agent_sales_volume_recored)">
+                <tr>
+                    <td colspan="{$cols}">没有销售列表~！</td>
+                </tr>
+                <else />
+                <volist name="agent_sales_volume_recored" id="recored">
+                    <tr>
+                        <td class="center">{$recored['id']}</td>
+                        <td class="center">{$recored['uid']}</td>
+                        <td class="center">{$recored['total_price']}（元）</td>
+                        <td class="center">{$recored['dateline']|time_format=###}</td>
+                    </tr>
+                </volist>
+                <tr>
+                    <td colspan="{$cols}">
+                        <div class="page-box">{$show}</div>
+                    </td>
+                </tr>
+            </if>
+            </tbody>
+        </table>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/datetime.js"></script>
+    <script type="text/javascript">
+    //点击导出按钮，执行相关操作
+    $("#export").click(function(){
+        window.location.href="{:U('Recharge/playersChargeRecored',array('type'=>$line_type,'export_type'=>$line_type))}";    
+    });
+
+    $("#resetForm").click(function(){
+        window.location.href="{:U('Recharge/playersChargeRecored')}";    
+    });
+
+    </script>
+</block>

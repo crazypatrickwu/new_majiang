@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <include file="Public/header" />
+  </head>
+  <body class=""> 
+  <!--<![endif]-->
+    <div class="navbar">
+        <include file="Public/top" />
+    </div>
+    <div class="content">
+        <ul class="breadcrumb">
+            <li><a href="{:U('Index/index')}">首页</a> <span class="divider">/</span></li>
+            <li><a href="{:U('Recharge/myRechargeRecored',array('type'=>2))}">下级返卡</a> <span class="divider">/</span></li>
+            <li class="active">返卡详情</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+						<input type="hidden" name="id" value="0" />
+						<div class="well">
+						    <div id="myTabContent" class="tab-content">
+						      <div class="tab-pane active in" id="home">
+							        <label>订单号：<font color="#5A6883" style="widt:200px;display:block;">{$myRechargeRecored.Order.order_sn}</font></label>
+							        <label>返卡数量：<font color="#5A6883" style="widt:200px;display:block;">{$myRechargeRecored.pay_nums}</font></label>
+							        <label>返卡时间：<font color="#5A6883" style="widt:200px;display:block;">{$myRechargeRecored.add_time|time_format=###}</font></label>
+							        <label>返卡总额：<font color="#5A6883" style="widt:200px;display:block;">{$myRechargeRecored.Order.total_amount}</font></label>
+							        <label>实付金额：<font color="#5A6883" style="widt:200px;display:block;">{$myRechargeRecored.Order.paid_money}</font></label>
+							        <label>支付编号：<font color="#5A6883" style="widt:200px;display:block;">{$myRechargeRecored.Order.trade_no}</font></label>
+							        <label>支付时间：<font color="#5A6883" style="widt:200px;display:block;">{$myRechargeRecored.Order.add_time|time_format=###}</font></label>
+							        <label>订单描述：<font color="#5A6883" style="widt:200px;display:block;">{$myRechargeRecored.desc}</font></label>
+							        <label>用户昵称：<font color="#5A6883" style="widt:200px;display:block;">{$myRechargeRecored.Order.buyer}</font></label>
+							        <label>用户手机：<font color="#5A6883" style="widt:200px;display:block;">{$myRechargeRecored.Order.telephone}</font></label>
+						      </div>
+						  	</div>
+						</div>
+						<div class="btn-toolbar">
+						    <button class="btn btn-primary" style="margin-left:2px;" onclick="javascript:history.back(-1);return false;"><i class="icon-save"></i>返回</button>
+						  	<div class="btn-group"></div>
+						</div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

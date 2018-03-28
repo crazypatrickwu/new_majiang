@@ -1,0 +1,112 @@
+<extend name="Common:base" />
+
+<block name="title">门店列表</block>
+
+<block name="menu">
+    <include file="Common:left_menu" />
+</block>
+
+<block name="main">
+    <div class="pageheader">
+        <h1 class="pagetitle">门店列表</h1>
+        <span class="pagedesc"></span>
+    </div>
+    <php>$cols = 6;</php>
+    <div id="contentwrapper" class="contentwrapper">
+        <form action="{:U('Goods/batchOperate')}" method="post" id="operate">
+            <input type="hidden" name="operate" id="operate_type" value="sale" />
+            <table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+                <tr>
+                    <th>
+                        <label>
+                          ID
+                        </label>
+                    </th>
+                    <th>门店名称</th>
+                    <th>封面图</th>
+                    <th>地址</th>
+                    <th>编辑时间</th>
+                    <th>操作</th>
+                </tr>
+
+                <if condition="empty($list)">
+                    <tr>
+                        <td colspan="{$cols}">没有信息列表~！</td>
+                    </tr>
+                    <else />
+                    <volist name="list" id="goods">
+                        <tr>
+                            <td class="center">
+                                <label>
+                                    {$goods['id']}
+                                </label>
+                            </td>
+                            <td class="center">{$goods['name']}</td>
+                            <td class="center"><img src="{$goods['logo']}" height="60" /></td>
+                            <td class="center">{$goods['address']}</td>
+                            <td class="center">{:time_format($goods['dateline'])}</td>
+                            <td class="center">
+                                <a class="stdbtn btn_lime" href="{:U('System/editStore', array('id'=>$goods['id']))}">编辑</a>&nbsp;&nbsp;
+                                <a class="stdbtn btn_lime del_confirm" action_href="{:U('System/delStore', array('id'=>$goods['id']))}">删除</a>&nbsp;&nbsp;
+                            </td>
+                        </tr>
+                    </volist>
+                    <tr>
+                        <td colspan="{$cols}">
+                            <div class="page-box">
+                                {$show}
+                            </div>
+                        </td>
+                    </tr>
+                </if>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/datetime.js"></script>
+    <script type="text/javascript">
+        $("#select_all").change(function() {
+            if ( this.checked ) {
+                $(".goods_id").prop("checked", true);
+            } else {
+                $(".goods_id").prop("checked", false);
+            }
+        });
+
+        // 上架
+        $("#onsale_selected").click(function() {
+            $("#operate_type").val('sale');
+            $("#operate").submit();
+        });
+
+        // 下架
+        $("#nosale_selected").click(function() {
+            $("#operate_type").val('nosale');
+            $("#operate").submit();
+        });
+
+        //单个删除
+        $(".del_confirm").on('click',function(){
+            var action_name = $(this).html();
+            var action_url = $(this).attr("action_href");
+            //                        alert("action_name:"+action_name+";action_url:"+action_url);return;
+            if(confirm('是否确定【'+action_name+'】?')){
+                location.href = action_url;
+            }
+        });
+
+        // 多个删除
+        $("#delete_selected").click(function() {
+            var action_name = $(this).val();
+            if(!confirm('是否确定【'+action_name+'】?')){
+                return false;
+            }
+            $("#operate_type").val('remove');
+            $("#operate").submit();
+        });
+
+    </script>
+</block>

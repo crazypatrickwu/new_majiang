@@ -1,0 +1,69 @@
+<extend name="Common:base" />
+
+<block name="menu">
+	<include file="Common:left_menu" />
+</block>
+
+<block name="main">
+<div class="pageheader">
+    <h1 class="pagetitle">权限编辑</h1>
+    <span class="pagedesc"></span>
+</div>
+
+<form action="{:U('Auth/editRolePower')}" method="post">
+<input type="hidden" name="id" id="id" value="{:remove_xss(I('get.id'))}" />
+<div class="big-all-sel">
+	<input type="checkbox" id="JBigAllBtn">
+	<label for="JBigAllBtn" class="big-all-font">全选/全不选</label>
+</div>
+<div id="contentwrapper" class="contentwrapper" style="padding-top: 0px; width:800px;">
+	<volist name="rules" id="rl">
+	<div style="width:100%; padding-bottom: 20px; float:left; ">
+		<div class="contenttitle2" style="float:left;position: relative">
+			<label class="lab_chack">
+				<input type="checkbox"  name="rules[]" <if condition="in_array($rl['title']['id'], $authGroup)">checked</if> value="{$rl['title']['id']}">
+				<h3>{$rl['title']['title']}</h3>
+			</label>
+        </div>
+
+		<ul style="list-style:none; float:left; width: 100%">
+			<volist name="rl['rules']" id="ru">
+				<li style="float:left; margin-right:10px; width: 150px;">
+					<label for="r_{$ru['id']}">
+						<input class="sel-btn" type="checkbox" id="r_{$ru['id']}" name="rules[]" <if condition="in_array($ru['id'], $authGroup)">checked</if> value="{$ru['id']}" />
+						{$ru['title']}
+					</label>
+				</li>
+			</volist>
+		</ul>
+	</div>
+	</volist>
+
+	<div class="submit-box" style="clear:both;">
+		<input type="submit" class="stdbtn btn_orange big-btn" value="保存" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="button" class="stdbtn btn_orange big-btn" onclick="window.history.back(-1);" value="返回" class="stdbtn" />
+	</div>
+</div>
+</form>
+
+</block>
+<block name="script">
+	<script type="text/javascript">
+		$('.lab_chack').change(function() {
+			if($(this).hasClass('on')){
+				$(this).removeClass('on');
+				$(this).parent().next().find('.sel-btn').prop("checked", false);  
+			}else{
+				$(this).addClass('on');
+				$(this).parent().next().find('.sel-btn').prop("checked", true); 
+			}
+		});
+		$('#JBigAllBtn').click(function() {
+			if($(this).is(":checked")){
+				$('#contentwrapper').find('input[type=checkbox]').prop("checked", true);  
+			}else{
+				$('#contentwrapper').find('input[type=checkbox]').prop("checked", false); 
+			}			
+		});
+	</script>
+</block>

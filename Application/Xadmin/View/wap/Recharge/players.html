@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <include file="Public/header" />
+  </head>
+  <body class=""> 
+  <!--<![endif]-->
+    
+    <div class="navbar">
+        <include file="Public/top" />
+    </div>
+    
+
+    
+    <div class="content">
+       	<ul class="breadcrumb">
+            <li><a href="{:U('Index/index')}">首页</a> <span class="divider">/</span></li>
+            <li class="active">玩家列表</li>
+        </ul>
+
+        <div class="container-fluid">
+          <div class="row-fluid">
+		  <div class="search-well">
+		      <form class="form-inline" action="" metod="get">
+		          <input class="input-xlarge" id="appendedInputButton" type="text" name="keyword" value="{:remove_xss(I('get.keyword'))}" placeholder="玩家ID" style="width:60%;margin-left:2px;">
+		          <button class="btn" type="button" onclick="location.href='{:U()}'+'?keyword='+$(this).parent().find('input').val();"><i class="icon-search"></i>搜索</button>
+		      </form>
+		  </div>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="10%">ID</th>
+          <th width="30%">玩家昵称</th>
+          <th width="30%">房卡数量</th>
+          <th width="30%">加入时间</th>
+        </tr>
+      </thead>
+      <tbody>
+      	<if condition="empty($game_user_list)">
+           <tr>
+               <td colspan="4" align="center" style="text-align: center !important;">暂无充卡记录~！</td>
+           </tr>
+        <else />
+        <volist name="game_user_list" id="game_user">
+            <tr>
+                <td class="center1" ><div style="word-wrap:break-word;">{$game_user['userid']}</div></td>
+                <td class="center" ><div style="word-wrap:break-word;">{$game_user['nickname']}</div></td>
+                <td class="center" ><div style="word-wrap:break-word;">{$game_user['THTreasureDB']['insurescore']}（颗）</div></td>
+                <td class="center" >
+                	<div style="word-wrap:break-word;">
+                  {:date('Y-m-d H:i',strtotime($game_user['registerdate']))}
+                   <!--  <a class="stdbtn btn_lime" href="{:U('Recharge/myPayDetail', array('id'=>$recored['id'],'type'=>11))}">详情</a> -->
+                  </div>
+                </td>
+            </tr>
+        </volist>
+        <tr>
+            <td colspan="4" style="width: 100%;">
+                <div class="page-box">{$show}</div>
+            </td>
+        </tr>
+        </if>
+      </tbody>
+    </table>
+</div>
+
+
+                    
+                    
+                    
+            </div>
+        </div>
+    </div>
+    
+
+    <script type="text/javascript">
+        
+    </script>
+    
+  </body>
+</html>

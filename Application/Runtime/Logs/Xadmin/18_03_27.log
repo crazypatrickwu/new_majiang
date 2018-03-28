@@ -1,0 +1,33 @@
+﻿[ 2018-03-27T17:56:36+08:00 ] 127.0.0.1 /Xadmin/Login/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 模板不存在:./Application/Xadmin/View/default/Login/login.html
+NOTIC: [2] include(): Filename cannot be empty D:\MyJob\project\new_mj\ThinkPHP\Library\Think\Think.class.php 第 314 行.
+NOTIC: [2] include(): Failed opening '' for inclusion (include_path='.;C:\php\pear') D:\MyJob\project\new_mj\ThinkPHP\Library\Think\Think.class.php 第 314 行.
+
+[ 2018-03-27T17:59:01+08:00 ] 127.0.0.1 /Xadmin/Login/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 模板不存在:./Application/Xadmin/View/default/Login/login.html
+NOTIC: [2] include(): Filename cannot be empty D:\MyJob\project\new_mj\ThinkPHP\Library\Think\Think.class.php 第 314 行.
+NOTIC: [2] include(): Failed opening '' for inclusion (include_path='.;C:\php\pear') D:\MyJob\project\new_mj\ThinkPHP\Library\Think\Think.class.php 第 314 行.
+
+[ 2018-03-27T17:59:43+08:00 ] 127.0.0.1 /Xadmin/Login/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] include(): Filename cannot be empty D:\MyJob\project\new_mj\ThinkPHP\Library\Think\Think.class.php 第 314 行.
+NOTIC: [2] include(): Failed opening '' for inclusion (include_path='.;C:\php\pear') D:\MyJob\project\new_mj\ThinkPHP\Library\Think\Think.class.php 第 314 行.
+

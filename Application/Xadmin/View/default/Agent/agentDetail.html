@@ -1,0 +1,392 @@
+<extend name="Common:base" />
+
+<block name="title">编辑代理</block>
+<block name='style'>
+	<link rel="stylesheet" href="__PUBLIC__/Admin/css/jquery.datetimepicker.css" type="text/css" />
+</block>
+<block name="menu">
+	<include file="Common:left_menu" />
+</block>
+
+<block name="main">
+	 <div class="pageheader">
+	    <h1 class="pagetitle">编辑代理</h1>
+	    <span class="pagedesc"></span>
+	</div>
+	<div id="contentwrapper" class="contentwrapper">
+		<form class="stdform stdform2" action="{:U('Agent/editAgent')}" method="post">
+			<div class="line-dete">
+				<label>编号</label>
+                <span class="field">{$agentDetail['id']}</span>
+            </div>
+
+			<div class="line-dete">
+				<label>头像</label>
+                <span class="field">
+            		<img width="80px" height="80px" src="{$agentDetail['headimgurl']|default="http://placehold.it/200x200"}" />
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>上级</label>
+                <span class="field">
+            		<img width="80px" height="80px" src="{$agentDetail['pheadimgurl']|default="http://placehold.it/200x200"}" />
+            		<br />
+            		{$agentDetail['ptruename']}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>推荐人</label>
+                <span class="field">
+                	{$agentDetail['referee_id']}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>等级</label>
+                <span class="field">
+					{:getAgentLevelName($agentDetail['level'])}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>电话</label>
+                <span class="field">
+                	{$agentDetail['phone']}
+                </span>
+            </div>
+
+
+			<div class="line-dete">
+				<label>余额</label>
+                <span class="field">
+                	{$agentDetail['money']}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>证书编号</label>
+                <span class="field">
+                	{$agentDetail['certificate']|default="未填写"}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>真实姓名</label>
+                <span class="field">
+                	{$agentDetail['truename']|default="未填写"}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>保证金额</label>
+                <span class="field">
+                	{$agentDetail['deposit']}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>身份证号码</label>
+                <span class="field">
+                	{$agentDetail['identity_card']|default="未填写"}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>收款人</label>
+                <span class="field">
+	                {$agentDetail['bank_payee']|default="未填写"}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>银行名称</label>
+                <span class="field">
+	                {$agentDetail['bank_name']|default="未填写"}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>银行账户</label>
+                <span class="field">
+	                {$agentDetail['bank_acount']|default="未填写"}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>银行支行</label>
+                <span class="field">
+	                {$agentDetail['bank_address']|default="未填写"}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>银行信息是否锁定</label>
+                <span class="field">
+                	<if condition="$agentDetail['bank_lock'] eq 1">
+                		是
+                	<else />
+                		否
+                	</if>
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>是否已购买礼包</label>
+                <span class="field">
+                	<if condition="$agentDetail['is_pay'] eq 1">
+                		是
+                	<else />
+                		否
+                	</if>
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>是否拥有商店</label>
+                <span class="field">
+                	<if condition="$agentDetail['has_shop'] eq 1">
+                		是
+                	<else />
+                		否
+                	</if>
+                </span>
+            </div>
+
+
+
+			<div class="line-dete">
+				<label>下级代理列表</label>
+                <span class="field">
+					<table>
+						<tr>
+							<th>ID</th>
+							<th>头像</th>
+							<th>电话号码</th>
+							<th>等级</th>
+							<th>真实姓名</th>
+							<th>加入时间</th>
+						</tr>
+						<if condition="empty($agentDetail['childAgent'])">
+							<tr>
+								<td colspan="6">没有下级代理列表信息~!</td>
+							</tr>
+						<else />
+							<volist name="agentDetail['childAgent']" id="childAgent">
+							<tr>
+								<td>{$childAgent['id']}</td>
+								<td>
+									<img src="{$childAgent['headimgurl']|default="http://placehold.it/50x50"}" width="50px" height="50px" />
+								</td>
+								<td>{$childAgent['phone']|default="未填写"}</td>
+								<td>{:getAgentLevelName($childAgent['level'])}</td>
+								<td>{$childAgent['truename']|default="未填写"}</td>
+								<td>{:time_format($childAgent['add_time'])}</td>
+							</tr>
+							</volist>
+						</if>
+					</table>
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>平推代理列表</label>
+                <span class="field">
+					<table>
+						<tr>
+							<th>ID</th>
+							<th>头像</th>
+							<th>电话号码</th>
+							<th>等级</th>
+							<th>真实姓名</th>
+							<th>加入时间</th>
+						</tr>
+						<if condition="empty($agentDetail['popularize'])">
+							<tr>
+								<td colspan="6">没有平推代理列表信息~!</td>
+							</tr>
+						<else />
+							<volist name="agentDetail['popularize']" id="popularize">
+							<tr>
+								<td>{$popularize['id']}</td>
+								<td>
+									<img src="{$popularize['headimgurl']|default="http://placehold.it/50x50"}" width="50px" height="50px" />
+								</td>
+								<td>{$popularize['phone']|default="未填写"}</td>
+								<td>{:getAgentLevelName($popularize['level'])}</td>
+								<td>{$popularize['truename']|default="未填写"}</td>
+								<td>{:time_format($popularize['add_time'])}</td>
+							</tr>
+							</volist>
+						</if>
+					</table>
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>收益明细</label>
+                <span class="field">
+					<table>
+						<tr>
+							<th>ID</th>
+							<th>订单信息</th>
+							<th>变化金额</th>
+							<th>变化理由</th>
+							<th>变化时间</th>
+						</tr>
+						<if condition="empty($agentDetail['finance'])">
+							<tr>
+								<td colspan="5">没有收益明细信息~!</td>
+							</tr>
+						<else />
+							<volist name="agentDetail['finance']" id="finance">
+							<tr>
+								<td>{$finance['id']}</td>
+								<td>
+									<br>
+							        <if condition="!empty($finance['orderList'])">
+							        	<volist name="finance['orderList']" id="order">
+							        	<table>
+							        		<tr>
+							        			<th>订单编号</th>
+							        			<td>{$order['order_sn']}</td>
+							        		</tr>
+							        		<tr>
+							        			<th>订单总额</th>
+							        			<td>￥{$order['total']}</td>
+							        		</tr>
+							        		<tr>
+							        			<th>收货人</th>
+							        			<td>{$order['consignee']}</td>
+							        		</tr>
+							        		<tr>
+							        			<th>联系电话</th>
+							        			<td>{$order['telephone']}</td>
+							        		</tr>
+							        		<tr>
+							        			<th>收货地址</th>
+							        			<td>{$order['province']}{$order['city']}{$order['county']}{$order['address']}</td>
+							        		</tr>
+							        		<tr>
+							        			<th>是否已支付</th>
+							        			<td>
+							        				<if condition="$order['is_pay'] eq 0">
+														未支付
+							        				<else />
+														已支付
+							        				</if>
+							        			</td>
+							        		</tr>
+							        		<tr>
+							        			<th>支付时间</th>
+							        			<td>{$order['pay_time']|time_format=###}</td>
+							        		</tr>
+							        		<tr>
+							        			<th>是否已同步快递</th>
+							        			<td>
+							        				<if condition="$order['post_qimen'] eq 0">
+														还没有同步到快递
+							        				<else />
+														已经同步到快递
+							        				</if>
+							        			</td>
+							        		</tr>
+							        		<tr>
+							        			<th>同步快递的时间</th>
+							        			<td>
+							        				<if condition="empty($order['post_qimen_time'])">
+							        				没找到同步快递的时间
+							        				<else />
+							        				{$order['post_qimen_time']|time_format=###}
+							        				</if>
+							        			</td>
+							        		</tr>
+							        		<tr>
+							        			<th>是否已分账</th>
+							        			<td>
+							        				<if condition="$order['is_allocation'] eq 0">
+														没有或只有部分分账了
+							        				<else />
+														已经全部分账
+							        				</if>
+							        			</td>
+							        		</tr>
+							        		<tr>
+							        			<th>快递公司</th>
+							        			<td>{$order['express']|default="没有"}</td>
+							        		</tr>
+							        		<tr>
+							        			<th>快递单号</th>
+							        			<td>{$order['express_sn']|default="没有"}</td>
+							        		</tr>
+							        		<tr>
+							        			<th>发货时间</th>
+							        			<td>
+							        				<if condition="empty($order['express_time'])">
+							        				没找到发货时间
+							        				<else />
+							        				{$order['express_time']|time_format=###}
+							        				</if>
+							        			</td>
+							        		</tr>
+							        		<tr>
+							        			<th>商品详情</th>
+							        			<td>
+							        				<table>
+							        					<tr>
+							        						<th>ID</th>
+							        						<th>SKU</th>
+							        						<th>条形码</th>
+							        						<th>商品名称</th>
+							        						<th>购买数量</th>
+							        						<th>商品价格</th>
+							        						<th>盟主价格</th>
+							        						<th>帮主价格</th>
+							        						<th>美人价格</th>
+							        					</tr>
+							        					<volist name="order['orderDetail']" id="goods">
+							        					<tr>
+							        						<td>{$goods['id']}</td>
+							        						<td>{$goods['sku']}</td>
+							        						<td>{$goods['bar_code']}</td>
+							        						<td>
+							        							<img src="{$goods['goods_image']}" width="50px" height="50px">
+							        							{$goods['goods_name']}
+							        						</td>
+							        						<td>{$goods['goods_number']}</td>
+							        						<td>￥{$goods['goods_price']}</td>
+							        						<td>￥{$goods['level1_price']}</td>
+							        						<td>￥{$goods['level2_price']}</td>
+							        						<td>￥{$goods['level3_price']}</td>
+							        					</tr>
+							        					</volist>
+							        				</table>
+							        			</td>
+							        		</tr>
+							        	</table>
+							        	</volist>
+							        <else />
+								        我无能为力找到这个订单
+							        </if>
+							        <br>
+								</td>
+								<td>{:str_replace('￥-', '-￥', '￥' . $finance['change_money'])}</td>
+								<td>{$finance['explain']}</td>
+								<td>{:time_format($finance['add_time'])}</td>
+							</tr>
+							</volist>
+						</if>
+					</table>
+                </span>
+            </div>
+
+            <div class="line-dete">
+				<label></label>
+                <span class="field">
+                	<input type="button" class="big-btn stdbtn" onclick="window.history.back(-1);" value="返回" />
+                </span>
+            </div>
+		</form>
+	</div>
+</block>

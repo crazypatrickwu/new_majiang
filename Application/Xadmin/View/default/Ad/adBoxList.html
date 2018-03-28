@@ -1,0 +1,53 @@
+<extend name="Common:base" />
+
+<block name="title">广告展位列表</block>
+
+<block name="menu">
+	<include file="Ad:menu" />
+</block>
+
+<block name="main">
+	 <div class="pageheader">
+	    <h1 class="pagetitle">广告展位列表</h1>
+	    <span class="pagedesc"></span>
+	</div>
+	<div id="contentwrapper" class="contentwrapper">
+		<table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+			<tr>
+				<th>ID</th>
+				<th>广告展位</th>
+				<th>广告标识</th>
+				<th>广告位宽度</th>
+				<th>广告位高度</th>
+				<th>广告位添加时间</th>
+				<th>操作</th>
+			</tr>
+			<if condition="empty($adList)">
+				<tr>
+					<td colspan="6">没有广告展位列表~！</td>
+				</tr>
+			<else />
+				<volist name="adList" id="ad">
+					<tr>
+						<td>{$ad['id']}</td>
+						<td>{$ad['group_name']}</td>
+						<td>{$ad['sign']}</td>
+						<td>{$ad['width']}</td>
+						<td>{$ad['height']}</td>
+						<td>{:time_format($ad['add_time'])}</td>
+						<td>
+							<a class="stdbtn btn_lime" href="{:U('Ad/editAdBox', array('id'=>$ad['id']))}">编辑</a>&nbsp;&nbsp;
+							<a class="stdbtn btn_lime" href="{:U('Ad/delAdBox', array('id'=>$ad['id']))}">删除</a>&nbsp;&nbsp;
+						</td>
+					</tr>
+				</volist>
+				<tr>
+					<td colspan="7">
+						<div class="page-box">{$show}</div>
+					</td>
+				</tr>
+			</if>
+			</tbody>
+		</table>
+	</div>
+</block>

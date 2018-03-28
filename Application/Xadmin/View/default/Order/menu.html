@@ -1,0 +1,31 @@
+<ul>
+	<if condition="checkControllerAuth(array('Order'))">
+		<li<if condition="in_array(CONTROLLER_NAME, array('Order'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('Order-orderList'))}" class="addons">订单管理</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('Order-orderList')">
+					<li class="<if condition="in_array(ACTION_NAME, array('orderList', 'orderDetail', 'remarksOrder', 'cancelOrder'))">on</if>">
+						<a href="{:U('Order/orderList')}">订单列表</a>
+					</li>
+				</if>
+			</ul>
+		</li>
+	</if>
+<!--	<if condition="checkControllerAuth(array('Region'))">
+		<li<if condition="in_array(CONTROLLER_NAME, array('Region'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('Region-regionList', 'Region-addRegion'))}" class="addons">地区维护</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('Region-regionList')">
+					<li class="<if condition="in_array(ACTION_NAME, array('regionList', 'editRegion'))">on</if>">
+						<a href="{:U('Region/regionList')}">地区列表</a>
+					</li>
+				</if>
+				<if condition="checkActionAuth('Region-addRegion')">
+					<li class="<if condition="in_array(ACTION_NAME, array('addRegion'))">on</if>">
+						<a href="{:U('Region/addRegion')}">添加地区</a>
+					</li>
+				</if>
+			</ul>
+		</li>
+	</if>-->
+</ul>

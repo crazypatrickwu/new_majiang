@@ -1,0 +1,136 @@
+﻿<extend name="Common:base" />
+<block name="title">代理列表</block>
+
+<block name="menu">
+    <include file="Common:left_menu" />
+</block>
+
+<block name="main">
+    <div class="pageheader">
+        <h1 class="pagetitle">代理列表</h1>
+        <span class="pagedesc"></span>
+    </div>
+    <div id="contentwrapper" class="contentwrapper">
+        <div>
+            <form action="" metod="get">
+                &nbsp;
+                代理昵称&nbsp;:&nbsp;<input type="text" name="nickname" id="nickname" value="{:remove_xss(I('get.nickname'))}">
+                &nbsp;
+                手机号码&nbsp;:&nbsp;<input type="text" name="phone" id="phone" value="{:remove_xss(I('get.phone'))}">
+                &nbsp;
+                加入时间&nbsp;:&nbsp;
+                <input type="text" name="start_time" id="start_time" value="{:remove_xss(search_time_format(I('get.start_time')))}" class="sang_Calender">
+                -
+                <input type="text" name="end_time" id="end_time" value="{:remove_xss(search_time_format(I('get.end_time')))}" class="sang_Calender">
+                &nbsp;&nbsp;
+                <input type="submit" value="查询" class="stdbtn">
+                <!-- <input type="submit" name="daochu" value="导出" class="stdbtn"> -->
+                <p></p>
+                <p></p>
+            </form>
+        </div>
+        <p></p>
+        <table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+            <tr>
+                <th width="3%">ID</th>
+                <th>代理昵称/微信号/手机号</th>
+                <th>账户余额</th>
+                <!-- <th>旗力币</th> -->
+                <th>邀请码</th>
+                <!-- <th>代理等级</th> -->
+                <th>返佣比例</th>
+                <th>上级(ID)</th>
+                <th>下级代理</th>
+                <th>玩家人数</th>
+                <th>加入时间</th>
+                <th>操作</th>
+            </tr>
+
+            <php>$cols = 10;</php>
+            <if condition="empty($agentList)">
+                <tr>
+                    <td colspan="{$cols}">没有代理列表~！</td>
+                </tr>
+                <else />
+                <volist name="agentList" id="agent">
+                    <tr>
+                        <td class="center">{$agent['id']}</td>
+                        <td class="center">{$agent['nickname']} / {$agent['wechat_id']} / {$agent['phone']}</td>
+                        <td class="center">
+                            余额：{$agent['available_balance']}
+                            <br>
+                            累计：{$agent['accumulated_income']}
+                        </td>
+                        <!-- <td class="center">{$agent['room_card']}</td> -->
+                        <td class="center">{$agent['invitation_code']}</td>
+                        <!-- <td class="center">{$agent['level_txt']}</td> -->
+                        <td class="center">
+                            平台返佣：{$agent['rebateMoneyPercent1']} %
+                            <br>
+                            下级返佣：{$agent['rebateMoneyPercent2']} %
+                        </td>
+                        <td class="center">
+                        <if condition="$agent['pid'] ELT 0">
+                            无
+                            <else />
+                            {$agent['p_info']['nickname']}({$agent['pid']})
+                        </if>
+                        </td>
+                        <td class="center">
+                                {$agent['son_count']}（人）
+                        </td>
+                        <td class="center">
+                                {$agent['player_count']}（人）
+                        </td>
+                        <td class="center">{$agent['dateline']|time_format=###}</td>
+                        <td class="center">
+                                <!-- <a class="stdbtn btn_lime" href="{:U('Agent/addInsureScore', array('id'=>$agent['id']))}">充卡</a>&nbsp;&nbsp; -->
+                                <!-- <a class="stdbtn btn_lime" href="{:U('Agent/erplayers', array('agentId'=>$agent['id']))}">玩家列表</a>&nbsp;&nbsp; -->
+                                <a class="stdbtn btn_lime" href="{:U('Agent/agentSalesVolumeRecored', array('agentId'=>$agent['id']))}">销售业绩</a>&nbsp;&nbsp;
+                                <a class="stdbtn btn_lime resetPwd_confirm" action_href="{:U('Agent/resetPwd', array('id'=>$agent['id']))}">重置密码</a>&nbsp;&nbsp;
+                                <a class="stdbtn btn_lime" href="{:U('Agent/editAgent', array('id'=>$agent['id']))}">编辑</a>&nbsp;&nbsp;
+                                <a class="stdbtn btn_lime" href="{:U('Agent/oneRebateConfig', array('id'=>$agent['id']))}">返佣</a>&nbsp;&nbsp;
+                                <!-- <if condition="$agent['is_delete'] eq 0">
+                                    <a class="stdbtn btn_lime del_confirm" action_href="{:U('Agent/delAgent', array('id'=>$agent['id']))}">删除</a>&nbsp;&nbsp;
+                                <else />
+                                    <a class="stdbtn btn_lime del_confirm" action_href="{:U('Agent/recoveryAgent', array('id'=>$agent['id']))}">恢复</a>&nbsp;&nbsp;
+                                </if> -->
+                    </td>
+                    </tr>
+                </volist>
+
+                <tr>
+                    <td colspan="{$cols}">
+                        <div class="page-box">{$show}</div>
+                    </td>
+                </tr>
+            </if>
+            </tbody>
+        </table>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/datetime.js"></script>
+    <script type="text/javascript">
+        //单个删除
+        $(".del_confirm").on('click',function(){
+            var action_name = $(this).html();
+            var action_url = $(this).attr("action_href");
+            //                        alert("action_name:"+action_name+";action_url:"+action_url);return;
+            if(confirm('是否确定【'+action_name+'】?')){
+                location.href = action_url;
+            }
+        });
+        
+        //密码重置
+        $(".resetPwd_confirm").on('click',function(){
+            var action_name = $(this).html();
+            var action_url = $(this).attr("action_href");
+            //                        alert("action_name:"+action_name+";action_url:"+action_url);return;
+            if(confirm('是否确定【'+action_name+'】?')){
+                location.href = action_url;
+            }
+        });
+    </script>
+</block>

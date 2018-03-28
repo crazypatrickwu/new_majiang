@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>管理员登录</title>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/css/style.default.css" type="text/css" />
+    <link href="__PUBLIC__/fxw.ico" mce_href="__PUBLIC__/fxw.ico" rel="bookmark" type="image/x-icon" /> 
+    <link href="__PUBLIC__/fxw.ico" mce_href="__PUBLIC__/fxw.ico" rel="icon" type="image/x-icon" /> 
+    <link href="__PUBLIC__/fxw.ico" mce_href="__PUBLIC__/fxw.ico" rel="shortcut icon" type="image/x-icon" />
+    <!--[if IE 9]>
+        <link rel="stylesheet" media="screen" href="__PUBLIC__/Admin/css/style.ie9.css"/>
+    <![endif]-->
+    <!--[if IE 8]>
+        <link rel="stylesheet" media="screen" href="__PUBLIC__/Admin/css/style.ie8.css"/>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    	<script src="__PUBLIC__/Admin/js/plugins/css3-mediaqueries.js"></script>
+    <![endif]-->
+</head>
+
+<body class="loginpage">
+	<div class="loginbox">
+    	<div class="loginboxinner">
+            <div class="logo">
+                <h1 class="logo">
+                    <!--<img src="__PUBLIC__/Common/images/logo.png" width="260px" height="84px" />-->
+                    {$Think.APP_NAME}后台管理系统
+                </h1>
+                <!--<span class="slogan">新苗麻将后台管理系统 Version 1.0</span>-->
+            </div><!--logo-->
+
+            
+            <br clear="all" /><br />
+            
+            <div class="nousername">
+				<div class="loginmsg">密码不正确.</div>
+            </div><!--nousername-->
+            
+            <div class="nopassword">
+				<div class="loginmsg">密码不正确.</div>
+                <div class="loginf">
+                    <div class="thumb"><img src="__PUBLIC__/Admin/images/logo.png" /></div>
+                    <div class="userlogged">
+                        <h4></h4>
+                        <a href="javascript:;">密码不正确<span></span>?</a> 
+                    </div>
+                </div>
+            </div>
+            
+            <form id="login" action="" method="post">
+            	
+                <div class="username">
+                	<div class="usernameinner">
+                    	<input type="text" name="account" id="account" />
+                    </div>
+                </div>
+                
+                <div class="password">
+                	<div class="passwordinner">
+                    	<input type="password" name="password" id="password" />
+                    </div>
+                </div>
+                
+                <input type="submit" class="submit_btn" value="登录">
+                
+                <div class="keep">
+                    <label>
+                        <input type="checkbox" value="1" checked="checked" name="rememberPassword" />保存一周
+                    </label>
+                </div>
+            
+            </form>
+            
+        </div><!--loginboxinner-->
+    </div><!--loginbox-->
+
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/plugins/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/plugins/fxw-base.js"></script>
+</body>
+</html>

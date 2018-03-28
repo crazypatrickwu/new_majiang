@@ -1,0 +1,83 @@
+<extend name="Common:base" />
+
+<block name="title">会员列表</block>
+
+<block name="menu">
+	<include file="User:menu" />
+</block>
+
+<block name="main">
+	 <div class="pageheader">
+	    <h1 class="pagetitle">会员列表</h1>
+	    <span class="pagedesc"></span>
+	</div>
+
+	<div id="contentwrapper" class="contentwrapper">
+		<div>
+			<form action="" metod="get">
+				<input type="hidden" name="p" id="p" value="1" />
+				&nbsp;&nbsp;&nbsp;ID&nbsp;:&nbsp;<input type="text" name="id" id="id" value="{:remove_xss(I('get.id'))}">
+				&nbsp;
+				会员名称&nbsp;:&nbsp;<input type="text" name="username" id="username" value="{:remove_xss(urldecode(I('get.username')))}">
+<!-- 				&nbsp;
+				省份&nbsp;:&nbsp;<input type="text" name="province" id="province" value="{:remove_xss(urldecode(I('get.province')))}">
+				&nbsp;
+				城市&nbsp;:&nbsp;<input type="text" name="city" id="city" value="{:remove_xss(urldecode(I('get.city')))}">
+				&nbsp;
+				<p></p>
+				开始时间&nbsp;:&nbsp;<input type="text" name="start_time" id="start_time" value="{:remove_xss(search_time_format(I('get.start_time')))}" class="sang_Calender">
+				&nbsp;
+				结束时间&nbsp;:&nbsp;<input type="text" name="end_time" id="end_time" value="{:remove_xss(search_time_format(I('get.end_time')))}" class="sang_Calender"> -->
+				<input type="submit" value="搜索" class="stdbtn">
+				<input type="submit" name="daochu" value="导出" class="stdbtn">
+			</form>
+		</div>
+		<p></p>
+		<table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+			<tr>
+				<th width="10%">ID</th>
+				<th>名称</th>
+				<th>省份</th>
+				<th>城市</th>
+				<th>地址</th>
+				<th>上次登录时间</th>
+				<th>加入时间</th>
+				<th width="10%">操作</th>
+			</tr>
+
+			<if condition="empty($userList)">
+				<tr>
+					<td colspan="8">没有会员列表~！</td>
+				</tr>
+			<else />
+				<volist name="userList" id="user">
+					<tr>
+						<td>{$user['id']}</td>
+						<td>{$user['nickname']}</td>
+						<td>{$user['province']}</td>
+						<td>{$user['city']}</td>
+						<td>{$user['address']}</td>
+						<td>{$user['last_login_time']|time_format=###}</td>
+						<td>{$user['add_time']|time_format=###}</td>
+						<td class="center">
+							<a class="stdbtn btn_lime" href="{:U('User/userDetail', array('id'=>$user['id']))}">查看</a>&nbsp;&nbsp;
+						</td>
+					</tr>
+				</volist>
+
+				<tr>
+					<td colspan="8">
+						<div class="page-box">
+							{$show}
+						</div>
+					</td>
+				</tr>
+			</if>
+			</tbody>
+		</table>
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript" src="__PUBLIC__/Admin/js/datetime.js"></script>
+</block>

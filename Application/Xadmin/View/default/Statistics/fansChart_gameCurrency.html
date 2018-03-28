@@ -1,0 +1,137 @@
+<extend name="Common:base" />
+
+<block name="title">游戏币统计</block>
+
+<block name="menu">
+    <include file="Common:left_menu" />
+</block>
+
+<block name="main">
+    <style>
+        .chart-head-count{
+            background: #444444;
+            line-height: 60px;
+            width: 240px;
+            display: block;
+            text-align: center;
+            color: #fff;
+            float:left;
+            margin-left:20px;
+            margin-top:20px;
+        }
+    </style>
+    <div class="pageheader">
+        <h1 class="pagetitle">游戏币统计</h1>
+        <span class="pagedesc"></span>
+    </div>
+    <div id="contentwrapper" class="contentwrapper">
+        <div id="container0" style="width: 80%; margin: 0">
+            <div class="chart-head-count">
+                <h2>{$result.qilibiTotalCount}</h2>
+                旗力币总量
+            </div>
+            <div class="chart-head-count">
+                <h2>{$result.roomcardTotalCount}</h2>
+                房卡总量
+            </div>
+            <div class="chart-head-count">
+                <h2>{$result.rmbTotalSum}</h2>
+                充值总金额
+            </div>
+            <div class="chart-head-count">
+                <h2>{$result.roomcardConsumeTotalCount}</h2>
+                房卡消耗总量
+            </div>
+            <div class="chart-head-count">
+                <h2>{$result.giveRoomcardTotalCount}</h2>
+                赠送房卡总量
+            </div>
+        </div>
+        
+        <div id="container1" style="height: 400px;width: 80%; margin: 150px 0"></div>
+        <!--<br><br><br>-->
+        <div id="container2" style="height: 400px;width: 80%; margin: 150px 0"></div>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/datetime.js"></script>
+    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    <script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+    <script>
+        
+        $(function () {
+            
+            var result =   $.parseJSON('{$chartList}');
+//            console.log(jresult);return;
+            var dateArr = result.dateArr;
+            var transactionCountArr = result.transactionCountArr;
+            var wxuserCountArr = result.wxuserCountArr;
+            var categories  = dateArr;
+            $('#container1').highcharts({
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: '玩家统计（近30天）'
+                },
+                subtitle: {
+                    text: '数据来源: 旗力游戏数据平台'
+                },
+                xAxis: {
+                    categories:categories
+                },
+                yAxis: {
+                    title: {
+                        text: '数据报表'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true          // 开启数据标签
+                        },
+                        enableMouseTracking: false // 关闭鼠标跟踪，对应的提示框、点击事件会失效
+                    }
+                },
+                series: [{
+                    name: '总玩家数',
+                    data: wxuserCountArr
+                }]
+            });
+            
+            $('#container2').highcharts({
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: '交易统计（近30天）'
+                },
+                subtitle: {
+                    text: '数据来源: 旗力游戏数据平台'
+                },
+                xAxis: {
+                    categories:categories
+                },
+                yAxis: {
+                    title: {
+                        text: '数据报表'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true          // 开启数据标签
+                        },
+                        enableMouseTracking: false // 关闭鼠标跟踪，对应的提示框、点击事件会失效
+                    }
+                },
+                series: [{
+                    name: '总交易量',
+                    data: transactionCountArr
+                }]
+            });
+        });
+
+    </script>
+</block>

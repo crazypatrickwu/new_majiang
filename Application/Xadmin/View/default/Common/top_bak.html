@@ -1,0 +1,129 @@
+﻿<ul class="headermenu">
+    <if condition="checkControllerAuth(array('Index'))">
+        <li class="<if condition="in_array(CONTROLLER_NAME, array('Index'))">current</if>">
+    <a href="{:getAuthUrl(array('Index-statistics', 'Index-clearCache'))}">
+        <!--<span class="icon icon-chart"></span>-->
+        <span class="tet">控制台</span>
+    </a>
+    <em></em>
+</li>
+</if>
+
+<if condition="checkControllerAuth(array('User', 'Agent'))">
+    <li class="<if condition="in_array(CONTROLLER_NAME, array('User', 'Agent'))">current</if>">
+<a href="{:getAuthUrl(array( 'Agent-agentList', 'User-userList','Agent-agentLevelList', 'Agent-addAgent'))}">
+    <!--<span class="icon icon-pencil"></span>-->
+    <span class="tet">会员与代理</span>
+</a>
+<em></em>
+</li>
+</if>
+<if condition="checkControllerAuth(array('Recharge'))">
+    <li class="<if condition="in_array(CONTROLLER_NAME, array('Recharge'))">current</if>">
+<a href="{:U('Recharge/players')}">
+    <!--<span class="icon icon-chart"></span>-->
+    <span class="tet">交易记录</span>
+</a>
+<em></em>
+</li>
+</if>
+
+<if condition="checkControllerAuth(array('Statistics'))">
+    <li class="<if condition="in_array(CONTROLLER_NAME, array('Statistics'))">current</if>">
+<a href="{:U('Statistics/fansChart')}">
+    <span class="tet">数据统计</span>
+</a>
+<em></em>
+</li>
+</if>
+
+<if condition="checkControllerAuth(array('Goods'))">
+        <li class="<if condition="in_array(CONTROLLER_NAME, array('Goods'))">current</if>">
+                <a href="{:getAuthUrl(array('Goods-index', 'Goods-add', 'Goods-edit'))}">
+                    <!--<span class="icon icon-message"></span>-->
+                    <span class="tet">商品管理</span>
+                </a>
+                <em></em>
+        </li>
+</if>
+
+
+<!--	<if condition="checkControllerAuth(array('Ad', 'Article', 'Theme', 'Specialist'))">
+                <li class="<if condition="in_array(CONTROLLER_NAME, array('Ad', 'Article', 'Theme', 'Specialist'))">current</if>">
+                        <a href="{:getAuthUrl(array('Ad-adList', 'Ad-addAd', 'Ad-adBoxList', 'Ad-addAdBox', 'Article-articleList', 'Article-addArticle', 'Article-articleGroupList', 'Article-addArticleGroup', 'Specialist-specialistList', 'Specialist-addSpecialist'))}">
+                                <span class="icon icon-flatscreen"></span>
+                                <span class="tet">内容管理</span>
+                        </a>
+                        <em></em>
+                </li>
+        </if>-->
+
+<!-- <if condition="checkControllerAuth(array('Order', 'GiftOrder', 'Region'))">
+        <li class="<if condition="in_array(CONTROLLER_NAME, array('Order', 'GiftOrder', 'Region'))">current</if>">
+                <a href="{:getAuthUrl(array('Order-orderList', 'GiftOrder-giftOrderList', 'Region-regionList', 'Region-addRegion'))}">
+                    <span class="icon icon-flatscreen"></span>
+                    <span class="tet">代理订单</span>
+                </a>
+                <em></em>
+        </li>
+</if> -->
+
+<!--	<if condition="checkControllerAuth(array('Preferential'))">
+                <li class="<if condition="in_array(CONTROLLER_NAME, array('Preferential'))">current</if>">
+                        <a href="{:getAuthUrl(array('Preferential-preferentialCodeList'))}">
+                                <span class="icon icon-flatscreen"></span>
+                                <span class="tet">营销工具</span>
+                        </a>
+                        <em></em>
+                </li>
+        </if>-->
+
+
+<if condition="checkControllerAuth(array('Auth', 'Admin'))">
+        <li class="<if condition="in_array(CONTROLLER_NAME, array('Auth', 'Admin'))">current</if>">
+                <a href="{:getAuthUrl(array('Admin-adminList', 'Admin-addAdmin', 'Auth-roleList', 'Auth-addRole'))}">
+                    <!--<span class="icon icon-admin"></span>-->
+                    <span class="tet">管理员中心</span>
+                </a>
+                <em></em>
+        </li>
+</if>
+
+
+<!--	<if condition="checkControllerAuth(array('Finance', 'Allocation'))">
+                <li class="<if condition="in_array(CONTROLLER_NAME, array('Finance', 'Allocation'))">current</if>">
+                        <a href="{:getAuthUrl(array('Finance-financeList'))}">
+                                <span class="icon icon-admin"></span>
+                                <span class="tet">财务管理</span>
+                        </a>
+                        <em></em>
+                </li>
+        </if>-->
+
+<if condition="checkControllerAuth(array('System'))">
+        <li class="<if condition="in_array(CONTROLLER_NAME, array('System'))">current</if>">
+                <a href="{:getAuthUrl(array('System-setting', 'System-friendshipLink', 'System-addFriendshipLink'))}">
+                    <!--<span class="icon icon-system"></span>-->
+                    <span class="tet">系统设置</span>
+                </a>
+                <em></em>
+        </li>
+</if>
+
+<!-- <if condition="checkControllerAuth(array('Pcweb'))">
+        <li class="<if condition="in_array(CONTROLLER_NAME, array('Pcweb'))">current</if>">
+                <a href="{:getAuthUrl(array('Pcweb-about'))}">
+                    <span class="tet">官网配置</span>
+                </a>
+                <em></em>
+        </li>
+</if> -->
+
+<li>
+    <a href="{:U('Login/logout')}">
+        <!--<span class="icon icon-exit"></span>-->
+        <span class="tet">退出登录</span>
+    </a>
+    <em></em>
+</li>
+</ul>

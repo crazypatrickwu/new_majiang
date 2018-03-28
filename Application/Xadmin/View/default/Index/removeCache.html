@@ -1,0 +1,31 @@
+<extend name="Common:base" />
+
+<block name="title">控制台</block>
+
+<block name="menu">
+	<include file="Index:menu" />
+</block>
+
+<block name="main">
+<div class="pageheader">
+	<h1 class="pagetitle">正在清理缓存任务，请勿进行其他操作!</h1>
+	<span class="pagedesc"></span>
+</div>
+
+<div id="contentwrapper" class="contentwrapper">
+	<h1>{$msg}</h1>
+</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+	setTimeout(function() {
+		<if condition="$flag eq 0">
+		var url = "{:U('Index/removeCache')}";
+		<else />
+		var url = "{:U('Index/clearCache')}";
+		</if>
+		window.location.href=url;
+	}, 1000);
+	</script>
+</block>

@@ -1,0 +1,101 @@
+<extend name="Common:base" />
+<!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
+<block name="title">提现审核</block>
+<block name="menu">
+    <include file="Common:left_menu" />
+</block>
+
+<block name="main">
+    <div class="pageheader">
+        <h1 class="pagetitle">提现审核</h1>
+        <span class="pagedesc"></span>
+    </div>
+    <div id="contentwrapper" class="contentwrapper">
+        <form class="stdform stdform2"  onsubmit="return checkform();" method="post">
+            <div class="line-dete">
+                <label>代理昵称</label>
+                <span class="field">
+                    {$agent_withdrawals['nickname']}
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>代理手机号</label>
+                <span class="field">
+                    {$agent_withdrawals['phone']}
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>申请金额</label>
+                <span class="field">
+                    {$agent_withdrawals['money']}
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>申请时间</label>
+                <span class="field">
+                    {$agent_withdrawals['dateline']}
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>真实姓名</label>
+                <span class="field">
+                    {$agent_withdrawals['truename']|default='未填写'}
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>支付宝</label>
+                <span class="field">
+                    {$agent_withdrawals['alipay_account']|default='未填写'}
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>银行卡</label>
+                <span class="field">
+                    {$agent_withdrawals['bank_card']|default='未填写'}
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>操作结果</label>
+                <span class="field">
+                    <input type="radio" name="status" value="1" />同意
+                    <input type="radio" name="status" value="2" />驳回
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>驳回理由<br>(注：驳回申请需填写)</label>
+                <span class="field">
+                    <textarea rows="10" style="width:650px;" name="reason" placeholder="请输入驳回理由..."></textarea>
+
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>账户密码</label>
+                <span class="field">
+                    <input style="display: none;" type="password" name="admin_password"/>
+                    <input type="password" id="admin_password" name="admin_password" class="smallinput" placeholder="请输入您的登录密码" />
+                </span>
+            </div>
+            <div class="line-dete">
+                <label></label>
+                <span class="field">
+                    <input type="hidden" name="id" value="{$agent_withdrawals['id']|default='0'}" />
+                    <input type="submit" class="big-btn stdbtn" value="确认充值" />
+                    <input type="button" class="big-btn stdbtn" onclick="window.history.back(-1);" value="返回" />
+                </span>
+            </div>
+        </form>
+    </div>
+</block>
+
+
+<block name="script">
+    <script type="text/javascript">
+        function checkform(){
+            var pay_nums = $("#pay_nums").val();
+            if(pay_nums == ''){
+                alert('请输入充值房卡数量');
+                return false;
+            }
+        }
+    </script>
+</block>

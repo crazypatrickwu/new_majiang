@@ -1,0 +1,115 @@
+<extend name="Common:base" />
+
+<block name="title">控制台</block>
+
+<block name="menu">
+	<include file="Index:menu" />
+</block>
+
+<block name="main">
+<div class="pageheader">
+	<h1 class="pagetitle">清理缓存</h1>
+	<span class="pagedesc"></span>
+</div>
+
+<div id="contentwrapper" class="contentwrapper">
+	<form action="{:U('Index/clearCache')}" method="post" id="form">
+		<input type="hidden" id="clearid" name="clearid" />
+		<table cellpadding="0" cellspacing="0" border="0" class="stdtable">
+			<tr>
+				<th colspan="4">
+					缓存列表
+				</th>
+			</tr>
+
+
+			<tr>
+				<th rowspan="2">WAP端缓存</th>
+
+				<th align="left" >
+					<label>
+						<input type="checkbox" class="clearlist" name="clearlist[]" value="21" />商品详情页面缓存
+					</label>
+				</th>
+				<td>
+					<input type="button" class="clearCache" value="清理" />
+				</td>
+			</tr>
+			<tr>
+				<th align="left" >
+					<label>
+						<input type="checkbox" class="clearlist" name="clearlist[]" value="22" />运行时(RUNTIME)缓存
+					</label>
+				</th>
+				<td>
+					<input type="button" class="clearCache" value="清理" />
+				</td>
+			</tr>
+
+			<tr>
+				<th rowspan="2">其他缓存</th>
+				<th align="left" >
+					<label>
+						<input type="checkbox" class="clearlist" name="clearlist[]" value="31" />商品分类列表缓存
+					</label>
+				</th>
+				<td>
+					<input type="button" class="clearCache" value="清理" />
+				</td>
+			</tr>
+			<tr>
+				<th align="left" >
+					<label>
+						<input type="checkbox" class="clearlist" name="clearlist[]" value="32" />地区列表缓存
+					</label>
+				</th>
+				<td>
+					<input type="button" class="clearCache" value="清理" />
+				</td>
+			</tr>
+
+
+			<tr>
+				<th rowspan="1" width="100px">控制后台缓存</th>
+				<th align="left" >
+					<label>
+						<input type="checkbox" class="clearlist" name="clearlist[]" value="41" />运行时(RUNTIME)缓存
+					</label>
+				</th>
+				<td>
+					<input type="button" class="clearCache" value="清理" />	
+				</td>
+			</tr>
+
+			<tr>
+				<th></th>
+				<th align="left" >
+					<label>
+						<input type="checkbox" class="clearlist" name="clearlist[]" value="51" />全站缓存
+					</label>
+				</th>
+				<td colspan="1">
+					<input type="button" class="clearCache" value="清理" />
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="4">
+					<input type="submit" value="清理选中" class="stdbtn"/>
+					<input type="button" onclick="window.location.reload()" value="刷新" class="stdbtn"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		$(".clearCache").click(function() {
+			var val = $(this).parent().parent().find('.clearlist').val();
+			$("#clearid").val(val);
+			$("#form").submit();
+		});
+	</script>
+</block>

@@ -1,0 +1,30 @@
+<extend name="Common:base" />
+
+<block name="title">控制台</block>
+
+<block name="menu">
+	<include file="Index:menu" />
+</block>
+
+<block name="main">
+<div id="contentwrapper" class="contentwrapper">
+	<!-- 商品信息 -->
+	<table cellpadding="0" cellspacing="0" border="0" class="stdtable">
+		<tr>
+			<th colspan="6">
+				系统信息
+			</th>
+		</tr>
+
+		<tr>
+	 	<volist name="info" id="v" mod="3" key="keys">
+			<if condition= "$mod eq 0 && $keys neq 1"></tr><tr></if>
+          	<th width="225px" align="right">{$key}:</th>
+          	<td>{$v}</td>
+	 	</volist>
+        </tr>
+
+	</table>
+	<br />
+</div>
+</block>

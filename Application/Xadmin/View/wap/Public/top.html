@@ -1,0 +1,30 @@
+<div class="navbar-inner">
+        <ul class="nav pull-right">
+            <li id="fat-menu" class="dropdown">
+                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-user"></i> {:session('adminAccount')}
+                    <i class="icon-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a tabindex="-1" class="visible-phone" href="{:U('Agent/agentInfo')}">基本信息</a></li>
+                    <li class="divider visible-phone"></li>
+                    <li><a tabindex="-1" href="{:U('Agent/editPwd')}">修改密码</a></li>
+                    <li class="divider visible-phone"></li>
+                    <li class="logout">
+                    	<a tabindex="-1" href="javascript:;">退出登录</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+       <a class="brand" href="javascript:;"><span class="first">乐清</span> <span class="second">麻将</span></a>
+</div>
+<script type="text/javascript">
+$(document).on("touchend",".logout",function(e){
+    e.preventDefault(); 
+    CommonJs.JsStatus({:session('agentId')},'{:U('Login/logout')}',7);return false;
+});
+$(document).on("click",".logout",function(e){
+    e.preventDefault(); 
+    CommonJs.JsStatus({:session('agentId')},'{:U('Login/logout')}',7);return false;
+});
+</script>

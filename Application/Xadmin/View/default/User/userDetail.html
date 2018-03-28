@@ -1,0 +1,63 @@
+<extend name="Common:base" />
+
+<block name="menu">
+	<include file="User/menu" />
+</block>
+
+<block name="main">
+<div class="pageheader">
+    <h1 class="pagetitle">会员详情</h1>
+    <span class="pagedesc"></span>
+</div>
+
+<div id="contentwrapper" class="contentwrapper">
+	<div>
+		<form action="" metod="get">
+			<input type="hidden" name="id" id="id" value="{$userInfo['id']}" />
+			订单编号&nbsp;:&nbsp;<input type="text" name="order_sn" id="order_sn" value="{:remove_xss(I('get.order_sn'))}">
+			<input type="submit" value="搜索" class="stdbtn">
+		</form>
+	</div>
+	<p></p>
+	<table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+		<tr>
+			<th colspan="5">ID{$userInfo['id']}-{$userInfo['nickname']}会员订单</th>
+		</tr>
+		<tr>
+			<th>ID</th>
+			<th>订单编号</th>
+			<th>购买店铺级别</th>
+			<th>下单时间</th>
+			<th>操作</th>
+		</tr>
+		<if condition="!empty($orderList)">
+		<volist name="orderList" id="order">
+		<tr>
+			<td>{$order['id']}</td>
+			<td>{$order['order_sn']}</td>
+			<td>{:getAgentLevelName($order['level'])}</td>
+			<td>{:time_format($order['add_time'])}</td>
+			<td>
+				<if condition="checkActionAuth('Order-orderDetail')">
+					<if condition="checkActionAuth('Order-orderDetail')">
+						<a class="stdbtn btn_lime" href="{:U('Order/orderDetail', array('id'=>$order['id']))}">查看</a>&nbsp;&nbsp;
+					</if>
+				</if>
+			</td>
+		</tr>
+		</volist>
+		<tr>
+			<td colspan="5">
+				<div class="page-box">{$show}</div>
+			</td>
+		</tr>
+		<else />
+		<tr>
+			<td colspan="5">
+				没有下过订单哦！
+			</td>
+		</tr>
+		</if>
+	</table>
+</div>
+</block>

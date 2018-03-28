@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><block name="title">首页</block>-{$Think.APP_NAME}</title>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/css/style.default.css" type="text/css" />
+    <link rel="shortcut icon" href="/Uploads/favicon.ico" type="image/x-icon" />
+    <block name="style"></block>
+</head>
+
+<body class="withvernav">
+    <div class="bodywrapper">
+        <div class="topheader">
+            <div class="left">
+                <h1 class="logo">
+                    <a href="{:U('Index/statistics')}" style="color:#0099cc;line-height: 60px;">
+                        <!--<img src="__PUBLIC__/Common/images/logo.png" height="40px" />-->
+                        {$Think.APP_NAME}后台管理系统
+                    </a>
+                </h1>
+
+                <ul class="right">
+                    <li>欢迎你 {$Think.session.adminAccount}</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="header">
+        	<include file="Common/top"/>
+        </div>
+        <div class="main-date-lr">
+            <div class="vernav2 iconmenu">
+                <block name="menu"></block>
+                <a class="togglemenu"></a>
+                <br /><br />
+            </div>
+            <div class="centercontent">
+                <block name="main"></block>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/plugins/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/plugins/fxw-base.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/plugins/pop_window.js"></script>
+    <script type="text/javascript">
+        function msgBox(title, content, time) {
+            var _title = title ? title : '提示';
+            var _time = time ? time : 1500;
+
+            var html='<div class="title">' + _title + '</div><div>' + content + '</div>';
+            popbox(html);
+            setTimeout(function() {
+                window.location.reload();
+            }, _time);
+        }
+        $(".togglemenu").click(function(){
+            $(".Jcon-ctr").toggle();
+        });
+    </script>
+    <block name="script"></block>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<extend name="Common:base" />
+
+<block name="menu">
+	<include file="Order:menu" />
+</block>
+
+<block name="main">
+	<div class="pageheader">
+	    <h1 class="pagetitle">编辑地区</h1>
+	</div>
+
+<div id="contentwrapper" class="contentwrapper">
+	<form class="stdform stdform2" action="{:U('region/editRegion')}" method="post" id="JgoodsForm">
+		<input type="hidden" name="id" id="id" value="{:remove_xss(I('get.id'))}" />
+		<div class="line-dete">
+			<label>上级地区</label>
+	        <span class="field">
+				<select name="pid" id="pid">
+					<option value="0">---顶级地区---</option>
+					<volist name="regionList" id="region">
+					<option value="{$region['id']}"<if condition="$region['id'] eq $regionInfo['pid']">{:chr(32)}selected="selected"</if>>{:str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', $region['level'])}├&nbsp;{$region['region_name']}</option>
+					</volist>
+				</select>	        	
+	        </span>
+		</div>
+		<div class="line-dete">
+			<label>地区名称</label>
+	        <span class="field">
+	        	<input class="smallinput" type="text" name="region_name" id="region_name" value="{$regionInfo['region_name']}" />
+	        </span>
+		</div>
+		<div class="line-dete">
+			<label></label>
+	        <span class="field">
+	        	<input type="submit" id="JgoodsSubmit" class="stdbtn"/>
+	        </span>
+		</div>
+	</form>
+</div>
+</block>

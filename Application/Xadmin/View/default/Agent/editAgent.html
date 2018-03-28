@@ -1,0 +1,148 @@
+<extend name="Common:base" />
+
+<block name="title">编辑代理个人信息</block>
+<block name='style'>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/css/jquery.datetimepicker.css" type="text/css" />
+</block>
+<block name="menu">
+    <include file="Common:left_menu" />
+</block>
+
+<block name="main">
+    <div class="pageheader">
+        <h1 class="pagetitle">编辑代理个人信息</h1>
+        <span class="pagedesc"></span>
+    </div>
+    <div id="contentwrapper" class="contentwrapper">
+        <form class="stdform stdform2" action="{:U('Agent/editAgent')}" method="post">
+            <div class="line-dete">
+                <label>新代理昵称</label>
+                <span class="field">
+                    <input type="text" id="nickname" name="nickname" class="smallinput" value="{$agentInfo['nickname']}" />
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>新代理微信号</label>
+                <span class="field">
+                    <input type="text" class="smallinput" value="{$agentInfo['wechat_id']}"  />
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>新代理手机号</label>
+                <span class="field">
+                    <input type="text" class="smallinput" value="{$agentInfo['phone']}"  />
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>是否锁定</label>
+                <span class="field">
+                    <input type="radio" name="is_lock" value="1" <if condition="$agentInfo['is_lock'] eq 1">checked="checked"</if> />是
+                    <input type="radio" name="is_lock" value="0" <if condition="$agentInfo['is_lock'] eq 0">checked="checked"</if> />否
+                </span>
+            </div>
+            <div class="line-dete">
+                <label></label>
+                <span class="field">
+                    <input type="hidden" name="id" value="{$agentInfo['id']}" />
+                    <input type="submit" class="big-btn stdbtn" value="保存" />
+                    <input type="button" class="big-btn stdbtn" onclick="window.history.back(-1);" value="返回" />
+                </span>
+            </div>
+        </form>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/ajaxfileupload.js"></script>
+    <script type="text/javascript">
+                        var getZoneAddress = "{:U('Agent/getChildZone')}";
+                        var zoneData = [];
+                        var id = $("#province").find("option:selected").attr('data-id')
+                        var fullElement = $("#city");
+                        if (zoneData[id] != undefined) {
+                            fullData(zoneData[id], fullElement);
+                        } else {
+                            $.ajax({
+                                url: getZoneAddress,
+                                type: 'POST',
+                                dataType: 'json',
+                                data: {pid: id}
+                            }).done(function(data) {
+                                zoneData[id] = data;
+                                fullData(zoneData[id], fullElement);
+                            });
+                        }
+                        //初始化
+                        $("#province").change(function() {
+                            var id = $(this).find("option:selected").attr('data-id')
+                            var fullElement = $("#city");
+                            if (zoneData[id] != undefined) {
+                                fullData(zoneData[id], fullElement);
+                            } else {
+                                $.ajax({
+                                    url: getZoneAddress,
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    data: {pid: id}
+                                }).done(function(data) {
+                                    zoneData[id] = data;
+                                    fullData(zoneData[id], fullElement);
+                                });
+                            }
+                        });
+
+                        // 填充数据
+                        function fullData(data, element, name) {
+                            var string = [];
+                            for (var i in data) {
+                                string.push('<option data-id="' + data[i].id + '" value="' + data[i].region_name + '">' + data[i].region_name + '</option>');
+                            }
+                            element.html(string.join(''));
+                            element.trigger("change");
+                        }
+
+                        // 省列表改变
+                        $('.ip-shop-dizi').on('change', "#province", function() {
+                            var id = $(this).find("option:selected").attr('data-id')
+                            var fullElement = $("#city");
+
+                            if (zoneData[id] != undefined) {
+                                fullData(zoneData[id], fullElement);
+                            } else {
+                                $.ajax({
+                                    url: getZoneAddress,
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    data: {pid: id}
+                                }).done(function(data) {
+                                    zoneData[id] = data;
+                                    fullData(zoneData[id], fullElement);
+                                });
+                            }
+                        });
+
+                        // 市列表改变
+                        $('.ip-shop-dizi').on('change', "#city", function() {
+                            var id = $(this).find("option:selected").attr('data-id');
+                            var fullElement = $("#county");
+
+                            if (zoneData[id] != undefined) {
+                                fullData(zoneData[id], fullElement);
+                            } else {
+                                $.ajax({
+                                    url: getZoneAddress,
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    data: {pid: id}
+                                }).done(function(data) {
+                                    if (data.length <= 0) {
+                                        fullElement.remove();
+                                    } else {
+                                        zoneData[id] = data;
+                                        fullData(zoneData[id], fullElement);
+                                    }
+                                });
+                            }
+                        });
+    </script>
+</block>

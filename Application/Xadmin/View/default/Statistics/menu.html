@@ -1,0 +1,41 @@
+<ul>
+	<li<if condition="in_array(CONTROLLER_NAME, array('Statistics'))">{:chr(32)}class="current"</if>>
+		<a class="date-tit sys-tj" href="{:U('Statistics/fansChart')}" class="addons">综合</a>
+		<ul class="Jcon-ctr">
+			<li class="<if condition="in_array(ACTION_NAME, array('agentsRecored')) && $Think.get.type eq 0">on</if>">
+      	<a href="{:U('Statistics/fansChart',array('type'=>'all'))}">数据统计</a>
+			</li>
+			<li class="<if condition="in_array(ACTION_NAME, array('agentsRecored')) && $Think.get.type eq 0">on</if>">
+      	<a href="{:U('Statistics/fansChart',array('type'=>'gameCurrency'))}">游戏币统计</a>
+			</li>
+		</ul>
+	</li>
+	<li<if condition="in_array(CONTROLLER_NAME, array('Statistics'))">{:chr(32)}class="current"</if>>
+		<a class="date-tit sys-tj" href="{:U('Statistics/fansChart',array('type'=>'player','date_type'=>'7day'))}" class="addons">玩家</a>
+		<ul class="Jcon-ctr">
+			<li class="<if condition="in_array(ACTION_NAME, array('agentsRecored')) && $Think.get.type eq 0">on</if>">
+                            <a href="{:U('Statistics/fansChart',array('type'=>'player','date_type'=>'7day'))}">7天统计</a>
+			</li>
+			<li class="<if condition="in_array(ACTION_NAME, array('agentsRecored')) && $Think.get.type eq 2">on</if>">
+				<a href="{:U('Statistics/fansChart',array('type'=>'player','date_type'=>'30day'))}">30天统计</a>
+			</li>
+			<li class="<if condition="in_array(ACTION_NAME, array('agentsRecored')) && $Think.get.type eq 2">on</if>">
+				<a href="{:U('Statistics/fansChart',array('type'=>'player','date_type'=>'3month'))}">3个月统计</a>
+			</li>
+		</ul>
+	</li>
+        <li<if condition="in_array(CONTROLLER_NAME, array('Statistics'))">{:chr(32)}class="current"</if>>
+		<a class="date-tit sys-tj" href="{:U('Statistics/fansChart',array('type'=>'transaction','date_type'=>'7day'))}" class="addons">交易</a>
+		<ul class="Jcon-ctr">
+			<li class="<if condition="in_array(ACTION_NAME, array('agentsRecored')) && $Think.get.type eq 0">on</if>">
+                                <a href="{:U('Statistics/fansChart',array('type'=>'transaction','date_type'=>'7day'))}">7天统计</a>
+			</li>
+			<li class="<if condition="in_array(ACTION_NAME, array('agentsRecored')) && $Think.get.type eq 2">on</if>">
+				<a href="{:U('Statistics/fansChart',array('type'=>'transaction','date_type'=>'30day'))}">30天统计</a>
+			</li>
+			<li class="<if condition="in_array(ACTION_NAME, array('agentsRecored')) && $Think.get.type eq 2">on</if>">
+				<a href="{:U('Statistics/fansChart',array('type'=>'transaction','date_type'=>'3month'))}">3个月统计</a>
+			</li>
+		</ul>
+	</li>
+</ul>

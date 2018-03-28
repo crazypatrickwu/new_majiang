@@ -1,0 +1,59 @@
+<?php
+    if(C('LAYOUT_ON')) {
+        echo '{__NOLAYOUT__}';
+    }
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>跳转提示</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<style type="text/css">
+*{ padding: 0; margin: 0; }
+html{height: 100%; background-color: #fff;}
+body{font-family: '微软雅黑'; color: #333; font-size: 16px}
+.system-message{position: fixed; left: 50%; top:50%; width: 250px; height: 180px; margin: -90px 0 0 -125px; 0border:1px solid #ddd; border-radius: 2px; 0box-shadow: 0 0 10px #aaa; 0background: #f7f7f7;}
+.success{ text-align:center; font-size: 16px; color: #666; line-height: 10px; margin-top: 35px;}
+.success .ico{ display: inline-block; width: 50px; height:50px; zoom:1; *display: inline; background: url(/Public/Admin/images/icodemo.png) no-repeat 0px 0px; vertical-align: middle; margin-right: 10px;}
+.fall .ico{ background-position: 0 -50px;}
+.jump{ margin-top: 20px; text-align: center;}
+</style>
+</head>
+<body>
+<div class="system-message">
+<?php if(isset($message)) {?>
+<p class="success">
+	<span class="ico"></span><?php echo($message); ?>
+</p>
+
+<?php }else{?>
+<p class="success fall">
+	<span class="ico"></span><?php echo($error); ?>
+</p>
+
+
+<?php }?>
+<p class="detail"></p>
+<p class="jump">
+页面自动跳转等待 <b id="wait"><?php echo($waitSecond); ?></b> 秒
+</p>
+</div>
+<script type="text/javascript">
+(function(){
+var wait = document.getElementById('wait'),
+	href = "<?php echo($jumpUrl); ?>";
+var interval = setInterval(function() {
+	var time = --wait.innerHTML;
+	if(time <= 0) {
+		location.href = href;
+		clearInterval(interval);
+	};
+}, 1000);
+})();
+</script>
+</body>
+</html>

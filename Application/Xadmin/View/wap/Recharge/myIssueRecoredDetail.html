@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <include file="Public/header" />
+  </head>
+  <body class=""> 
+  <!--<![endif]-->
+    <div class="navbar">
+        <include file="Public/top" />
+    </div>
+    <div class="content">
+        <ul class="breadcrumb">
+            <li><a href="{:U('Index/index')}">首页</a> <span class="divider">/</span></li>
+            <li><a href="{:U('Recharge/myRechargeRecored',array('type'=>1))}">平台充卡</a> <span class="divider">/</span></li>
+            <li class="active">充卡详情</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+						<input type="hidden" name="id" value="0" />
+						<div class="well">
+						    <div id="myTabContent" class="tab-content">
+						      <div class="tab-pane active in" id="home">
+							        <label>充卡数量：<font color="#5A6883" style="widt:200px;display:block;">{$myRechargeRecored.pay_nums}</font></label>
+							        <label>充卡时间：<font color="#5A6883" style="widt:200px;display:block;">{$myRechargeRecored.add_time|time_format=###}</font></label>
+							        <label>充卡说明：<font color="#5A6883" style="widt:200px;display:block;">{$myRechargeRecored.desc}</font></label>
+							        <label>操作人：<font color="#5A6883" style="widt:200px;display:block;">{$myRechargeRecored.Admin.admin_account}</font></label>
+						      </div>
+						  	</div>
+						</div>
+						<div class="btn-toolbar">
+						    <button class="btn btn-primary" style="margin-left:2px;" onclick="javascript:history.back(-1);return false;"><i class="icon-save"></i>返回</button>
+						  	<div class="btn-group"></div>
+						</div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

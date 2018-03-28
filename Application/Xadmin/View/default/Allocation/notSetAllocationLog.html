@@ -1,0 +1,121 @@
+<extend name="Common:base" />
+
+<block name="title">未设置分账记录</block>
+
+<block name="menu">
+	<include file="Finance:menu" />
+</block>
+
+<block name="main">
+	 <div class="pageheader">
+	    <h1 class="pagetitle">未设置分账记录</h1>
+	    <span class="pagedesc"></span>
+	</div>
+	<div id="contentwrapper" class="contentwrapper">
+		<form action="{:U('Allocation/batchOperate')}" method="post" id="operate">
+			<input type="hidden" name="operate" id="operate_type" value="sale" />
+			<table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+				<tr>
+					<th><label>ID</label></th>
+					<th>收账人(等级)</th>
+					<th>收账人上级(等级)</th>
+					<th>收账人推荐人(等级)</th>
+					<th>订单号</th>
+					<th>商品ID</th>
+					<th>订单总额</th>
+					<th>分佣金额</th>
+					<th>添加时间</th>
+					<th>操作</th>
+				</tr>
+
+				<if condition="empty($allocationList)">
+					<tr>
+						<td colspan="10">没有未设置分账记录~！</td>
+					</tr>
+				<else />
+					<volist name="allocationList" id="allocation">
+					<tr>
+						<td>{$allocation['id']}</td>
+						<td>
+							<a href="{:U('agent/agentInfo', array('id'=>$allocation['aid']))}">
+								<span>{$allocation['truename']}({:getAgentLevelName($allocation['level'])})</span>
+							</a>
+						</td>
+						<td>
+							<if condition="empty($allocation['pid'])">
+							没有上级
+							<else />
+							<a href="{:U('agent/agentInfo', array('id'=>$allocation['pid']))}">
+								<span>{$allocation['ptruename']}({:getAgentLevelName($allocation['plevel'])})</span>
+							</a>
+							</if>
+						</td>
+						<td>
+							<if condition="empty($allocation['rid'])">
+							没有推荐人
+							<else />
+							<a href="{:U('agent/agentInfo', array('id'=>$allocation['rid']))}">
+								<span>{$allocation['rtruename']}({:getAgentLevelName($allocation['rlevel'])})</span>
+							</a>
+							</if>
+						</td>
+						<td>{$allocation['order_sn']}</td>
+						<td>{$allocation['goods_id']}</td>
+						<td>￥{$allocation['total']}</td>
+						<td>￥{$allocation['money']}</td>
+						<td>{$allocation['add_time']|time_format=###}</td>
+						<td>
+								<if condition="$allocation['is_pass'] EQ 0 AND checkActionAuth('Allocation-passAllocation')">
+									<a class="stdbtn btn_lime" href="{:U('Allocation/passAllocation', array('id'=>$allocation['id']))}">佣金入账通过</a>&nbsp;&nbsp;
+								</if>
+								<if condition="$allocation['is_pass'] EQ 0 AND checkActionAuth(array('Allocation-unpassAllocation'))">
+									<a class="stdbtn btn_lime" href="{:U('Allocation/unpassAllocation', array('id'=>$allocation['id']))}">佣金入账不通过</a>&nbsp;&nbsp;
+								</if>
+						</td>
+					</tr>
+					</volist>
+					<tr>
+						<td colspan="10">
+							<div class="page-box">
+								{$show}
+							</div>
+						</td>
+					</tr>
+				</if>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript" src="__PUBLIC__/Admin/js/datetime.js"></script>
+	<script type="text/javascript">
+		$("#select_all").change(function() {
+			if ( this.checked ) {
+				$(".goods_id").prop("checked", true);
+			} else {
+				$(".goods_id").prop("checked", false);
+			}
+		});
+
+		// 上架
+		$("#onsale_selected").click(function() {
+			$("#operate_type").val('sale');
+			$("#operate").submit();
+		});
+
+		// 下架
+		$("#nosale_selected").click(function() {
+			$("#operate_type").val('nosale');
+			$("#operate").submit();
+		});
+
+		// 删除
+		$("#delete_selected").click(function() {
+			$("#operate_type").val('remove');
+			$("#operate").submit();
+		});
+
+	</script>
+</block>

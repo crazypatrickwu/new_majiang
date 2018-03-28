@@ -1,0 +1,15 @@
+<ul>
+	<li<if condition="in_array(CONTROLLER_NAME, array('Index'))">{:chr(32)}class="current"</if>>
+		<a class="date-tit sys-tj" href="{:getAuthUrl(array('Index-statistics', 'Index-clearCache'))}" class="addons">控制台</a>
+		<ul class="Jcon-ctr">
+				<li class="<if condition="in_array(ACTION_NAME, array('statistics'))">on</if>">
+					<a href="{:U('Index/statistics')}">统计</a>
+				</li>
+			<!-- <if condition="checkActionAuth('Index-clearCache')">
+				<li class="<if condition="in_array(ACTION_NAME, array('clearCache', 'removeCache'))">on</if>">
+					<a href="{:U('Index/clearCache')}">清理缓存</a>
+				</li>
+			</if> -->
+		</ul>
+	</li>
+</ul>

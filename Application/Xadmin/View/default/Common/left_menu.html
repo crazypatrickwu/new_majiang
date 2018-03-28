@@ -1,0 +1,14 @@
+<ul>
+	<volist name="left_menu" id="big_menu">
+		<li>
+			<a class="date-tit sys-tj" href="/Xadmin/{$big_menu['big']['name']}" class="addons">{$big_menu['big']['title']}</a>
+			<ul class="Jcon-ctr">
+				<volist name="big_menu['son']" id="son_menu">
+					<li<if condition="ACTION_NAME eq $son_menu['m_action']">{:chr(32)}class="on"</if>>
+						<a href="/Xadmin/{$son_menu['name']}">{$son_menu['title']}</a>
+					</li>
+				</volist>
+			</ul>
+		</li>
+	</volist>
+</ul>

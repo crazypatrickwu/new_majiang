@@ -1,0 +1,35 @@
+<a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>代理</a>
+<ul id="dashboard-menu" class="nav nav-list collapse in">
+    <li><a href="{:U('Agent/agentList')}">代理列表</a></li>
+    <li ><a href="{:U('Agent/addAgent')}">添加代理</a></li>
+</ul>
+
+<a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i>房卡</a>
+<ul id="accounts-menu" class="nav nav-list collapse">
+    <li><a href="{:U('Recharge/agentsRecored',array('type'=>0))}">个人购卡</a></li>
+    <li><a href="{:U('Recharge/agentsRecored',array('type'=>1))}">平台充卡</a></li>
+    <li><a href="{:U('Recharge/agentsRecored',array('type'=>2))}">下级返卡</a></li>
+</ul>
+
+<a href="#ck-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i>玩家</a>
+<ul id="ck-menu" class="nav nav-list collapse">
+    <li><a href="{:U('Recharge/players')}">玩家列表</a></li>
+    <li><a href="{:U('Recharge/playersRecored')}">充卡记录</a></li>
+</ul>
+
+<a href="#goods-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i>商品</a>
+<ul id="goods-menu" class="nav nav-list collapse">
+    <li><a href="{:U('Goods/index')}">商品列表</a></li>
+    <li><a href="{:U('Order/orderList')}">商品添加</a></li>
+</ul>
+<script type="text/javascript">
+   $(".nav-header").click(function(){
+       var thisHref = $(this).attr("href");
+       var thisObj	= $(thisHref);
+       $("a[data-toggle='collapse']").each(function(){
+           if(thisHref != $(this).attr("href")){
+      			$($(this).attr("href")).removeClass("in").css("height","0px");
+          	}
+       });
+   });
+</script>

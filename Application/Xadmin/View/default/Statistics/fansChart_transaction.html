@@ -1,0 +1,66 @@
+<extend name="Common:base" />
+
+<block name="title">图表统计</block>
+
+<block name="menu">
+    <include file="Common:left_menu" />
+</block>
+
+<block name="main">
+    <div class="pageheader">
+        <h1 class="pagetitle">交易数据</h1>
+        <span class="pagedesc"></span>
+    </div>
+    <div id="contentwrapper" class="contentwrapper">
+      <div id="container" style="width: 80%;height:400px"></div>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/datetime.js"></script>
+    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    <script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+    <script>
+        
+        $(function () {
+            var result= $.parseJSON('{$result}');
+            console.log(result);
+            var dateArr = result.dateArr;
+            var oneAddTransactionArr = result.oneAddTransactionArr;
+            var oneAddWxuserArr = result.oneAddWxuserArr;
+            var categories  = dateArr;
+            $('#container').highcharts({
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: '数据报表'
+                },
+                subtitle: {
+                    text: '数据来源: 旗力游戏数据平台'
+                },
+                xAxis: {
+                    categories:categories
+                },
+                yAxis: {
+                    title: {
+                        text: '数据报表'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true          // 开启数据标签
+                        },
+                        enableMouseTracking: false // 关闭鼠标跟踪，对应的提示框、点击事件会失效
+                    }
+                },
+                series: [{
+                    name: '日交易量',
+                    data: oneAddTransactionArr
+                }]
+            });
+        });
+
+    </script>
+</block>

@@ -1,0 +1,311 @@
+<extend name="Common:base" />
+
+<block name="title">取消订单</block>
+<block name="menu">
+	<include file="Order:menu" />
+</block>
+
+<block name="main">
+	 <div class="pageheader">
+	    <h1 class="pagetitle">取消订单</h1>
+	    <span class="pagedesc"></span>
+	</div>
+	<div id="contentwrapper" class="contentwrapper">
+		<form class="stdform stdform2">
+			<div class="line-dete">
+				<label>订单详情</label>
+            </div>
+			<div class="line-dete">
+				<label>会员ID</label>
+                <span class="field">
+                	<a href="{:U('User/userDetail', array('id'=>$orderInfo['user_id']))}">{$orderInfo['user_id']}</a>
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>订单编号</label>
+                <span class="field">
+					{$orderInfo['order_sn']}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>订单状态</label>
+                <span class="field">
+					<switch name="orderInfo['status']">
+						<case value="0">未发货</case>
+						<case value="1">已发货</case>
+						<case value="2">人为完成订单</case>
+						<case value="3">系统完成订单</case>
+						<case value="4">人为取消订单</case>
+						<case value="5">系统取消订单</case>
+					</switch>
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>下单时间</label>
+                <span class="field">
+                	<if condition="$orderInfo['add_time'] GT 0">
+						{$orderInfo['add_time']|time_format=###}
+					<else />
+						未填写
+					</if>
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>支付时间</label>
+                <span class="field">
+                	<if condition="$orderInfo['pay_time'] GT 0">
+						{$orderInfo['pay_time']|time_format=###}
+					<else />
+						未填写
+					</if>
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>发货时间</label>
+                <span class="field">
+                	<if condition="$orderInfo['express_time'] GT 0">
+						{$orderInfo['express_time']|time_format=###}
+					<else />
+						未填写
+					</if>
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>完成时间</label>
+                <span class="field">
+                	<if condition="$orderInfo['finish_time'] GT 0">
+						{$orderInfo['finish_time']|time_format=###}
+					<else />
+						未填写
+					</if>
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>快递公司</label>
+                <span class="field">
+					{$orderInfo['express']|default="未填写"}
+                </span>
+            </div>
+
+
+			<div class="line-dete">
+				<label>快递单号</label>
+                <span class="field">
+					{$orderInfo['express_sn']|default="未填写"}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>所属店铺</label>
+                <span class="field">
+                	<a href="{:U('Agent/agentDetail', array('id'=>$orderInfo['agent_id']))}">
+						{$orderInfo['agent_id']}
+                	</a>
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>所属店铺等级</label>
+                <span class="field">
+					{:getAgentLevelName($orderInfo['level'])}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>备注</label>
+                <span class="field">
+					{$orderInfo['remarks']|default="未填写"}
+                </span>
+            </div>
+		</form>
+
+		<p></p>
+		<form class="stdform stdform2">
+			<div class="line-dete">
+				<label>收货人信息</label>
+            </div>
+			<div class="line-dete">
+				<label>收货人</label>
+                <span class="field">
+					{$orderInfo['consignee']|default="未填写"}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>电话</label>
+                <span class="field">
+					{$orderInfo['telephone']|default="未填写"}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>身份证(保税仓必填)</label>
+                <span class="field">
+					{$orderInfo['identity_card']|default="未填写"}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>省</label>
+                <span class="field">
+					{$orderInfo['province']|default="未填写"}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>市</label>
+                <span class="field">
+					{$orderInfo['city']|default="未填写"}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>区</label>
+                <span class="field">
+					{$orderInfo['county']|default="未填写"}
+                </span>
+            </div>
+
+
+			<div class="line-dete">
+				<label>详细地址</label>
+                <span class="field">
+					{$orderInfo['address']}
+                </span>
+            </div>
+		</form>
+
+		<p></p>
+		<table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+			<tr>
+				<th>商品条码</th>
+				<th>商品名称</th>
+				<th>商品数量</th>
+				<th>商品售价</th>
+				<th>总金额</th>
+				<th>供应商</th>
+				<th>盟主分佣</th>
+				<th>帮主分佣</th>
+				<th>美人分佣</th>
+				<th>帮主推荐分佣</th>
+				<th>美人推荐分佣</th>
+				<th>商品总分佣</th>
+			</tr>
+			<volist name="orderInfo['goodsInfo']" id="order">
+			<tr>
+				<td>{$order['bar_code']}</td>
+				<td>
+					<a href="{:U('Goods/editGoods', array('id'=>$order['goods_id']))}">
+						{$order['goods_name']}
+					</a>
+				</td>
+				<td>{$order['goods_number']}</td>
+				<td>￥{:number_format($order['goods_price'], 2)}</td>
+				<td>￥{:number_format($order['goods_price'] * $order['goods_number'], 2)}</td>
+				<td>{$order['supplier_account']}</td>
+				<td>￥{:number_format(($order['level2_price'] - $order['level1_price']) * $order['goods_number'], 2)}</td>
+				<td>￥{:number_format(($order['level3_price'] - $order['level2_price']) * $order['goods_number'], 2)}</td>
+				<td>￥{:number_format(($order['goods_price'] - $order['level3_price'])  * $order['goods_number'], 2)}</td>
+				<td>￥{:number_format(($order['level2_price'] - $order['level1_price']) / 2, 2)}</td>
+				<td>￥{:number_format(($order['level3_price'] - $order['level2_price']) / 2, 2)}</td>
+				<td>￥{:number_format(($order['goods_price'] - $order['level1_price'])  * $order['goods_number'], 2)}</td>
+			</tr>
+			</volist>
+		</table>
+
+		<if condition="!empty($orderInfo['allocationLog'])">
+		<p></p>
+		<table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+			<tr>
+				<th>交易订单号</th>
+				<th>分佣代理姓名(ID)</th>
+				<th>分佣级别</th>
+				<th>分佣上级姓名(ID)</th>
+				<th>佣金来源</th>
+				<th>分佣总金额</th>
+				<th>审核状态</th>
+				<th>审核时间</th>
+			</tr>
+			<volist name="orderInfo['allocationLog']" id="allocation">
+			<tr>
+				<td>{$allocation['order_sn']}</td>
+				<td>
+					<if condition="$allocation['id'] GT 0">
+						{$allocation['truename']}({$allocation['id']})
+					<else />
+						无
+					</if>
+				</td>
+				<td>{:getAgentLevelName($allocation['level'])}</td>
+				<td>
+					<if condition="$allocation['pid'] GT 0">
+						{$allocation['ptruename']}({$allocation['pid']})
+					<else />
+						无
+					</if>
+				</td>
+				<td>
+					<switch name="allocation['type']">
+					<case value="0">层级</case>
+					<case value="1">平推</case>
+					<case value="2">礼包</case>
+					</switch>
+				</td>
+				<td>￥{:number_format($allocation['total'], 2)}</td>
+				<td>
+					<if condition="$order['is_pass'] EQ 1">
+					通过
+					<else if condition="$order['is_pass'] EQ -1" />
+					不通过
+					<else />
+					未审核
+					</if>
+				</td>
+				<td>{$allocation['add_time']|time_format=###}</td>
+			</tr>
+			</volist>
+		</table>
+		</if>
+
+		<p></p>
+
+		<form class="stdform stdform2" action="{:U('Order/cancelOrder')}" method="post" id="cancelform">
+		<input type="hidden" name="id" id="id" value="{$orderInfo['id']}" />
+		<div class="line-dete">
+			<label>取消操作人</label>
+	        <span class="field">
+	        	<input class="smallinput" type="text" name="inputer" id="inputer" value="{$orderInfo['cancelInfo']['inputer']}" />
+	        </span>
+		</div>
+
+		<div class="line-dete">
+			<label>取消理由</label>
+	        <span class="field">
+	        	<textarea class="text" name="reason" id="reason">{$orderInfo['cancelInfo']['reason']}</textarea>
+	        </span>
+		</div>
+		</form>
+		
+		<div class="text_c">
+    	<input type="button" id="cancel" class="big-btn stdbtn" value="确认" />
+    	<input type="button" onclick="window.location.href='{:U('Order/orderList')}'" class="big-btn stdbtn" value="返回" />
+    	</div>
+	</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	$("#cancel").click(function() {
+		if( confirm('你确认取消该订单？') ) {
+			$("#cancelform").submit();
+		}
+	});
+</script>
+</block>

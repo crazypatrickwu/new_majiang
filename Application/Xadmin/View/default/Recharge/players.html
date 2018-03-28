@@ -1,0 +1,85 @@
+<extend name="Common:base" />
+
+<block name="title">玩家冲卡</block>
+
+<block name="menu">
+    <include file="Common:left_menu" />
+</block>
+
+<block name="main">
+    <div class="pageheader">
+        <h1 class="pagetitle">玩家列表</h1>
+        <span class="pagedesc"></span>
+    </div>
+    <div id="contentwrapper" class="contentwrapper">
+        <div>
+            <form action="" metod="get">
+                玩家ID&nbsp;:&nbsp;<input type="text" name="userid" id="userid" value="{:remove_xss(I('get.userid'))}">
+                &nbsp;
+                <input type="hidden" name="p" value="1">
+                <input type="submit" value="查询" class="stdbtn">
+                <!--<input type="submit" name="daochu" value="导出" class="stdbtn">-->
+                <p></p>
+                <p></p>
+            </form>
+        </div>
+        <p></p>
+        <table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+            <tr>
+                <th width="5%">玩家ID</th>
+                <th width="10%">玩家昵称</th>
+                <th width="10%">旗力币</th>
+                <th width="10%">房卡数量</th>
+                <th width="10%">邀请码</th>
+                <th width="15%">实名认证</th>
+                <th width="15%">加入时间</th>
+                <th>操作</th>
+            </tr>
+            <php>$cols=8;</php>
+            <if condition="empty($game_user_list)">
+                <tr>
+                    <td colspan="{$cols}">没有玩家列表~！</td>
+                </tr>
+                <else />
+                <volist name="game_user_list" id="game_user">
+                    <tr>
+                        <td class="center">{$game_user['userid']}</td>
+                        <td class="center">{$game_user['nickname']}</td>
+                        <td class="center">{$game_user['THTreasureDB']['score']}（个）</td>
+                        <td class="center">{$game_user['THTreasureDB']['insurescore']}（个）</td>
+                        <td class="center">{$game_user['invitation_code']}</td>
+                        <td class="center" style="line-height:30px;">
+                            <if condition="!empty($game_user['authentication_idcard'])">
+                            <font color="green">
+                                姓名：{$game_user['authentication_name']}
+                                <br>
+                                身份证：{$game_user['authentication_idcard']}
+                            </font>
+                            <else />
+                            {$game_user['is_authentication']}
+                            </if>
+                        </td>
+                        <td class="center">{$game_user['registerdate']}</td>
+                        <td class="">
+                            <a class="stdbtn btn_lime" href="{:U('Recharge/addInsureScore', array('user_id'=>$game_user['userid']))}">充房卡</a>&nbsp;&nbsp;
+                            <a class="stdbtn btn_lime" href="{:U('Recharge/addScore', array('user_id'=>$game_user['userid']))}">充旗力币</a>&nbsp;&nbsp;
+                            <if condition="$game_user['invitation_code'] neq '-'">
+                                <a class="stdbtn btn_lime" href="{:U('Recharge/invitationCodeBind', array('userid'=>$game_user['userid']))}">邀请码</a>&nbsp;&nbsp;
+                            </if>
+                    </td>
+                    </tr>
+                </volist>
+                <tr>
+                    <td colspan="{$cols}">
+                        <div class="page-box">{$show}</div>
+                    </td>
+                </tr>
+            </if>
+            </tbody>
+        </table>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/datetime.js"></script>
+</block>

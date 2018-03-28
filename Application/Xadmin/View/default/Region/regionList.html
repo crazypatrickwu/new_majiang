@@ -1,0 +1,132 @@
+<extend name="Common:base" />
+
+<block name="title">地区列表</block>
+
+<block name="menu">
+	<include file="Order:menu" />
+</block>
+
+<block name="main">
+	 <div class="pageheader">
+	    <h1 class="pagetitle">地区列表</h1>
+	    <span class="pagedesc"></span>
+	</div>
+	<div id="contentwrapper" class="contentwrapper">
+		<table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+			<tr>
+				<th>展开</th>
+				<th width="10%">ID</th>
+				<th>地区名称</th>
+				<th>等级</th>
+				<th>操作</th>
+			</tr>
+
+			<if condition="empty($regionList)">
+				<tr>
+					<td colspan="5">没有地区列表~！</td>
+				</tr>
+			<else />
+				<volist name="regionList" id="region">
+				<tr>
+					<td><span class="open" data-id="{$region['id']}">›</span></td>
+					<td>{$region['id']}</td>
+					<td width="350px">
+						<span style="float:left; width: 100%; padding-left: 0px;">
+							├&nbsp;{$region['region_name']}
+						</span>
+					</td>
+					<td>{$region['level']}</td>
+					<td>
+						<a class="stdbtn btn_lime" href="{:U('Region/addRegion', array('pid'=>$region['id']))}">添加子区域</a>&nbsp;&nbsp;
+
+						<a class="stdbtn btn_lime" href="{:U('Region/editRegion', array('id'=>$region['id']))}">编辑区域</a>&nbsp;&nbsp;
+
+
+						<a class="stdbtn btn_del" onclick= "return confirm('你确认删除该地区吗？');" href="{:U('Region/delRegion', array('id'=>$region['id']))}">删除</a>&nbsp;&nbsp;
+					</td>
+				</tr>
+				</volist>
+			</if>
+			</tbody>
+		</table>
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		function formatDate(timestr) {
+			var now    = new Date(timestr * 1000);
+			var year   = now.getFullYear();
+			var month  = now.getMonth() + 1;
+			var date   = now.getDate();
+			var hour   = now.getHours();
+			var minute = now.getMinutes();
+			var second = now.getSeconds();
+			return year + "/" + month + "/" + date + " " + hour + ":" + minute + ":" + second;     
+		}
+
+		var openStatus = [];
+		$(document).on('click', '.open', function() {
+			$(this).toggleClass("active");
+			var _that   = $(this);
+			var id = _that.attr('data-id');
+
+			if ( $(".p_" + id).length <= 0 ) {
+				$.ajax({
+					url: '{:U('Region/getChildRegion')}',
+					type: 'POST',
+					dataType: 'json',
+					data: {"id": id}
+				}).done(function(data) {
+					var string = [];
+					pclass = _that.parent().parent().attr('class');
+					for (var i = 0; i < data.length; i++) {
+
+
+						string.push('<tr class="');
+
+						if ( pclass != undefined ) {
+							string.push(pclass + ' ');
+						}
+						string.push('p_' + data[i].pid);
+						string.push('">');
+
+						string.push('<td><span class="open" data-id="' + data[i].id + '">›</span></td>');
+						string.push('<td>' + data[i].id + '</td>');
+						string.push('<td><span style="float:left; width: 100%; padding-left: ' + ((data[i].level - 1) * 40) + 'px;">├&nbsp;' + data[i].region_name + '</span></td>');
+						string.push('<td>' + data[i].level + '</td>');
+						string.push('<td>');
+
+						<if condition="checkActionAuth('Region-addRegion', 'Region-delRegion', 'Region-editRegion')">
+							<if condition="checkActionAuth('Region-addRegion')">
+								if( data[i].level < 4 ) {
+									string.push('<a class="stdbtn btn_lime" href="/Xadmin/Region/addRegion/pid/' + data[i].id + '">添加子区域</a>&nbsp;&nbsp;');
+								}
+							</if>
+
+							<if condition="checkActionAuth('Region-editRegion')">
+								string.push('<a class="stdbtn btn_lime" href="/Xadmin/Region/editRegion/id/' + data[i].id + '">编辑区域</a>&nbsp;&nbsp;');
+							</if>
+
+							<if condition="checkActionAuth(array('Region-delRegion'))">
+								string.push('<a class="stdbtn btn_del" onclick= "return confirm(\'你确认删除该地区吗？\');" href="/Xadmin/Region/delRegion/id/' + data[i].id + '">删除</a>&nbsp;&nbsp;');
+							</if>
+						</if>
+
+						string.push('</td></tr>');
+					};
+
+					_that.parent().parent().after(string.join(''));
+				});
+			}
+
+			if ( openStatus[id] == 1 ) {
+				$(".p_" + id).hide();
+				openStatus[id] = 0;
+			} else {
+				$(".p_" + id).show();
+				openStatus[id] = 1;
+			}
+		});
+	</script>
+</block>

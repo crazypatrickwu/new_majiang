@@ -1,0 +1,194 @@
+<extend name="Common:base" />
+
+<block name="title">编辑代理</block>
+<block name='style'>
+	<link rel="stylesheet" href="__PUBLIC__/Admin/css/jquery.datetimepicker.css" type="text/css" />
+</block>
+<block name="menu">
+	<include file="Common:left_menu" />
+</block>
+
+<block name="main">
+	 <div class="pageheader">
+	    <h1 class="pagetitle">代理个人信息</h1>
+	    <span class="pagedesc"></span>
+	</div>
+	<div id="contentwrapper" class="contentwrapper">
+		<form class="stdform stdform2">
+            <div class="line-dete">
+                <label>代理ID</label>
+                <span class="field">
+                    {$agentInfo['id']}
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>姓名</label>
+                <span class="field">
+                    {$agentInfo['truename']}
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>级别</label>
+                <span class="field">
+                    <if condition="$agentInfo['level'] eq 1">盟主</if>
+                    <if condition="$agentInfo['level'] eq 2">帮主</if>
+                    <if condition="$agentInfo['level'] eq 3">美人</if>
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>手机</label>
+                <span class="field">
+                    {$agentInfo['phone']}
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>密码</label>
+                <span class="field">
+                    ******
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>店铺营业额</label>
+                <span class="field">
+                    ￥{$agentInfo['shop_turnover']}
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>累计收益</label>
+                <span class="field">
+                    ￥{$agentInfo['history_money_total']}
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>待审核收益</label>
+                <span class="field">
+                    ￥{$agentInfo['not_available_money']}
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>可用余额</label>
+                <span class="field">
+                    ￥{$agentInfo['money']}
+                </span>
+            </div>
+
+
+            <div class="line-dete">
+                <label>保证金</label>
+                <span class="field">
+                    ￥{$agentInfo['deposit']}
+                </span>
+            </div>
+
+			<div class="line-dete">
+				<label>推荐人ID</label>
+                <span class="field">
+                	{$agentInfo['referee_id']}
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>推荐人姓名</label>
+                <span class="field">
+                    {$agentInfo['referee_name']|default="未填写"}
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>是否开店</label>
+                <span class="field">
+                    <if condition="$agentInfo['has_shop'] eq 1">是</if>
+                    <if condition="$agentInfo['has_shop'] eq 0">否</if>
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>是否锁定</label>
+                <span class="field">
+                    <if condition="$agentInfo['bank_lock'] eq 1">是</if>
+                    <if condition="$agentInfo['bank_lock'] eq 0">否</if>
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>身份证</label>
+                <span class="field">
+                    {$agentInfo['identity_card']|default="未填写"}
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>开户银行</label>
+                <span class="field">
+                    {$agentInfo['bank_name']|default="未填写"}
+                </span>
+            </div>
+
+
+            <div class="line-dete">
+                <label>开户支行</label>
+                <span class="field">
+                    {$agentInfo['bank_address']|default="未填写"}
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>银行卡号</label>
+                <span class="field">
+                    {$agentInfo['bank_acount']|default="未填写"}
+                </span>
+            </div>
+
+
+            <div class="line-dete">
+                <label>收款姓名</label>
+                <span class="field">
+                    {$agentInfo['bank_payee']|default="未填写"}
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>所属区域</label>
+                <span class="field">
+                    <if condition="!empty($agentInfo['province']) AND !empty($agentInfo['city']) AND !empty($agentInfo['county'])">
+                        {$agentInfo['province']}{$agentInfo['city']}{$agentInfo['county']}
+                    <else />
+                        无
+                    </if>
+                </span>
+            </div>
+
+            <div class="line-dete">
+                <label>加入时间</label>
+                <span class="field">
+                    {$agentInfo['add_time']|time_format=###}
+                </span>
+            </div>
+
+
+            <div class="line-dete">
+                <label>是否禁用</label>
+                <span class="field">
+                    <if condition="$agentInfo['is_forbidden'] eq 1">是</if>
+                    <if condition="$agentInfo['is_forbidden'] eq 0">否</if>
+                </span>
+            </div>
+
+            <div class="line-dete">
+				<label></label>
+                <span class="field">
+                    <input class="big-btn stdbtn" onclick="window.location.href='{:U('Agent/editAgent', array('id'=>$agentInfo['id']))}'" type="button" value="编辑" />
+                    <input type="button" class="big-btn stdbtn" onclick="window.history.back(-1);" value="返回" />
+                </span>
+            </div>
+		</form>
+	</div>
+</block>

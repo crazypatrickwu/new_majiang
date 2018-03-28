@@ -1,0 +1,96 @@
+<extend name="Common:base" />
+
+<block name="title">系统广播</block>
+<block name='style'>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/css/jquery.datetimepicker.css" type="text/css" />
+</block>
+<block name="menu">
+    <include file="System:menu" />
+</block>
+
+<block name="main">
+    <div class="pageheader">
+        <h1 class="pagetitle">编辑广播</h1>
+        <span class="pagedesc"></span>
+    </div>
+    <div id="contentwrapper" class="contentwrapper">
+        <form class="stdform stdform2" action="" method="post">
+            <div class="line-dete">
+                <label>广播内容</label>
+                <span class="field">
+                    <textarea rows="10" style="width:650px;" name="content">{$agentInfo['gnosis']}</textarea>
+                </span>
+            </div>
+<!--            <div class="line-dete">
+                <label>排序</label>
+                <span class="field">
+                    <input class="smallinput" type="text" name="sort" id="sort" value="{$info.sort}"/>
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>是否启用</label>
+                <span class="field">
+                    <input type="radio" name="State" value="1">是
+                    <input type="radio" name="State" value="0" checked="checked">否
+                </span>
+            </div>-->
+            <div class="line-dete">
+                <label></label>
+                <span class="field">
+                    <input type="hidden" id="id" name="id" value="{$info.id}"  />
+                    <input type="submit" class="big-btn stdbtn" value="保存" />
+                    <input type="button" class="big-btn stdbtn" onclick="window.history.back(-1);" value="返回" />
+                </span>
+            </div>
+        </form>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/Common/js/ajaxfileupload.js"></script>
+    <script type="text/javascript">
+                        $(function(){
+
+                            //上传图片
+                            $(document).on('change', '.f-upload', function() {
+                                var thisId  =   $(this).attr('id');
+                                // alert(thisId);return;
+                                ajaxFileUpload(thisId);
+                            });
+                            function ajaxFileUpload(thisId) {
+                                $.ajaxFileUpload({
+                                    url: "{:U('Agent/photoUpload')}",
+                                    secureuri: false,
+                                    fileElementId: thisId,
+                                    dataType: 'json',
+                                    success: function (data, status) {
+                                        if(typeof(data.error) != 'undefined') {
+                                            if(data.error != '') {
+                                                alert(data.error);
+                                            } else {
+                                                var upId    =   $("#"+thisId).attr('data-id');
+                                                var html    =   '';
+                                                    html    =   '<div class="pic-wrap"><i class="del-pic" data-id="'+upId+'"></i><img src="' + data.msg + '" class="s-cover"/></div>';
+                                                $("#upload_"+upId).append(html);
+                                                $('#JcoverPid_'+upId).val(data.msg);
+                                            }
+                                            $("#"+thisId).parent('.upload-wrap').remove();
+                                        }
+                                    },
+                                    error: function (data, status, e) {
+                                        var html='<div class="title">提示</div><div>' + e + '</div>';
+                                        popbox(html);
+                                    }
+                                })
+                                return false;
+                            }
+
+                            //删除图片
+                            $(document).on('click','.del-pic', function() {
+                                var upId    =   $(this).attr('data-id');
+                                $(this).parent().remove();
+                                $('#JgoodsListWrap_'+upId).append('<div class="upload-wrap"> <input type="file" id="fileToUpload_'+upId+'" name="fileToUpload_'+upId+'" data-id="'+upId+'" class="f-upload" /> </div>');
+                            });
+                        });
+    </script>
+</block>

@@ -1,0 +1,110 @@
+<ul>
+	<if condition="checkControllerAuth(array('Ad'))">
+		<li<if condition="in_array(CONTROLLER_NAME, array('Ad'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('Ad-adList', 'Ad-addAd', 'Ad-adBoxList', 'Ad-addAdBox'))}" class="addons">广告管理</a>
+			<ul class="Jcon-ctr">
+
+
+				<if condition="checkActionAuth('Ad-adList')">
+					<li class="<if condition="in_array(ACTION_NAME, array('adList', 'editAd'))">on</if>">
+						<a href="{:U('Ad/adList')}">广告列表</a>
+					</li>
+				</if>
+
+
+				<if condition="checkActionAuth('Ad-addAd')">
+					<li class="<if condition="in_array(ACTION_NAME, array('addAd'))">on</if>">
+						<a href="{:U('Ad/addAd')}">添加广告</a>
+					</li>
+				</if>
+
+				<if condition="checkActionAuth('Ad-adBoxList')">
+					<li class="<if condition="in_array(ACTION_NAME, array('adBoxList', 'editAdBox'))">on</if>">
+						<a href="{:U('Ad/adBoxList')}">广告展位列表</a>
+					</li>
+				</if>
+
+				<if condition="checkActionAuth('Ad-addAdBox')">
+					<li class="<if condition="in_array(ACTION_NAME, array('addAdBox'))">on</if>">
+						<a href="{:U('Ad/addAdBox')}">添加广告展位</a>
+					</li>
+				</if>
+			</ul>
+		</li>
+	</if>
+
+	<if condition="checkControllerAuth(array('Theme'))">
+		<li<if condition="in_array(CONTROLLER_NAME, array('Theme'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('Theme-themeList'))}" class="addons">专题管理</a>
+			<ul class="Jcon-ctr">
+
+
+				<if condition="checkActionAuth('Theme-themeList')">
+					<li class="<if condition="in_array(ACTION_NAME, array('themeList', 'editTheme'))">on</if>">
+						<a href="{:U('Theme/themeList')}">专题列表</a>
+					</li>
+				</if>
+
+
+				<if condition="checkActionAuth('Theme-addTheme')">
+					<li class="<if condition="in_array(ACTION_NAME, array('addTheme'))">on</if>">
+						<a href="{:U('Theme/addTheme')}">添加专题</a>
+					</li>
+				</if>
+			</ul>
+		</li>
+	</if>
+
+	<if condition="checkControllerAuth(array('Article'))">
+		<li<if condition="in_array(CONTROLLER_NAME, array('Article'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('Article-articleList', 'Article-addArticle', 'Article-articleGroupList', 'Article-addArticleGroup'))}" class="addons">文章管理</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('Article-articleList')">
+					<li class="<if condition="in_array(ACTION_NAME, array('articleList', 'editArticle'))">on</if>">
+						<a href="{:U('Article/articleList')}">文章列表</a>
+					</li>
+				</if>
+
+
+				<if condition="checkActionAuth('Article-addArticle')">
+					<li class="<if condition="in_array(ACTION_NAME, array('addArticle'))">on</if>">
+						<a href="{:U('Article/addArticle')}">添加文章</a>
+					</li>
+				</if>
+
+				<if condition="checkActionAuth('Article-articleGroupList')">
+					<li class="<if condition="in_array(ACTION_NAME, array('articleGroupList', 'editArticleGroup'))">on</if>">
+						<a href="{:U('Article/articleGroupList')}">文章分类列表</a>
+					</li>
+				</if>
+
+
+				<if condition="checkActionAuth('Article-addArticleGroup')">
+					<li class="<if condition="in_array(ACTION_NAME, array('addArticleGroup'))">on</if>">
+						<a href="{:U('Article/addArticleGroup')}">添加文章分类</a>
+					</li>
+				</if>
+			</ul>
+		</li>
+	</if>
+
+	<if condition="checkControllerAuth(array('Specialist'))">
+		<li<if condition="in_array(CONTROLLER_NAME, array('Specialist'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('Specialist-specialistList', 'Specialist-addSpecialist'))}" class="addons">专家管理</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('Specialist-specialistList')">
+					<li class="<if condition="in_array(ACTION_NAME, array('specialistList', 'editSpecialist'))">on</if>">
+						<a href="{:U('Specialist/specialistList')}">专家列表</a>
+					</li>
+				</if>
+
+
+				<if condition="checkActionAuth('Specialist-addSpecialist')">
+					<li class="<if condition="in_array(ACTION_NAME, array('addSpecialist'))">on</if>">
+						<a href="{:U('Specialist/addSpecialist')}">添加专家</a>
+					</li>
+				</if>
+			</ul>
+		</li>
+	</if>
+</ul>

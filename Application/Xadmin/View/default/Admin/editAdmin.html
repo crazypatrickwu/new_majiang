@@ -1,0 +1,54 @@
+<extend name="Common:base" />
+
+<block name="menu">
+	<include file="Common:left_menu" />
+</block>
+
+<block name="main">
+<div class="pageheader">
+    <h1 class="pagetitle">编辑管理员</h1>
+    <span class="pagedesc"></span>
+</div>
+
+<div id="contentwrapper" class="contentwrapper">
+	<form action="{:U('Admin/editAdmin')}" method="post" class="stdform">
+		<input type="hidden" name="id" id="id" value="{$adminInfo['id']}" />
+		<p>
+			<label>账户</label>
+			<span class="field">
+				<input type="text" name="account" id="account" class="smallinput" value="{$adminInfo['admin_account']}" readOnly="true" />
+			</span>
+		</p>
+		<p>
+			<label>密码</label>
+			<span class="field">
+				<input type="password" name="password" id="password" class="smallinput" value="nochange" />
+			</span>
+		</p>
+		<p>
+			<label>所属组</label>
+			<span class="field">
+				<select name="group" id="group">
+					<volist name="group" id="g">
+						<option <if condition="$adminInfo['group_id'] eq $g['id']">selected</if> value="{$g['id']}">{$g['title']}</option>
+					</volist>
+				</select>
+			</span>
+		</p>
+		<p>
+			<label>是否锁定</label>
+			<span class="field">
+				<input type="radio" name="is_lock" value="0" <if condition="$adminInfo['is_lock'] eq '0'">checked="checked"</if> /> 否
+				<input type="radio" name="is_lock" value="1" <if condition="$adminInfo['is_lock'] eq '1'">checked="checked"</if>/> 是
+			</span>
+		</p>
+		<p>
+			<label></label>
+			<span class="field">
+				<input type="submit" value="保存" class="stdbtn" />
+				<input type="button" onclick="window.history.back(-1);" value="返回" class="stdbtn">
+			</span>
+		</p>
+	</form>
+</div>
+</block>

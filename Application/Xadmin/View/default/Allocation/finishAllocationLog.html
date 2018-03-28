@@ -1,0 +1,149 @@
+<extend name="Common:base" />
+
+<block name="title">已完成分账记录</block>
+
+<block name="menu">
+	<include file="Finance:menu" />
+</block>
+
+<block name="main">
+	 <div class="pageheader">
+	    <h1 class="pagetitle">已完成分账记录</h1>
+	    <span class="pagedesc"></span>
+	</div>
+	<div id="contentwrapper" class="contentwrapper">
+                <div>
+			<form action="" metod="get">
+				<input type="hidden" name="p" id="p" value="1" />
+				订单编号&nbsp;:&nbsp;<input type="text" name="order_sn" id="order_sn" value="{:remove_xss(I('get.order_sn'))}">
+				&nbsp;
+				商品名称&nbsp;:&nbsp;<input type="text" name="goods_name" id="goods_name" value="{:remove_xss(urldecode(I('get.goods_name')))}">
+				&nbsp;
+				条形码&nbsp;:&nbsp;<input type="text" name="bar_code" id="bar_code" value="{:remove_xss(urldecode(I('get.bar_code')))}">
+				&nbsp;
+				订单类型&nbsp;
+                                <select name="type">
+					<option value="">--请选择--</option>
+					<option value="0"<if condition="I('get.type') NEQ '' AND I('get.type') EQ 0">{:chr(32)}selected="selected"</if>>普通订单</option>
+					<option value="1"<if condition="I('get.type') EQ 1">{:chr(32)}selected="selected"</if>>礼包订单</option>
+					<option value="2"<if condition="I('get.type') EQ 2">{:chr(32)}selected="selected"</if>>平推订单</option>
+				</select>
+				店铺级别&nbsp;
+				<select name="level">
+					<option value="">--请选择--</option>
+					<option value="1"<if condition="I('get.level') EQ '1'">{:chr(32)}selected="selected"</if>>盟主</option>
+					<option value="2"<if condition="I('get.level') EQ '2'">{:chr(32)}selected="selected"</if>>帮主</option>
+					<option value="3"<if condition="I('get.level') EQ '3'">{:chr(32)}selected="selected"</if>>美人</option>
+				</select>
+				&nbsp;
+				订单完成时间&nbsp;<input type="text" name="start_add_time" id="start_add_time" value="{:remove_xss(search_time_format(I('get.start_add_time')))}" class="sang_Calender">
+				-
+				<input type="text" name="end_add_time" id="end_add_time" value="{:remove_xss(search_time_format(I('get.end_add_time')))}" class="sang_Calender">
+				<input type="submit" value="查询" class="stdbtn">
+				<input type="submit" name='is_export' id="is_export" value="导出" class="stdbtn">
+			</form>
+		</div>
+		<p></p>
+		<form action="{:U('Allocation/finishAllocationLog')}" method="post" id="operate">
+			<input type="hidden" name="operate" id="operate_type" value="sale" />
+			<table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+				<tr>
+					<th><label>ID</label></th>
+					<th>订单编号</th>
+					<th>订单状态</th>
+					<th>订单类型</th>
+					<th>商品名称</th>
+					<th>条形码</th>
+					<th>单价</th>
+					<th>数量</th>
+					<!--<th>总金额</th>-->
+					<th>单种商品总分佣</th>
+					<th>订单总金额</th>
+					<th>订单总分佣</th>
+					<th>订单完成时间</th>
+					<th>操作</th>
+				</tr>
+
+				<if condition="empty($allocationList)">
+					<tr>
+						<td colspan="13">没有已完成分账记录~！</td>
+					</tr>
+				<else />
+					<volist name="allocationList" id="allocation">
+					<tr>
+						<td>{$allocation['id']}</td>
+						<td>{$allocation['order_sn']}</td>
+                                                <td>
+                                                    <switch name="allocation['status']">
+                                                            <case value="0">未发货</case>
+                                                            <case value="1">已发货</case>
+                                                            <case value="2">人为完成订单</case>
+                                                            <case value="3">系统完成订单</case>
+                                                            <case value="4">人为取消订单</case>
+                                                            <case value="5">系统取消订单</case>
+                                                    </switch>
+                                                </td>
+                                                <td>{$allocation['o_type']}</td>
+						<td>{$allocation['goods_name']}</td>
+						<td>{$allocation['bar_code']}</td>
+						<td>{$allocation['goods_price']}</td>
+						<td>{$allocation['goods_number']}</td>
+						<td>{$allocation['od_expense']}</td>
+						<td>{$allocation['total']}</td>
+						<td>{$allocation['o_expense']}</td>
+						<td>{:time_format($allocation['add_time'])}</td>
+						<td>
+                                                    <if condition="checkOrderType($allocation['order_sn']) == 1">
+                                                        <a class="stdbtn btn_lime dopass" id="pass" href="{:U('GiftOrder/giftOrderDetail', array('id'=>$allocation['order_id']))}">查看</a>
+                                                    <else />
+                                                        <a class="stdbtn btn_lime dopass" id="pass" href="{:U('Order/orderDetail', array('id'=>$allocation['order_id']))}">查看</a>
+                                                    </if>
+                                                </td>
+					</tr>
+					</volist>
+					<tr>
+						<td colspan="13">
+							<div class="page-box">
+								{$show}
+							</div>
+						</td>
+					</tr>
+				</if>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript" src="__PUBLIC__/Admin/js/datetime.js"></script>
+	<script type="text/javascript">
+		$("#select_all").change(function() {
+			if ( this.checked ) {
+				$(".goods_id").prop("checked", true);
+			} else {
+				$(".goods_id").prop("checked", false);
+			}
+		});
+
+		// 上架
+		$("#onsale_selected").click(function() {
+			$("#operate_type").val('sale');
+			$("#operate").submit();
+		});
+
+		// 下架
+		$("#nosale_selected").click(function() {
+			$("#operate_type").val('nosale');
+			$("#operate").submit();
+		});
+
+		// 删除
+		$("#is_export").click(function() {
+                        if(!confirm('是否确定导出数据？')){
+                            return false;
+                        }
+		});
+
+	</script>
+</block>

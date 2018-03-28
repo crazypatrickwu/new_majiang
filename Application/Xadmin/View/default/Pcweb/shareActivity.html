@@ -1,0 +1,52 @@
+<extend name="Common:base" />
+
+<block name="menu">
+    <include file="Pcweb/menu" />
+</block>
+
+<block name="main">
+    <div class="pageheader">
+        <h1 class="pagetitle">分享活动配置</h1>
+    </div>
+
+    <div id="contentwrapper" class="contentwrapper">
+        <form class="stdform stdform2" action="{:U(System/setting)}" method="post">
+            <div class="line-dete">
+                <label>每天赠送次数</label>
+                <span class="field">
+                    <input type="text" name="give_times" id="give_times" class="smallinput" value="{$info['give_times']}">
+                    <small class="desc"></small>
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>赠送房卡数量</label>
+                <span class="field">
+                    <input type="text" name="roomcard_num" id="roomcard_num" class="smallinput" value="{$info['roomcard_num']}">
+                    <small class="desc"></small>
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>赠送金币数量</label>
+                <span class="field">
+                    <input type="text" name="gold_num" id="gold_num" class="smallinput" value="{$info['gold_num']}">
+                    <small class="desc"></small>
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>是否启用</label>
+                <span class="field">
+                    <input type="radio" name="State" value="1">是
+                    <input type="radio" name="State" value="0" checked="checked">否
+                </span>
+            </div>
+            <div class="line-dete">
+                <label></label>
+                <span class="field">
+                    <input type="hidden" id="id" name="id" value="{$info.id}"  />
+                    <input type="submit" class="big-btn stdbtn" value="保存" />
+                    <input type="button" class="big-btn stdbtn" onclick="window.history.back(-1);" value="返回" />
+                </span>
+            </div>
+        </form>
+    </div>
+</block>

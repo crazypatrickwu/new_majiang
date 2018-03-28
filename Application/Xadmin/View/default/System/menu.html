@@ -1,0 +1,95 @@
+<ul>
+	<if condition="checkActionAuth('System-setting')">
+		<li<if condition="checkActionAuth('System-setting')">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('System-setting'))}" class="addons">系统设置</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('System-setting')">
+					<li class="<if condition="in_array(ACTION_NAME, array('setting'))">on</if>">
+						<a href="{:U('System/setting')}">系统设置</a>
+					</li>
+				</if>
+				<!-- <if condition="checkActionAuth('System-introduction')">
+					<li class="<if condition="in_array(ACTION_NAME, array('introduction'))">on</if>">
+						<a href="{:U('System/introduction')}">联系我们</a>
+					</li>
+				</if> -->
+				<if condition="checkActionAuth('System-notice')">
+					<li class="<if condition="in_array(ACTION_NAME, array('notice'))">on</if>">
+						<a href="{:U('System/notice')}">小喇叭</a>
+					</li>
+				</if>
+				<if condition="checkActionAuth('System-messageList')">
+					<li class="<if condition="in_array(ACTION_NAME, array('messageList'))">on</if>">
+						<a href="{:U('System/messageList')}">系统消息</a>
+					</li>
+				</if>
+				<if condition="checkActionAuth('System-agentRebateConfig')">
+					<li class="<if condition="in_array(ACTION_NAME, array('agentRebateConfig'))">on</if>">
+						<a href="{:U('System/agentRebateConfig')}">分成配置</a>
+					</li>
+				</if>
+			</ul>
+		</li>
+	</if>
+
+
+	<if condition="checkActionAuth(array('System-share', 'System-shareActivity'))">
+		<li<if condition="in_array(ACTION_NAME, array('share', 'shareActivity'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('System-share', 'System-shareActivity'))}" class="addons">分享配置</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('System-share')">
+					<li class="<if condition="in_array(ACTION_NAME, array('share'))">on</if>">
+						<a href="{:U('System/share')}">分享配置</a>
+					</li>
+				</if>
+
+				<if condition="checkActionAuth('System-shareActivity')">
+					<li class="<if condition="in_array(ACTION_NAME, array('shareActivity'))">on</if>">
+						<a href="{:U('System/shareActivity')}">分享活动配置</a>
+					</li>
+				</if>
+
+			</ul>
+		</li>
+	</if>
+
+	<if condition="checkActionAuth('System-weixinReply', 'System-weixinAutoReply','System-weixinReplyAdd','System-weixinSubscribe','System-weixinMenu')">
+		<li<if condition="in_array(ACTION_NAME, array('friendshipLink', 'addFriendshipLink'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('System-friendshipLink', 'System-addFriendshipLink'))}" class="addons">公众号</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('System-weixinSubscribe')">
+					<li class="<if condition="in_array(ACTION_NAME, array('weixinSubscribe'))">on</if>">
+						<a href="{:U('System/weixinSubscribe')}">关注回复</a>
+					</li>
+				</if>
+
+				<if condition="checkActionAuth('System-weixinMenu')">
+					<li class="<if condition="in_array(ACTION_NAME, array('weixinMenu'))">on</if>">
+                        <a href="{:U('System/weixinMenu')}" target="_blank">自定义菜单</a>
+					</li>
+				</if>
+
+			</ul>
+		</li>
+	</if>
+
+	<if condition="checkActionAuth('System-friendshipLink', 'System-addFriendshipLink')">
+		<li<if condition="in_array(ACTION_NAME, array('friendshipLink', 'addFriendshipLink'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('System-friendshipLink', 'System-addFriendshipLink'))}" class="addons">友情链接</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('System-friendshipLink')">
+					<li class="<if condition="in_array(ACTION_NAME, array('friendshipLink', 'editFriendshipLink'))">on</if>">
+						<a href="{:U('System/friendshipLink')}">友情链接</a>
+					</li>
+				</if>
+
+				<if condition="checkActionAuth('System-addFriendshipLink')">
+					<li class="<if condition="in_array(ACTION_NAME, array('addFriendshipLink'))">on</if>">
+						<a href="{:U('System/addFriendshipLink')}">添加友谊链接</a>
+					</li>
+				</if>
+
+			</ul>
+		</li>
+	</if>
+</ul>

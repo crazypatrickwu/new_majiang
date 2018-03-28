@@ -1,0 +1,70 @@
+<extend name="Common:base" />
+
+<block name="title">充值管理</block>
+
+<block name="menu">
+    <include file="Common:left_menu" />
+</block>
+
+<block name="main">
+    <div class="pageheader">
+        <h1 class="pagetitle">充值记录</h1>
+        <span class="pagedesc"></span>
+    </div>
+    <div id="contentwrapper" class="contentwrapper">
+        <div>
+            <form action="" metod="get">
+                <input type="text" name="keyword" id="keyword" value="{:remove_xss(I('get.keyword'))}" placeholder="请输入玩家ID或代理ID">
+                &nbsp;&nbsp;&nbsp;
+                时间&nbsp;:&nbsp;<input type="text" name="start_time" id="start_time" value="{:remove_xss(search_time_format(I('get.start_time')))}" class="sang_Calender">-<input type="text" name="end_time" id="end_time" value="{:remove_xss(search_time_format(I('get.end_time')))}" class="sang_Calender">
+
+                <input type="submit" value="查询" class="stdbtn">
+                <!--<input type="submit" name="daochu" value="导出" class="stdbtn">-->
+                <p></p>
+                <p></p>
+            </form>
+        </div>
+        <p></p>
+        <table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+            <tr>
+                <th width="10%">编号</th>
+                <th>用户ID</th>
+                <th>充值数量</th>
+                <th>信息描述</th>
+                <th>充值时间</th>
+            </tr>
+
+            <if condition="empty($user_recharge_recored_list)">
+                <tr>
+                    <td colspan="5">没有玩家列表~！</td>
+                </tr>
+                <else />
+                <volist name="user_recharge_recored_list" id="user_recharge_recored">
+                    <tr>
+                        <td class="center">{$user_recharge_recored['id']}</td>
+                        <td class="center">
+                            <if condition="$user_recharge_recored['type'] eq 2">
+                                {$user_recharge_recored['to_agent_id']}（代理）
+                            <else />
+                                    {$user_recharge_recored['user_id']}（玩家）
+                            </if>
+                        </td>
+                        <td class="center">{$user_recharge_recored['pay_nums']}（张）</td>
+                        <td class="center">{$user_recharge_recored['desc']}</td>
+                        <td class="center">{$user_recharge_recored['add_time']|time_format=###}</td>
+                    </tr>
+                </volist>
+                <tr>
+                    <td colspan="5">
+                        <div class="page-box">{$show}</div>
+                    </td>
+                </tr>
+            </if>
+            </tbody>
+        </table>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/datetime.js"></script>
+</block>

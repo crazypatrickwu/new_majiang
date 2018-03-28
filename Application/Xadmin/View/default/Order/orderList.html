@@ -1,0 +1,161 @@
+<extend name="Common:base" />
+
+<block name="title">订单列表</block>
+
+<block name="menu">
+	<include file="Order:menu" />
+</block>
+
+<block name="main">
+	 <div class="pageheader">
+	    <h1 class="pagetitle">订单列表</h1>
+	    <span class="pagedesc"></span>
+	</div>
+	<div id="contentwrapper" class="contentwrapper">
+		<div>
+			<form action="" metod="get">
+				<input type="hidden" name="p" id="p" value="1" />
+                                &nbsp;订单编号&nbsp;:&nbsp;<input type="text" name="order_sn" id="username" value="{:remove_xss(I('get.order_sn'))}">
+				支付状态&nbsp;:&nbsp;
+				<select name="pay_status">
+					<option value="">--请选择--</option>
+					<option value="0"<if condition="I('get.pay_status') NEQ '' AND I('get.pay_status') EQ 0">{:chr(32)}selected="selected"</if>>未支付</option>
+					<option value="1"<if condition="I('get.pay_status') EQ 1">{:chr(32)}selected="selected"</if>>已支付</option>
+				</select>
+				&nbsp;
+				下单时间&nbsp;:&nbsp;<input type="text" name="start_time" id="start_time" value="{:remove_xss(search_time_format(I('get.start_time')))}" class="sang_Calender">-<input type="text" name="end_time" id="end_time" value="{:remove_xss(search_time_format(I('get.end_time')))}" class="sang_Calender">
+                                <input type="submit" value="查询" class="stdbtn">
+			</form>
+		</div>
+		<p></p>
+		<table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+			<tr>
+				<!--<th>展开</th>-->
+				<th>ID</th>
+				<th>订单编号</th>
+				<th>商品名称</th>
+				<th>代理人</th>
+				<th>联系电话</th>
+				<th>订单总额</th>
+				<th>已支付金额</th>
+				<th>下单时间</th>
+				<th>订单状态</th>
+				<th>支付时间</th>
+				<th>操作</th>
+			</tr>
+
+			<if condition="empty($orderList)">
+				<tr>
+					<td colspan="11">没有订单列表~！</td>
+				</tr>
+			<else />
+				<volist name="orderList" id="list">
+				<tr>
+<!--					<td>
+						<span class="open" data-fuli="{$list['is_fuli']}" data-id="{$list['order_sn']}">›</span>
+					</td>-->
+                                        <td class="center">{$list['id']}</td>
+					<td class="center">{$list['order_sn']}</td>
+					<td class="center">{$list['goods_name']}</td>
+					<td class="center">{$list['buyer']}</td>
+					<td class="center">{$list['telephone']}</td>
+					<td class="center">￥{$list['total_amount']}</td>
+					<td class="center">￥{$list['paid_money']}</td>
+					<td class="center">{$list['add_time']|time_format=###}</td>
+					<td class="center">
+						<if condition="$list['pay_status'] EQ 1">
+							已支付
+						<else />
+							未支付
+						</if>
+					</td>
+					<td class="center">
+						<if condition="$list['pay_status'] EQ 1">
+							{$list['pay_time']|time_format=###}
+						<else />
+							--
+						</if>
+					</td>
+					<td class="center">
+						<a class="stdbtn btn_lime" href="{:U('Order/orderDetail', array('id'=>$list['id']))}">查看详情</a>
+					</td>
+				</tr>
+				</volist>
+				<tr>
+					<td colspan="11">
+						<div class="page-box">{$show}</div>
+					</td>
+				</tr>
+			</if>
+		</table>
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript" src="__PUBLIC__/Agent/js/datetime.js"></script>
+	<script type="text/javascript">
+		$(".confirmExpress").click(function() {
+			var order_sn_val   = $(this).attr('data-sn');
+			var express_val    = $(this).parent().prev().prev().find('.express').val();
+			var express_sn_val = $(this).parent().prev().find('.express_sn').val();
+			var that 		   = $(this);
+
+			$.ajax({
+				url: '{:U('Order/writeExpressInfo')}',
+				type: 'POST',
+				dataType: 'json',
+				data: {
+					order_sn   : order_sn_val,
+					express    : express_val,
+					express_sn : express_sn_val
+				}
+			}).done(function(data) {
+				if ( data.info == '保存成功！' ) {
+					that.hide();
+					that.parent().prev().prev().html(express_val);
+					that.parent().prev().html(express_sn_val);
+					that.parent().prev().prev().prev().prev().html('已发货');
+				}
+			});
+		});
+
+		$(".open").click(function() {
+			var _that   = $(this);
+			var orderSn = _that.attr('data-id');
+			var orderFuli = _that.attr('data-fuli');
+
+			if ( $(".p_" + orderSn).length <= 0 ) {
+				$.ajax({
+					url: '{:U('order/orderGoodsList')}',
+					type: 'POST',
+					dataType: 'json',
+					data: {order_sn: orderSn}
+				}).done(function(data) {
+					var string = [];
+
+					string.push('<tr class="p_' + data[0].order_sn + '"><td colspan="13"><table class="sub"><tr><th>商品ID</th><th>商品条形码</th><th>商品名称</th><th>商品价格</th><th>商品数量</th></tr><tr>');
+					for (var i = 0; i < data.length; i++) {
+						if (orderFuli == '0') {
+							string.push('<td>' + data[i].goods_id + '</td>');
+							string.push('<td>' + data[i].bar_code + '</td>');
+							string.push('<td>' + data[i].goods_name + '</td>');
+							string.push('<td>￥' + data[i].goods_price + '</td>');
+							string.push('<td>' + data[i].goods_number + '</td>');
+						}else{
+							string.push('<td>' + data[i].goods_id + '</td>');
+							string.push('<td>' + data[i].bar_code + '</td>');
+							string.push('<td><em style="color:red;">【福利社】</em>' + data[i].goods_name + '</td>');
+							string.push('<td>0.00</td>');
+							string.push('<td>' + data[i].goods_number + '</td>');
+						}
+						string.push('</tr>');
+					}
+					string.push('</table></td></tr>');
+					_that.parent().parent().after(string.join(''));
+				});
+			}
+
+			$(".p_" + orderSn).toggle();
+		});
+	</script>
+</block>

@@ -1,0 +1,19 @@
+<ul>
+	<if condition="checkControllerAuth(array('Goods'))">
+		<li<if condition="in_array(CONTROLLER_NAME, array('Goods'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('Goods-index'))}" class="addons">商品管理</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('Goods-index')">
+					<li class="<if condition="in_array(ACTION_NAME, array('index', 'edit', 'del'))">on</if>">
+						<a href="{:U('Goods/index')}">商品列表</a>
+					</li>
+				</if>
+				<if condition="checkActionAuth('Goods-add')">
+					<li class="<if condition="in_array(ACTION_NAME, array('add'))">on</if>">
+						<a href="{:U('Goods/add')}">商品添加</a>
+					</li>
+				</if>
+			</ul>
+		</li>
+	</if>
+</ul>

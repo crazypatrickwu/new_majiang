@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <include file="Public/header" />
+  </head>
+  <body class=""> 
+  <!--<![endif]-->
+    <div class="navbar">
+        <include file="Public/top" />
+    </div>
+    <div class="content">
+        <ul class="breadcrumb">
+            <li><a href="{:U('Index/index')}">首页</a> <span class="divider">/</span></li>
+            <li><a href="{:U('Agent/agentList')}">代理列表</a> <span class="divider">/</span></li>
+            <li class="active">代理添加</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+				<form id="AgentForm" action="{:U('Agent/addAgent')}" method="post">
+						<input type="hidden" name="id" value="0" />
+						<div class="well">
+						    <div id="myTabContent" class="tab-content">
+						      <div class="tab-pane active in" id="home">
+							        <label>新代理昵称</label>
+							        <input type="text" id="nickname" name="nickname" class="input-xlarge" value="{$agentInfo['nickname']|default=''}" />
+							        <label>新代理微信号</label>
+							        <input type="text" id="wechat_id" name="wechat_id" class="input-xlarge" value="{$agentInfo['wechat_id']|default=''}" />
+							        <label>新代理手机号</label>
+							        <input type="text" id="phone" name="phone" class="input-xlarge" value="{$agentInfo['phone']|default=''}" />
+							        <label>所在区域</label>
+						               <div class="ip-shop-dizi">
+								        <select name="province" id="province" class="input-xlarge Jselect">
+								            <volist name="province" id="z1">
+								                <option data-id="{$z1['id']}" value="{$z1['region_name']}"<if condition="$agentInfo['province'] eq $z1['region_name']">{:chr(32)}selected="selected"</if>>{$z1['region_name']}</option>
+								            </volist>
+								        </select>
+								        <select name="city" id="city" class="input-xlarge Jselect">
+								            <volist name="city" id="z2">
+								                <option data-id="{$z2['id']}" value="{$z2['region_name']}"<if condition="$agentInfo['city'] eq $z2['region_name']">{:chr(32)}selected="selected"</if>>{$z2['region_name']}</option>
+								            </volist>
+								        </select>
+								        <select name="county" id="county" class="input-xlarge Jselect">
+								            <volist name="county" id="z3">
+								                <option data-id="{$z3['id']}" value="{$z3['region_name']}"<if condition="$agentInfo['county'] eq $z3['region_name']">{:chr(32)}selected="selected"</if>>{$z3['region_name']}</option>
+								            </volist>
+								        </select>
+								    </div>
+							        <label>详细地址</label>
+							        <input type="text" name="address" class="input-xlarge"  value="{$agentInfo['address']|default=''}" />
+							        <label>服务城市</label>
+							        <input type="text" name="service_city" class="input-xlarge"  value="{$agentInfo['service_city']|default=''}" />
+							        <label>是否锁定</label>
+							        <div class="radio-box">
+								        <input type="radio" name="is_lock" value="1" style="vertical-align:middle; margin-top:-2px; margin-bottom:1px;"/>
+								        <label for="is_lock_1" style="vertical-align:middle; margin-top:-2px; margin-bottom:1px;display:initial;">是</label>&nbsp;
+								        <input type="radio" name="is_lock" value="0" style="vertical-align:middle; margin-top:-2px; margin-bottom:1px;" checked="checked" />
+								        <label for="is_lock_0" style="vertical-align:middle; margin-top:-2px; margin-bottom:1px;display:initial;">否</label>
+							        </div>
+						      </div>
+						  	</div>
+						</div>
+						<div class="btn-toolbar">
+						    <button class="btn btn-primary" style="margin-left:2px;"><i class="icon-save"></i>保存</button>
+						  	<div class="btn-group"></div>
+						</div>
+				</form>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+$(function() {
+	var getZoneAddress = "{:U('Agent/getChildZone')}";
+    var zoneData = [];
+    var id = $("#province").find("option:selected").attr('data-id')
+    var fullElement = $("#city");
+    if (zoneData[id] != undefined) {
+        fullData(zoneData[id], fullElement);
+    } else {
+        $.ajax({
+            url: getZoneAddress,
+            type: 'POST',
+            dataType: 'json',
+            data: {pid: id}
+        }).done(function(data) {
+            zoneData[id] = data;
+            fullData(zoneData[id], fullElement);
+        });
+    }
+    //初始化
+    $("#province").change(function() {
+        var id = $(this).find("option:selected").attr('data-id')
+        var fullElement = $("#city");
+        if (zoneData[id] != undefined) {
+            fullData(zoneData[id], fullElement);
+        } else {
+            $.ajax({
+                url: getZoneAddress,
+                type: 'POST',
+                dataType: 'json',
+                data: {pid: id}
+            }).done(function(data) {
+                zoneData[id] = data;
+                fullData(zoneData[id], fullElement);
+            });
+        }
+    });
+
+    // 填充数据
+    function fullData(data, element, name) {
+        var string = [];
+        for (var i in data) {
+            string.push('<option data-id="' + data[i].id + '" value="' + data[i].region_name + '">' + data[i].region_name + '</option>');
+        }
+        element.html(string.join(''));
+        element.trigger("change");
+    }
+
+    // 省列表改变
+    $('.ip-shop-dizi').on('change', "#province", function() {
+        var id = $(this).find("option:selected").attr('data-id')
+        var fullElement = $("#city");
+
+        if (zoneData[id] != undefined) {
+            fullData(zoneData[id], fullElement);
+        } else {
+            $.ajax({
+                url: getZoneAddress,
+                type: 'POST',
+                dataType: 'json',
+                data: {pid: id}
+            }).done(function(data) {
+                zoneData[id] = data;
+                fullData(zoneData[id], fullElement);
+            });
+        }
+    });
+
+    // 市列表改变
+    $('.ip-shop-dizi').on('change', "#city", function() {
+        var id = $(this).find("option:selected").attr('data-id');
+        var fullElement = $("#county");
+
+        if (zoneData[id] != undefined) {
+            fullData(zoneData[id], fullElement);
+        } else {
+            $.ajax({
+                url: getZoneAddress,
+                type: 'POST',
+                dataType: 'json',
+                data: {pid: id}
+            }).done(function(data) {
+                if (data.length <= 0) {
+                    fullElement.remove();
+                } else {
+                    zoneData[id] = data;
+                    fullData(zoneData[id], fullElement);
+                }
+            });
+        }
+    });
+});
+CommonJs.FormCheck	= function(FormObj){
+	if(CommonJs.Loading){ return false;}
+	CommonJs.Loading 							= true;
+	CommonJs.SubmitData.nickname				= $("input[name='nickname']").val();
+	CommonJs.SubmitData.wechat_id				= $("input[name='wechat_id']").val();
+	CommonJs.SubmitData.phone					= $("input[name='phone']").val();
+	CommonJs.SubmitData.province				= $("select[name='province']").val();
+	CommonJs.SubmitData.city					= $("select[name='city']").val();
+	CommonJs.SubmitData.county					= $("select[name='county']").val();
+	CommonJs.SubmitData.address					= $("input[name='address']").val();
+	CommonJs.SubmitData.service_city			= $("input[name='service_city']").val();
+	CommonJs.SubmitData.is_lock					= rcVal($("input[name='is_lock']"));
+	CommonJs.SubmitData.id						= 0;
+	if(!CheckJs.required(CommonJs.SubmitData.nickname)){
+		_inform('请输入代理昵称',function(){CommonJs.Loading = false;});return false;
+	}
+	if(!CheckJs.required(CommonJs.SubmitData.wechat_id)){
+		_inform('请输入代理微信号',function(){CommonJs.Loading = false;});return false;
+	}
+	if(!CheckJs.required(CommonJs.SubmitData.phone)){
+		_inform('请输入代理手机号',function(){CommonJs.Loading = false;});return false;
+	}
+	if(!CheckJs.mobile(CommonJs.SubmitData.phone)){
+		_inform('请输入正确的手机号',function(){CommonJs.Loading = false;});return false;
+	}
+	if(!CheckJs.required(CommonJs.SubmitData.province)){
+		_inform('请选择所在省份',function(){CommonJs.Loading = false;});return false;
+	}
+	if(!CheckJs.required(CommonJs.SubmitData.city)){
+		_inform('请选择所在市/区',function(){CommonJs.Loading = false;});return false;
+	}
+	if(!CheckJs.required(CommonJs.SubmitData.county)){
+		_inform('请选择所在县/区',function(){CommonJs.Loading = false;});return false;
+	}
+	if(!CheckJs.required(CommonJs.SubmitData.address)){
+		_inform('请输入详细地址',function(){CommonJs.Loading = false;});return false;
+	}
+	if(!CheckJs.required(CommonJs.SubmitData.service_city)){
+		_inform('请输入服务城市',function(){CommonJs.Loading = false;});return false;
+	}
+	CommonJs.Loading = false
+	return true;
+};
+CommonJs.JsSave("#AgentForm");
+</script>
+    
+  </body>
+</html>

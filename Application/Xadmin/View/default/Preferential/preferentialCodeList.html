@@ -1,0 +1,157 @@
+<extend name="Common:base" />
+
+<block name="title">礼包订单列表</block>
+
+<block name="menu">
+	<include file="Preferential:menu" />
+</block>
+
+<block name="main">
+	 <div class="pageheader">
+	    <h1 class="pagetitle">礼包订单列表</h1>
+	    <span class="pagedesc"></span>
+	</div>
+	<div id="contentwrapper" class="contentwrapper">
+		<div>
+			<form action="" metod="get">
+				订单编号&nbsp;:&nbsp;<input type="text" name="order_sn" id="order_sn" value="{:remove_xss(I('get.order_sn'))}">
+				&nbsp;
+				快递公司&nbsp;:&nbsp;<input type="text" name="express" id="express" value="{:remove_xss(I('get.express'))}">
+				&nbsp;
+				快递单号&nbsp;:&nbsp;<input type="text" name="express_sn" id="express_sn" value="{:remove_xss(I('get.express_sn'))}">
+				&nbsp;
+				收件人 &nbsp;:&nbsp;<input type="text" name="consignee" id="consignee" value="{:remove_xss(urldecode(I('get.consignee')))}">
+				&nbsp;
+				收件人电话&nbsp;:&nbsp;<input type="text" name="telephone" id="telephone" value="{:remove_xss(urldecode(I('get.telephone')))}">
+				&nbsp;
+				&nbsp;订单状态&nbsp;:&nbsp;
+				<select name="status">
+					<option value="">--请选择--</option>
+					<option value="0"<if condition="I('get.status') NEQ '' AND I('get.status') EQ 0">{:chr(32)}selected="selected"</if>>未发货</option>
+					<option value="1"<if condition="I('get.status') EQ 1">{:chr(32)}selected="selected"</if>>已发货</option>
+					<option value="2"<if condition="I('get.status') EQ 2">{:chr(32)}selected="selected"</if>>买家确认收货</option>
+					<option value="3"<if condition="I('get.status') EQ 3">{:chr(32)}selected="selected"</if>>系统确认收货</option>
+					<option value="4"<if condition="I('get.status') EQ 4">{:chr(32)}selected="selected"</if>>买家取消订单</option>
+					<option value="5"<if condition="I('get.status') EQ 5">{:chr(32)}selected="selected"</if>>系统取消订单</option>
+				</select>
+				&nbsp;
+				<p></p>
+				所属店铺ID&nbsp;:&nbsp;<input type="text" name="shop_id" id="shop_id" value="{:remove_xss(urldecode(I('get.shop_id')))}">
+				&nbsp;
+				店铺级别&nbsp;:&nbsp;
+				<select name="shop_level">
+					<option value="">--请选择--</option>
+					<option value="1"<if condition="I('get.shop_level') EQ 1">{:chr(32)}selected="selected"</if>>盟主</option>
+					<option value="2"<if condition="I('get.shop_level') EQ 2">{:chr(32)}selected="selected"</if>>帮主</option>
+					<option value="3"<if condition="I('get.shop_level') EQ 3">{:chr(32)}selected="selected"</if>>美人</option>
+				</select>
+				&nbsp;
+				支付时间&nbsp;:&nbsp;<input type="text" name="start_time" id="start_time" value="{:remove_xss(search_time_format(I('get.start_time')))}" class="sang_Calender">
+				-
+				<input type="text" name="end_time" id="end_time" value="{:remove_xss(search_time_format(I('get.end_time')))}" class="sang_Calender">
+				支付状态&nbsp;:&nbsp;
+				<select name="is_pay">
+					<option value="">--请选择--</option>
+					<option value="1"<if condition="I('get.is_pay') EQ 1">{:chr(32)}selected="selected"</if>>是</option>
+					<option value="0"<if condition="I('get.is_pay') HEQ '0'">{:chr(32)}selected="selected"</if>>否</option>
+				</select>
+				<input type="submit" value="查询" class="stdbtn">
+				<input type="button" value="导出" class="stdbtn">
+			</form>
+		</div>
+		<p></p>
+		<table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+			<tr>
+				<th>ID</th>
+				<th>订单编号</th>
+				<th>创建时间</th>
+				<th>付款时间</th>
+				<th>收货人</th>
+				<th>收件人电话</th>
+				<th>总金额</th>
+				<th>成交店铺级别(ID)</th>
+				<th>供应商</th>
+				<th>订单状态</th>
+				<th>是否同步</th>
+				<th>快递公司</th>
+				<th>快递单号</th>
+				<th>操作</th>
+			</tr>
+
+			<if condition="empty($orderList)">
+				<tr>
+					<td colspan="14">没有礼包订单列表~！</td>
+				</tr>
+			<else />
+				<volist name="orderList" id="list">
+				<tr>
+					<td>{$list['id']}</td>
+					<td>{$list['order_sn']}</td>
+					<td>
+						<if condition="$list['add_time'] GT 0">
+							{$list['add_time']|time_format=###}
+						<else />
+							未填写
+						</if>
+					</td>
+					<td>
+						<if condition="$list['pay_time'] GT 0">
+							{$list['pay_time']|time_format=###}
+						<else />
+							未填写
+						</if>
+					</td>
+					<td>{$list['consignee']}</td>
+					<td>{$list['telephone']}</td>
+					<td>￥{$list['total']}</td>
+					<td>
+						<a href="{:U('Agent/agentDetail', array('id'=>$list['agent_id']))}">
+							{:getAgentLevelName($list['level'])}({$list['agent_id']})
+						</a>
+					</td>
+					<td>尖叫云商</td>
+					<td>
+						<switch name="list['status']" id="status">
+							<case value="0">未发货</case>
+							<case value="1">已发货</case>
+							<case value="2">人为完成</case>
+							<case value="3">系统完成</case>
+							<case value="4">人为取消</case>
+							<case value="5">系统取消</case>
+						</switch>
+					</td>
+					<td>
+						<if condition="$list['post_qimen'] GT 0">
+							已同步
+						<else />
+							未同步
+						</if>
+					</td>
+					<td>{$list['express']|default="未填写"}</td>
+					<td>{$list['express_sn']|default="未填写"}</td>
+					<td>
+						<a class="stdbtn btn_lime" href="{:U('GiftOrder/giftOrderDetail', array('id'=>$list['id']))}">查看</a>&nbsp;&nbsp;
+
+						<a class="stdbtn btn_lime" href="{:U('GiftOrder/remarksOrder', array('id'=>$list['id']))}">备注</a>&nbsp;&nbsp;
+
+						<if condition="!in_array($list['status'], array(4, 5))">
+								<a class="stdbtn btn_lime" href="{:U('giftOrder/cancelOrder', array('id'=>$list['id']))}">作废订单</a>&nbsp;&nbsp;
+						</if>
+					</td>
+				</tr>
+				</volist>
+				<tr>
+				<td colspan="14">
+						<div class="page-box">{$show}</div>
+					</td>
+				</tr>
+			</if>
+			</tbody>
+		</table>
+	</div>
+</block>
+
+
+<block name="script">
+	<script type="text/javascript" src="__PUBLIC__/Admin/js/datetime.js"></script>
+</block>

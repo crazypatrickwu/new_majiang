@@ -1,0 +1,184 @@
+<extend name="Common:base" />
+
+<block name="menu">
+	<include file="User/menu" />
+</block>
+
+<block name="main">
+<div class="pageheader">
+    <h1 class="pagetitle">会员详情</h1>
+    <span class="pagedesc"></span>
+</div>
+
+<div id="contentwrapper" class="contentwrapper">
+	<div class="stdform stdform2">
+		<div class="line-dete">
+			<label>ID</label>
+	        <span class="field">
+	        	{$userDetail['id']}
+	        </span>
+	    </div>
+		<div class="line-dete">
+			<label>头像</label>
+	        <span class="field">
+	        	<img src="{$userDetail['headimgurl']}" width="200px" height="200px" />
+	        </span>
+	    </div>
+		<div class="line-dete">
+			<label>名称</label>
+	        <span class="field">
+	        	{$userDetail['nickname']}
+	        </span>
+	    </div>
+		<div class="line-dete">
+			<label>上次登录时间</label>
+	        <span class="field">
+	        	{$userDetail['last_login_time']|time_format=###}
+	        </span>
+	    </div>
+		<div class="line-dete">
+			<label>注册时间</label>
+	        <span class="field">
+	        	{$userDetail['add_time']|time_format=###}
+	        </span>
+	    </div>
+		<div class="line-dete">
+			<label>他下过的订单</label>
+	        <span class="field">
+		        <if condition="!empty($userDetail['orderList'])">
+		        	<volist name="userDetail['orderList']" id="order">
+		        	<table>
+		        		<tr>
+		        			<th>订单编号</th>
+		        			<td>{$order['order_sn']}</td>
+		        		</tr>
+		        		<tr>
+		        			<th>订单总额</th>
+		        			<td>{$order['total']}</td>
+		        		</tr>
+		        		<tr>
+		        			<th>收货人</th>
+		        			<td>{$order['consignee']}</td>
+		        		</tr>
+		        		<tr>
+		        			<th>联系电话</th>
+		        			<td>{$order['telephone']}</td>
+		        		</tr>
+		        		<tr>
+		        			<th>收货地址</th>
+		        			<td>{$order['province']}{$order['city']}{$order['county']}{$order['address']}</td>
+		        		</tr>
+		        		<tr>
+		        			<th>是否已支付</th>
+		        			<td>
+		        				<if condition="$order['is_pay'] eq 0">
+									未支付
+		        				<else />
+									已支付
+		        				</if>
+		        			</td>
+		        		</tr>
+		        		<tr>
+		        			<th>支付时间</th>
+		        			<td>{$order['pay_time']|time_format=###}</td>
+		        		</tr>
+		        		<tr>
+		        			<th>是否已同步快递</th>
+		        			<td>
+		        				<if condition="$order['post_qimen'] eq 0">
+									还没有同步到快递
+		        				<else />
+									已经同步到快递
+		        				</if>
+		        			</td>
+		        		</tr>
+		        		<tr>
+		        			<th>同步快递的时间</th>
+		        			<td>
+		        				<if condition="empty($order['post_qimen_time'])">
+		        				没找到同步快递的时间
+		        				<else />
+		        				{$order['post_qimen_time']|time_format=###}
+		        				</if>
+		        			</td>
+		        		</tr>
+		        		<tr>
+		        			<th>是否已分账</th>
+		        			<td>
+		        				<if condition="$order['is_allocation'] eq 0">
+									没有或只有部分分账了
+		        				<else />
+									已经全部分账
+		        				</if>
+		        			</td>
+		        		</tr>
+		        		<tr>
+		        			<th>快递公司</th>
+		        			<td>{$order['express']|default="没有"}</td>
+		        		</tr>
+		        		<tr>
+		        			<th>快递单号</th>
+		        			<td>{$order['express_sn']|default="没有"}</td>
+		        		</tr>
+		        		<tr>
+		        			<th>发货时间</th>
+		        			<td>
+		        				<if condition="empty($order['express_time'])">
+		        				没找到发货时间
+		        				<else />
+		        				{$order['express_time']|time_format=###}
+		        				</if>
+		        			</td>
+		        		</tr>
+		        		<tr>
+		        			<th>商品详情</th>
+		        			<td>
+		        				<br>
+		        				<table>
+		        					<tr>
+		        						<th>ID</th>
+		        						<th>SKU</th>
+		        						<th>条形码</th>
+		        						<th>商品名称</th>
+		        						<th>购买数量</th>
+		        						<th>商品价格</th>
+		        						<th>盟主价格</th>
+		        						<th>帮主价格</th>
+		        						<th>美人价格</th>
+		        					</tr>
+		        					<volist name="order['orderDetail']" id="goods">
+		        					<tr>
+		        						<td>{$goods['id']}</td>
+		        						<td>{$goods['sku']}</td>
+		        						<td>{$goods['bar_code']}</td>
+		        						<td>
+		        							<img src="{$goods['goods_image']}" width="50px" height="50px">
+		        							{$goods['goods_name']}
+		        						</td>
+		        						<td>{$goods['goods_number']}</td>
+		        						<td>￥{$goods['goods_price']}</td>
+		        						<td>￥{$goods['level1_price']}</td>
+		        						<td>￥{$goods['level2_price']}</td>
+		        						<td>￥{$goods['level3_price']}</td>
+		        					</tr>
+		        					</volist>
+		        				</table>
+		        				<br>
+		        			</td>
+		        		</tr>
+		        	</table>
+		        	</volist>
+		        <else />
+			        他没有下过订单
+		        </if>
+	        </span>
+	    </div>
+		<div class="line-dete">
+			<label></label>
+	        <span class="field">
+				<input class="stdbtn btn_blue" type="button" onclick="window.history.back(-1);" value="  返回  " />
+	        </span>
+	    </div>
+	</div>
+</div>
+</block>

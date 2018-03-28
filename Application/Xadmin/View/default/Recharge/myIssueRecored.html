@@ -1,0 +1,65 @@
+<extend name="Common:base" />
+
+<block name="title">我的房卡</block>
+
+<block name="menu">
+    <include file="Common:left_menu" />
+</block>
+
+<block name="main">
+    <div class="pageheader">
+        <h1 class="pagetitle">平台充钻</h1>
+        <span class="pagedesc"></span>
+    </div>
+    <div id="contentwrapper" class="contentwrapper">
+        <div>
+            <form action="" metod="get">
+                <!--玩家ID&nbsp;:&nbsp;<input type="text" name="userid" id="userid" value="{:remove_xss(I('get.userid'))}">-->
+                &nbsp;&nbsp;
+                时间&nbsp;:&nbsp;<input type="text" name="start_time" id="start_time" value="{:remove_xss(search_time_format(I('get.start_time')))}" class="sang_Calender">-<input type="text" name="end_time" id="end_time" value="{:remove_xss(search_time_format(I('get.end_time')))}" class="sang_Calender">
+                <input type="submit" value="查询" class="stdbtn">
+                <!--<input type="submit" name="daochu" value="导出" class="stdbtn">-->
+                <p></p>
+                <p></p>
+            </form>
+        </div>
+        <p></p>
+        <table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+            <tr>
+                <th width="10%">编号</th>
+                <th>代理人</th>
+                <th>充钻数量</th>
+                <th>描述</th>
+                <th>操作人</th>
+                <th>充钻时间</th>
+            </tr>
+
+            <if condition="empty($myRechargeRecored)">
+                <tr>
+                    <td colspan="6">暂无充钻记录~！</td>
+                </tr>
+                <else />
+                <volist name="myRechargeRecored" id="recored">
+                    <tr>
+                        <td class="center">{$recored['id']}</td>
+                        <td class="center">{$recored['Agent']['phone']}（ID：{$recored['Agent']['id']}）</td>
+                        <td class="center">{$recored['pay_nums']}（颗）</td>
+                        <td class="center">{$recored['desc']}</td>
+                        <td class="center">{$recored['Admin']['admin_account']}</td>
+                        <td class="center">{$recored['add_time']|time_format=###}</td>
+                    </tr>
+                </volist>
+                <tr>
+                    <td colspan="6">
+                        <div class="page-box">{$show}</div>
+                    </td>
+                </tr>
+            </if>
+            </tbody>
+        </table>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/datetime.js"></script>
+</block>

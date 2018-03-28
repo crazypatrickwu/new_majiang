@@ -1,0 +1,49 @@
+<ul>
+	<if condition="checkActionAuth('System-setting')">
+		<li<if condition="checkActionAuth('System-setting')">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('System-setting'))}" class="addons">官网配置</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('Pcweb-about')">
+					<li class="<if condition="in_array(ACTION_NAME, array('about'))">on</if>">
+						<a href="{:U('Pcweb/about')}">关于我们</a>
+					</li>
+				</if>
+				<if condition="checkActionAuth('Pcweb-contact')">
+					<li class="<if condition="in_array(ACTION_NAME, array('contact'))">on</if>">
+						<a href="{:U('Pcweb/contact')}">客服中心</a>
+					</li>
+				</if>
+				<if condition="checkActionAuth('Pcweb-games')">
+					<li class="<if condition="in_array(ACTION_NAME, array('games'))">on</if>">
+						<a href="{:U('Pcweb/games')}">游戏介绍</a>
+					</li>
+				</if>
+<!--				<if condition="checkActionAuth('Pcweb-download')">
+					<li class="<if condition="in_array(ACTION_NAME, array('download'))">on</if>">
+						<a href="{:U('Pcweb/download')}">下载专区</a>
+					</li>
+				</if>-->
+<!--				<if condition="checkActionAuth('System-share')">
+					<li class="<if condition="in_array(ACTION_NAME, array('share'))">on</if>">
+						<a href="{:U('Pcweb/share')}">分享配置</a>
+					</li>
+				</if>-->
+				<if condition="checkActionAuth('Pcweb-service')">
+					<li class="<if condition="in_array(ACTION_NAME, array('service'))">on</if>">
+						<a href="{:U('Pcweb/service')}">用户服务</a>
+					</li>
+				</if>
+				<if condition="checkActionAuth('Pcweb-guardianship')">
+					<li class="<if condition="in_array(ACTION_NAME, array('guardianship'))">on</if>">
+						<a href="{:U('Pcweb/guardianship')}">家长监护</a>
+					</li>
+				</if>
+				<if condition="checkActionAuth('Pcweb-user')">
+					<li class="<if condition="in_array(ACTION_NAME, array('user'))">on</if>">
+						<a href="{:U('Pcweb/user')}">会员管理</a>
+					</li>
+				</if>
+			</ul>
+		</li>
+	</if>
+</ul>

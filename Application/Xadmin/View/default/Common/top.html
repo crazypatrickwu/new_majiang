@@ -1,0 +1,24 @@
+﻿<ul class="headermenu">
+        <li class="<if condition="in_array(CONTROLLER_NAME, array('Index'))">current</if>">
+            <a href="{:U('Xadmin/Index/statistics')}">
+                <span class="tet">控制台</span>
+            </a>
+            <em></em>
+        </li>
+
+        <volist name="admin_menu_list" id="top_menu">
+            <li class="<if condition="in_array(CONTROLLER_NAME, array($top_menu['m_controller']))">current</if>">
+                <a href="/Xadmin/{$top_menu['name']}">
+                    <span class="tet">{$top_menu['title']}</span>
+                </a>
+                <em></em>
+            </li>
+        </volist>
+
+        <li>
+            <a href="{:U('Xadmin/Login/logout')}">
+                <span class="tet">退出登录</span>
+            </a>
+            <em></em>
+        </li>
+</ul>

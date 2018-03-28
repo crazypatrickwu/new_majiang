@@ -1,0 +1,39 @@
+<ul>
+	<if condition="checkControllerAuth(array('Admin'))">
+		<li<if condition="in_array(CONTROLLER_NAME, array('Admin'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('Admin-adminList', 'Admin-addAdmin'))}" class="addons">管理员</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('Admin-adminList')">
+					<li class="<if condition="in_array(ACTION_NAME, array('adminList', 'editAdmin'))">on</if>">
+						<a href="{:U('Admin/adminList')}">管理员列表</a>
+					</li>
+				</if>
+
+				<if condition="checkActionAuth('Admin-addAdmin')">
+					<li class="<if condition="in_array(ACTION_NAME, array('addAdmin'))">on</if>">
+						<a href="{:U('Admin/addAdmin')}">添加管理员</a>
+					</li>
+				</if>
+			</ul>
+		</li>
+	</if>
+
+	<if condition="checkControllerAuth(array('Auth'))">
+		<li<if condition="in_array(CONTROLLER_NAME, array('Auth'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('Auth-roleList', 'Auth-addRole'))}" class="addons">角色权限</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('Auth-roleList')">
+					<li<if condition="in_array(ACTION_NAME, array('roleList', 'roleRename', 'editRolePower'))">{:chr(32)}class="on"</if>>
+						<a href="{:U('Admin/roleList')}">角色列表</a>
+					</li>
+				</if>
+
+				<if condition="checkActionAuth('Auth-addRole')">
+					<li<if condition="in_array(ACTION_NAME, array('addRole'))">{:chr(32)}class="on"</if>>
+						<a href="{:U('Admin/addRole')}">添加角色</a>
+					</li>
+				</if>
+			</ul>
+		</li>
+	</if>
+</ul>

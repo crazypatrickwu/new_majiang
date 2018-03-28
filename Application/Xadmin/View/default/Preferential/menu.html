@@ -1,0 +1,15 @@
+<ul>
+	<if condition="checkControllerAuth(array('Preferential'))">
+		<li<if condition="in_array(CONTROLLER_NAME, array('Preferential'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('Preferential-preferentialCodeList'))}" class="addons">优惠卷工具</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('Preferential-preferentialCodeList')">
+					<li class="<if condition="in_array(ACTION_NAME, array('preferentialCodeList'))">on</if>">
+						<a href="{:U('Preferential/preferentialCodeList')}">优惠卷列表</a>
+					</li>
+				</if>
+			</ul>
+		</li>
+	</if>
+
+</ul>

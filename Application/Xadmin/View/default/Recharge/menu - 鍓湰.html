@@ -1,0 +1,34 @@
+<ul>
+	<li<if condition="in_array(CONTROLLER_NAME, array('Recharge'))">{:chr(32)}class="current"</if>>
+		<a class="date-tit sys-tj" href="{:U('Recharge/agentsRecored')}" class="addons">代理</a>
+		<ul class="Jcon-ctr">
+			<li class="<if condition="in_array(ACTION_NAME, array('agentsRecored')) && $Think.get.type eq 0">on</if>">
+                            <a href="{:U('Recharge/agentsRecored',array('type'=>0))}">个人购卡</a>
+			</li>
+			<li class="<if condition="in_array(ACTION_NAME, array('agentsRecored')) && $Think.get.type eq 1">on</if>">
+				<a href="{:U('Recharge/agentsRecored',array('type'=>1))}">平台充卡</a>
+			</li>
+			<li class="<if condition="in_array(ACTION_NAME, array('agentsRecored')) && $Think.get.type eq 2">on</if>">
+				<a href="{:U('Recharge/agentsRecored',array('type'=>2))}">下级返卡</a>
+			</li>
+		</ul>
+	</li>
+	<li<if condition="in_array(CONTROLLER_NAME, array('Recharge'))">{:chr(32)}class="current"</if>>
+		<a class="date-tit sys-tj" href="{:U('Recharge/players')}" class="addons">玩家</a>
+		<ul class="Jcon-ctr">
+			<li class="<if condition="in_array(ACTION_NAME, array('players'))">on</if>">
+				<a href="{:U('Recharge/players')}">玩家列表</a>
+			</li>
+                        
+			<li class="<if condition="in_array(ACTION_NAME, array('playersRecored')) && $Think.get.type eq 0">on</if>">
+                            <a href="{:U('Recharge/playersRecored',array('type'=>0))}">代理充房卡</a>
+			</li>
+			<li class="<if condition="in_array(ACTION_NAME, array('playersRecored')) && $Think.get.type eq 1">on</if>">
+				<a href="{:U('Recharge/playersRecored',array('type'=>1))}">手机充房卡</a>
+			</li>
+			<li class="<if condition="in_array(ACTION_NAME, array('playersRecored')) && $Think.get.type eq 2">on</if>">
+				<a href="{:U('Recharge/playersRecored',array('type'=>2))}">手机充金币</a>
+			</li>
+		</ul>
+	</li>
+</ul>

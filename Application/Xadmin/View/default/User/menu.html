@@ -1,0 +1,41 @@
+<ul>
+<!--	<if condition="checkControllerAuth(array('User'))">
+		<li<if condition="in_array(CONTROLLER_NAME, array('User'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('User-userList'))}" class="addons">会员管理</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('User-userList')">
+					<li<if condition="in_array(ACTION_NAME, array('userList', 'userDetail'))">{:chr(32)}class="on"</if>>
+						<a href="{:U('User/userList')}">会员列表</a>
+					</li>
+				</if>
+			</ul>
+		</li>
+	</if>-->
+	<if condition="checkControllerAuth(array('Agent'))">
+		<li<if condition="in_array(CONTROLLER_NAME, array('Agent'))">{:chr(32)}class="current"</if>>
+			<a class="date-tit sys-tj" href="{:getAuthUrl(array('Agent-agentList', 'Agent-agentLevelList', 'Agent-addAgent'))}" class="addons">代理管理</a>
+			<ul class="Jcon-ctr">
+				<if condition="checkActionAuth('Agent-agentList')">
+					<li<if condition="in_array(ACTION_NAME, array('agentList', 'agentDetail', 'editAgent', 'incomeDetail', 'myTeam', 'agentInfo', 'myRecommend'))">{:chr(32)}class="on"</if>>
+						<a href="{:U('Agent/agentList')}">代理列表</a>
+					</li>
+				</if>
+<!--				<if condition="checkActionAuth('Agent-agentLevelList')">
+					<li<if condition="in_array(ACTION_NAME, array('agentLevelList'))">{:chr(32)}class="on"</if>>
+						<a href="{:U('Agent/agentLevelList')}">代理层级关系列表</a>
+					</li>
+				</if>-->
+				<if condition="checkActionAuth('Agent-addAgent')">
+					<li<if condition="in_array(ACTION_NAME, array('addAgent'))">{:chr(32)}class="on"</if>>
+						<a href="{:U('Agent/addAgent')}">添加代理</a>
+					</li>
+				</if>
+<!--				<if condition="checkActionAuth('Agent-agentApplyingMengzhu')">
+					<li<if condition="in_array(ACTION_NAME, array('agentApplyingMengzhu'))">{:chr(32)}class="on"</if>>
+						<a href="{:U('Agent/agentApplyingMengzhu')}">盟主审核</a>
+					</li>
+				</if>-->
+			</ul>
+		</li>
+	</if>
+</ul>

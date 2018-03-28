@@ -1,0 +1,126 @@
+<extend name="Common:base" />
+
+<block name="title">公告信息</block>
+<block name='style'>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/css/jquery.datetimepicker.css" type="text/css" />
+</block>
+<block name="menu">
+    <include file="Common:left_menu" />
+</block>
+
+<block name="main">
+    <div class="pageheader">
+        <h1 class="pagetitle">添加公告信息</h1>
+        <span class="pagedesc"></span>
+    </div>
+    <div id="contentwrapper" class="contentwrapper">
+        <form class="stdform stdform2" action="" method="post">
+            <div class="line-dete">
+                <label>标题</label>
+                <span class="field">
+                    <input type="text" class="smallinput" name="title" value="{$info['title']}" />
+                </span>
+            </div>
+            <div class="line-dete">
+                <label>公告图片</label>
+                <div class="field" id="JgoodsListWrap_photo">
+                                <input type="hidden" id="JcoverPid_photo" name="photo" value="{$info['photo']}">
+                                <div class="m-photo-list" id="upload_photo">
+                                    <if condition="!empty($info['photo'])">
+                                        <div class="pic-wrap">
+                                            <i class="del-pic" data-id="photo"></i>
+                                            <img src="{$info['photo']}" class="s-cover">
+                                        </div>
+                                    </if>
+                                </div>
+                                <if condition="empty($info['photo'])">
+                                <div class="upload-wrap">
+                                        <input type="file" id="fileToUpload_photo" name="fileToUpload_photo" data-id="photo" class="f-upload" />
+                                </div>
+                                </if>
+                </div>
+            </div>
+           <div class="line-dete">
+            <label>是否推送</label>
+            <span class="field">
+            <if condition="$info['status'] eq 1">
+               <input type="radio" name="status" value="1" checked="checked">是
+               <input type="radio" name="status" value="0">否
+            <else />
+                <input type="radio" name="status" value="1" >是
+                <input type="radio" name="status" value="0" checked="checked">否
+            </if>
+
+            </span>
+          </div>
+            <div class="line-dete">
+            <label>公告简介</label>
+            <span class="field">
+                <input type="text" class="smallinput" name="introduction" id="introduction" value="{$info['description']}"/>
+            </span>
+        </div>
+            <div class="line-dete">
+                <label>公告内容</label>
+                <span class="field">
+                    <textarea rows="10" style="width:650px;" name="gnosis">{$info['content']}</textarea>
+                </span>
+            </div>
+            <div class="line-dete">
+                <label></label>
+                <span class="field">
+                    <input type="submit" class="big-btn stdbtn" value="保存" />
+                    <input type="button" class="big-btn stdbtn" onclick="window.history.back(-1);" value="返回" />
+                </span>
+            </div>
+        </form>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/Common/js/ajaxfileupload.js"></script>
+    <script type="text/javascript">
+                        $(function(){
+
+                            //上传图片
+                            $(document).on('change', '.f-upload', function() {
+                                var thisId  =   $(this).attr('id');
+                                // alert(thisId);return;
+                                ajaxFileUpload(thisId);
+                            });
+                            function ajaxFileUpload(thisId) {
+                                $.ajaxFileUpload({
+                                    url: "{:U('Agent/photoUpload')}",
+                                    secureuri: false,
+                                    fileElementId: thisId,
+                                    dataType: 'json',
+                                    success: function (data, status) {
+                                        if(typeof(data.error) != 'undefined') {
+                                            if(data.error != '') {
+                                                alert(data.error);
+                                            } else {
+                                                var upId    =   $("#"+thisId).attr('data-id');
+                                                var html    =   '';
+                                                    html    =   '<div class="pic-wrap"><i class="del-pic" data-id="'+upId+'"></i><img src="' + data.msg + '" class="s-cover"/></div>';
+                                                $("#upload_"+upId).append(html);
+                                                $('#JcoverPid_'+upId).val(data.msg);
+                                            }
+                                            $("#"+thisId).parent('.upload-wrap').remove();
+                                        }
+                                    },
+                                    error: function (data, status, e) {
+                                        var html='<div class="title">提示</div><div>' + e + '</div>';
+                                        popbox(html);
+                                    }
+                                })
+                                return false;
+                            }
+
+                            //删除图片
+                            $(document).on('click','.del-pic', function() {
+                                var upId    =   $(this).attr('data-id');
+                                $(this).parent().remove();
+                                $('#JgoodsListWrap_'+upId).append('<div class="upload-wrap"> <input type="file" id="fileToUpload_'+upId+'" name="fileToUpload_'+upId+'" data-id="'+upId+'" class="f-upload" /> </div>');
+                            });
+                        });
+    </script>
+</block>
