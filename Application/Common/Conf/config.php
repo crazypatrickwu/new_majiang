@@ -17,7 +17,7 @@ return array(
     'DB_PORT'               => 3306,
     'DB_PREFIX'             => 'jianjiao_',
     'DB_CHARSET'            => 'utf8',
-
+    'SHOW_PAGE_TRACE'       =>  true,
     /**
      * 模块设置
 

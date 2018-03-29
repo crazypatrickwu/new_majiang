@@ -41,8 +41,8 @@ class BaseController extends BottomController
                 $this->left_menu = $getAuthMenu['left_menu'];
             }
         }
-
     }
+
 
     /**
      * 判断是否登录
@@ -126,7 +126,7 @@ class BaseController extends BottomController
 
         //顶部菜单
         $Groups = $auth->getGroups($adminId);
-        $rules_menu = explode(',', trim($Groups[0]['rules_menu']));
+        $rules_menu = explode(',', trim($Groups[0]['rules']));
         $admin_where = array();
         $admin_where['status'] = 1;
         $admin_where['level'] = 1;

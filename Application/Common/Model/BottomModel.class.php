@@ -28,6 +28,36 @@ class BottomModel extends Model
     }
 
     /**
+     * 获取当前表名
+     */
+    public static function _getTable($_class)
+    {
+        $prefix =   C('DB_PREFIX');
+        //首先获取当前分割截取
+        $class  =   explode('\\' , $_class);
+        $table  =   strtolower(substr($class[2] , 0, -5));
+        return $prefix . $table;
+    }
+
+    /**
+     * 连接sql_server数据库
+     */
+    public static function sqlsrv_model($db_name,$db_table){
+        $sqlsrv_config    =   C('SQLSRV_CONFIG');
+        $connectiont = array(
+            'db_type' => 'sqlsrv',
+            'db_host' => $sqlsrv_config['DB_HOST'],//'139.196.214.241',
+            'db_user' => $sqlsrv_config['DB_USER'],
+            'db_pwd' => $sqlsrv_config['DB_PWD'],
+            'db_port' => $sqlsrv_config['DB_PORT'],
+            'db_name' => $sqlsrv_config['DB_PREFIX'].$db_name,
+            'db_charset' => 'utf8',
+        );
+        $sqlsrv_model   =   M($db_table , NULL , $connectiont);
+        return $sqlsrv_model;
+    }
+
+    /**
      * 过滤数据的方法
      */
     public static function _safeData($data)
@@ -53,16 +83,31 @@ class BottomModel extends Model
     /**
      * 递归查询子孙信息
      */
-    public static function _getChild($data , $pid = 0 , $level=1)
+    public static function _getChild($data , $pid = 0 , $level = 1)
     {
         static $_data = [];
-        foreach($data as $key=>$value){
+        foreach($data as $key => $value){
             if($value['pid'] == $pid){
                 $_data[$key]    =   $value;
-                $_data[$key]['child'] =   self::_getChild($data , $value['id'] , $level+1);
+                unset($data[$key]);
+                self::_getChild($data , $value['id'] , $level+1);
             }
         }
-        exit;
         return $_data;
+    }
+
+    /**
+     * 递归获取父类信息
+     */
+    public static function _getFather($data , $pid = 3 , $level = 3)
+    {
+        static $_data = [];
+        foreach($data as $key => $value){
+            if($value['id'] = $pid){
+                $_data[$key]    =   $value;
+                unset($data[$key]);
+//                if()
+            }
+        }
     }
 }

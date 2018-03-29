@@ -123,12 +123,10 @@
                             <br>
                             累计：<?php echo ($agent['accumulated_income']); ?>
                         </td>
-                        <!-- <td class="center"><?php echo ($agent['room_card']); ?></td> -->
                         <td class="center"><?php echo ($agent['invitation_code']); ?></td>
-                        <!-- <td class="center"><?php echo ($agent['level_txt']); ?></td> -->
                         <td class="center">
-                            平台返佣：<?php echo ($agent['rebateMoneyPercent1']); ?> %
-                            <br>
+                           <!-- 平台返佣：<?php echo ($agent['rebateMoneyPercent1']); ?> %
+                            <br>-->
                             下级返佣：<?php echo ($agent['rebateMoneyPercent2']); ?> %
                         </td>
                         <td class="center">
@@ -144,15 +142,10 @@
                         </td>
                         <td class="center"><?php echo (time_format($agent['dateline'])); ?></td>
                         <td class="center">
-                                <!-- <a class="stdbtn btn_lime" href="<?php echo U('Agent/addInsureScore', array('id'=>$agent['id']));?>">充卡</a>&nbsp;&nbsp; -->
-                                <!-- <a class="stdbtn btn_lime" href="<?php echo U('Agent/erplayers', array('agentId'=>$agent['id']));?>">玩家列表</a>&nbsp;&nbsp; -->
                                 <a class="stdbtn btn_lime" href="<?php echo U('Agent/agentSalesVolumeRecored', array('agentId'=>$agent['id']));?>">销售业绩</a>&nbsp;&nbsp;
                                 <a class="stdbtn btn_lime resetPwd_confirm" action_href="<?php echo U('Agent/resetPwd', array('id'=>$agent['id']));?>">重置密码</a>&nbsp;&nbsp;
                                 <a class="stdbtn btn_lime" href="<?php echo U('Agent/editAgent', array('id'=>$agent['id']));?>">编辑</a>&nbsp;&nbsp;
                                 <a class="stdbtn btn_lime" href="<?php echo U('Agent/oneRebateConfig', array('id'=>$agent['id']));?>">返佣</a>&nbsp;&nbsp;
-                                <!-- <?php if($agent['is_delete'] == 0): ?><a class="stdbtn btn_lime del_confirm" action_href="<?php echo U('Agent/delAgent', array('id'=>$agent['id']));?>">删除</a>&nbsp;&nbsp;
-                                <?php else: ?>
-                                    <a class="stdbtn btn_lime del_confirm" action_href="<?php echo U('Agent/recoveryAgent', array('id'=>$agent['id']));?>">恢复</a>&nbsp;&nbsp;<?php endif; ?> -->
                     </td>
                     </tr><?php endforeach; endif; else: echo "" ;endif; ?>
 

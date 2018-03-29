@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="816f8928-0e95-45be-ad91-48a6cb12d9d1" name="默认的" comment="" />
+    <list default="true" id="816f8928-0e95-45be-ad91-48a6cb12d9d1" name="默认的" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Xadmin/Controller/SystemController.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Xadmin/Model/ConfigModel.class.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Runtime/Cache/Xadmin/a96ee7d3aa46d7234024bfe6dc93344f.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Common/Conf/config.php" afterPath="$PROJECT_DIR$/Application/Common/Conf/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Common/Model/AgentModel.class.php" afterPath="$PROJECT_DIR$/Application/Common/Model/AgentModel.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Common/Model/BottomModel.class.php" afterPath="$PROJECT_DIR$/Application/Common/Model/BottomModel.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Runtime/Cache/Xadmin/5af4104f1a16fbb14c5b2d6344490dca.php" afterPath="$PROJECT_DIR$/Application/Runtime/Cache/Xadmin/5af4104f1a16fbb14c5b2d6344490dca.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Xadmin/Controller/AgentController.class.php" afterPath="$PROJECT_DIR$/Application/Xadmin/Controller/AgentController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Xadmin/Controller/BaseController.class.php" afterPath="$PROJECT_DIR$/Application/Xadmin/Controller/BaseController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Xadmin/View/default/Agent/agentList.html" afterPath="$PROJECT_DIR$/Application/Xadmin/View/default/Agent/agentList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+    </list>
     <ignored path="new_mj.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -25,8 +38,8 @@
       <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Common/Conf/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="9" />
+            <state relative-caret-position="532">
+              <caret line="63" column="18" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="18" />
               <folding>
                 <element signature="e#6#87#0#PHP" expanded="true" />
               </folding>
@@ -37,24 +50,52 @@
       <file leaf-file-name="BaseController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Xadmin/Controller/BaseController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+            <state relative-caret-position="266">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding>
+                <element signature="e#307#1153#0#PHP" expanded="false" />
+                <element signature="e#449#566#0#PHP" expanded="false" />
+                <element signature="e#509#566#0#PHP" expanded="false" />
+                <element signature="e#575#1147#0#PHP" expanded="false" />
                 <element signature="e#1190#1593#0#PHP" expanded="false" />
-                <element signature="e#3684#5991#0#PHP" expanded="false" />
-                <element signature="e#6010#7188#0#PHP" expanded="false" />
+                <element signature="e#1627#3667#0#PHP" expanded="false" />
+                <element signature="e#3684#5986#0#PHP" expanded="false" />
+                <element signature="e#6005#7183#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Auth.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Auth.class.php">
+      <file leaf-file-name="SystemController.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Xadmin/Controller/SystemController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2983">
-              <caret line="165" column="20" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
+            <state relative-caret-position="499">
+              <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
               <folding>
-                <element signature="e#8345#8607#0#PHP" expanded="false" />
+                <element signature="e#6#88#0#PHP" expanded="true" />
+                <element signature="e#213#687#0#PHP" expanded="false" />
+                <element signature="e#703#1187#0#PHP" expanded="false" />
+                <element signature="e#1207#1466#0#PHP" expanded="false" />
+                <element signature="e#1486#1716#0#PHP" expanded="false" />
+                <element signature="e#1733#2183#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConfigModel.class.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/Xadmin/Model/ConfigModel.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="162" column="17" selection-start-line="162" selection-start-column="17" selection-end-line="162" selection-end-column="17" />
+              <folding>
+                <element signature="e#6#88#0#PHP" expanded="true" />
+                <element signature="e#702#1600#0#PHP" expanded="false" />
+                <element signature="e#2384#2747#0#PHP" expanded="false" />
+                <marker date="1522311499020" expanded="false" signature="236:394" placeholder="{...}" />
+                <marker date="1522311499020" expanded="false" signature="444:680" placeholder="{...}" />
+                <marker date="1522311499020" expanded="false" signature="1654:2365" placeholder="{...}" />
+                <marker date="1522311499020" expanded="false" signature="2808:4163" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -63,8 +104,8 @@
       <file leaf-file-name="AgentController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Xadmin/Controller/AgentController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+            <state relative-caret-position="1239">
+              <caret line="185" column="35" selection-start-line="185" selection-start-column="35" selection-end-line="185" selection-end-column="35" />
               <folding>
                 <element signature="e#6#88#0#PHP" expanded="true" />
                 <element signature="e#228#468#0#PHP" expanded="false" />
@@ -72,44 +113,10 @@
                 <element signature="e#1132#1804#0#PHP" expanded="false" />
                 <element signature="e#1838#2094#0#PHP" expanded="false" />
                 <element signature="e#2126#2953#0#PHP" expanded="false" />
-                <element signature="e#2987#3263#0#PHP" expanded="false" />
-                <element signature="e#3297#3557#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="majiang.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Desktop/majiang.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="function.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Common/Common/function.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1463">
-              <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
-              <folding>
-                <element signature="n#iswap#0;n#!!top" expanded="false" />
-                <element signature="n#remove_xss#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BottomModel.class.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Application/Common/Model/BottomModel.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="55" column="65" selection-start-line="55" selection-start-column="65" selection-end-line="55" selection-end-column="65" />
-              <folding>
-                <element signature="e#251#493#0#PHP" expanded="false" />
-                <element signature="e#530#1109#0#PHP" expanded="false" />
+                <element signature="e#3516#3792#0#PHP" expanded="false" />
+                <element signature="e#4563#4823#0#PHP" expanded="false" />
+                <marker date="1522306518388" expanded="false" signature="3027:3482" placeholder="{...}" />
+                <marker date="1522306518388" expanded="false" signature="3862:4529" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -118,26 +125,53 @@
       <file leaf-file-name="AgentModel.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Common/Model/AgentModel.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="110" column="47" selection-start-line="110" selection-start-column="47" selection-end-line="110" selection-end-column="47" />
+            <state relative-caret-position="171">
+              <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
               <folding>
                 <element signature="e#6#88#0#PHP" expanded="true" />
-                <element signature="e#262#613#0#PHP" expanded="false" />
-                <element signature="e#636#1058#0#PHP" expanded="false" />
-                <element signature="e#5222#6484#0#PHP" expanded="false" />
-                <element signature="e#6501#7178#0#PHP" expanded="false" />
-                <element signature="e#7197#7581#0#PHP" expanded="false" />
-                <element signature="e#7600#8552#0#PHP" expanded="false" />
-                <element signature="e#8573#9582#0#PHP" expanded="false" />
-                <element signature="e#9599#12263#0#PHP" expanded="false" />
-                <element signature="e#12280#15272#0#PHP" expanded="false" />
-                <element signature="e#12590#12854#0#PHP" expanded="false" />
-                <element signature="e#12863#13100#0#PHP" expanded="false" />
-                <element signature="e#13109#13719#0#PHP" expanded="false" />
-                <element signature="e#13784#13926#0#PHP" expanded="false" />
-                <element signature="e#13936#14058#0#PHP" expanded="false" />
-                <element signature="e#14067#14189#0#PHP" expanded="false" />
-                <element signature="e#14704#15230#0#PHP" expanded="false" />
+                <element signature="e#430#793#0#PHP" expanded="false" />
+                <element signature="e#816#1227#0#PHP" expanded="false" />
+                <element signature="e#1278#3735#0#PHP" expanded="false" />
+                <element signature="e#1987#2129#0#PHP" expanded="false" />
+                <element signature="e#2139#2261#0#PHP" expanded="false" />
+                <element signature="e#2271#2393#0#PHP" expanded="false" />
+                <element signature="e#3752#4958#0#PHP" expanded="false" />
+                <element signature="e#4975#5616#0#PHP" expanded="false" />
+                <element signature="e#5635#6014#0#PHP" expanded="false" />
+                <element signature="e#6033#6979#0#PHP" expanded="false" />
+                <element signature="e#7307#7456#0#PHP" expanded="false" />
+                <element signature="e#7514#7580#0#PHP" expanded="false" />
+                <element signature="e#8170#9170#0#PHP" expanded="false" />
+                <element signature="e#9689#9838#0#PHP" expanded="false" />
+                <element signature="e#10813#11723#0#PHP" expanded="false" />
+                <element signature="e#13417#15399#0#PHP" expanded="false" />
+                <element signature="e#15564#17280#0#PHP" expanded="false" />
+                <element signature="e#16720#17238#0#PHP" expanded="false" />
+                <element signature="e#17297#19400#0#PHP" expanded="false" />
+                <marker date="1522306554846" expanded="false" signature="252:368" placeholder="{...}" />
+                <marker date="1522306554846" expanded="false" signature="7043:8149" placeholder="{...}" />
+                <marker date="1522306554846" expanded="false" signature="7184:7297" placeholder="..." />
+                <marker date="1522306554846" expanded="false" signature="9223:10794" placeholder="{...}" />
+                <marker date="1522306554846" expanded="false" signature="9301:9390" placeholder="..." />
+                <marker date="1522306554846" expanded="false" signature="9434:9517" placeholder="..." />
+                <marker date="1522306554846" expanded="false" signature="9566:9679" placeholder="..." />
+                <marker date="1522306554846" expanded="false" signature="11783:15547" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BottomModel.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Common/Model/BottomModel.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="381">
+              <caret line="52" column="26" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+              <folding>
+                <element signature="e#251#493#0#PHP" expanded="false" />
+                <element signature="e#529#776#0#PHP" expanded="false" />
+                <element signature="e#1465#2044#0#PHP" expanded="false" />
+                <element signature="e#2082#2459#0#PHP" expanded="false" />
+                <element signature="e#2497#2807#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -145,13 +179,15 @@
       </file>
     </leaf>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/Application/Common/Helper/function.php" />
         <option value="$PROJECT_DIR$/Application/Xadmin/View/default/Login/login.html" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/Application/Common/Model/CAdminModel.class.php" />
         <option value="$PROJECT_DIR$/Application/Xadmin/View/default/Common/top.html" />
         <option value="$PROJECT_DIR$/Application/Xadmin/Model/AdminModel.class.php" />
@@ -159,16 +195,21 @@
         <option value="$PROJECT_DIR$/Application/Common/Model/CAgentModel.class.php" />
         <option value="$PROJECT_DIR$/Application/Common/Common/function.php" />
         <option value="$PROJECT_DIR$/Application/Xadmin/View/default/Agent/addAgent.html" />
-        <option value="$PROJECT_DIR$/Application/Common/Conf/config.php" />
         <option value="$PROJECT_DIR$/ThinkPHP/Library/Think/Auth.class.php" />
         <option value="$PROJECT_DIR$/Application/Xadmin/View/default/Agent/editAgent.html" />
         <option value="$PROJECT_DIR$/Application/Common/Controller/BottomController.class.php" />
         <option value="$PROJECT_DIR$/Application/Xadmin/Controller/LoginController.class.php" />
-        <option value="$PROJECT_DIR$/Application/Xadmin/Controller/BaseController.class.php" />
         <option value="$PROJECT_DIR$/Application/Xadmin/View/default/Agent/oneRebateConfig.html" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/Application/Common/Conf/config.php" />
+        <option value="$PROJECT_DIR$/Application/Xadmin/Controller/BaseController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Xadmin/View/default/Agent/agentList.html" />
         <option value="$PROJECT_DIR$/Application/Xadmin/Controller/AgentController.class.php" />
         <option value="$PROJECT_DIR$/Application/Common/Model/AgentModel.class.php" />
+        <option value="$PROJECT_DIR$/Application/Xadmin/Model/SystemModel.class.php" />
         <option value="$PROJECT_DIR$/Application/Common/Model/BottomModel.class.php" />
+        <option value="$PROJECT_DIR$/Application/Xadmin/Controller/SystemController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Xadmin/Model/ConfigModel.class.php" />
       </list>
     </option>
   </component>
@@ -215,6 +256,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -223,10 +266,94 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="new_mj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="new_mj" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="new_mj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="new_mj" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="new_mj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="new_mj" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Xadmin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="new_mj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="new_mj" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Xadmin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Model" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="new_mj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="new_mj" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Xadmin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -284,18 +411,19 @@
       <workItem from="1522198067268" duration="2285000" />
       <workItem from="1522200384435" duration="945000" />
       <workItem from="1522201963681" duration="22702000" />
-      <workItem from="1522229721270" duration="1498000" />
+      <workItem from="1522229721270" duration="1842000" />
+      <workItem from="1522288726046" duration="21619000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30984000" />
+    <option name="totallyTimeSpent" value="52947000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19730078" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21015424" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -321,52 +449,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Application/Common/Model/CAdminModel.class.php" />
-    <entry file="file://$PROJECT_DIR$/Application/Common/Model/BottomModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-          <folding>
-            <element signature="e#251#493#0#PHP" expanded="false" />
-            <element signature="e#530#1109#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Common/Conf/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="16" />
-          <folding>
-            <element signature="e#6#87#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Xadmin/Controller/BaseController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
-          <folding>
-            <element signature="e#1190#1593#0#PHP" expanded="false" />
-            <element signature="e#3684#5991#0#PHP" expanded="false" />
-            <element signature="e#6010#7188#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Xadmin/Controller/LoginController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Xadmin/Model/AdminModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -381,7 +468,8 @@
           <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
           <folding>
             <element signature="e#251#493#0#PHP" expanded="false" />
-            <element signature="e#530#1109#0#PHP" expanded="false" />
+            <element signature="e#1465#2044#0#PHP" expanded="false" />
+            <element signature="e#2082#2459#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -408,9 +496,14 @@
         <state relative-caret-position="114">
           <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
           <folding>
+            <element signature="e#307#1153#0#PHP" expanded="false" />
+            <element signature="e#449#566#0#PHP" expanded="false" />
+            <element signature="e#509#566#0#PHP" expanded="false" />
+            <element signature="e#575#1147#0#PHP" expanded="false" />
             <element signature="e#1190#1593#0#PHP" expanded="false" />
-            <element signature="e#3684#5991#0#PHP" expanded="false" />
-            <element signature="e#6010#7188#0#PHP" expanded="false" />
+            <element signature="e#1627#3667#0#PHP" expanded="false" />
+            <element signature="e#3684#5986#0#PHP" expanded="false" />
+            <element signature="e#6005#7183#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -483,13 +576,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Common/Model/CAdminModel.class.php" />
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Runtime/Cache/Xadmin/9056a2c61322aa88f5c1b83608b3f1bd.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -607,18 +693,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Xadmin/Controller/BaseController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-          <folding>
-            <element signature="e#1190#1593#0#PHP" expanded="false" />
-            <element signature="e#3684#5991#0#PHP" expanded="false" />
-            <element signature="e#6010#7188#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Xadmin/View/wap/Agent/addAgent.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-513">
@@ -626,27 +700,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Xadmin/View/default/Agent/agentList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="89" column="108" selection-start-line="89" selection-start-column="100" selection-end-line="89" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Xadmin/View/default/Agent/oneRebateConfig.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Common/Conf/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="9" />
-          <folding>
-            <element signature="e#6#87#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -660,19 +717,89 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Common/Common/function.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1463">
-          <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+        <state relative-caret-position="289">
+          <caret line="67" column="9" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
           <folding>
+            <element signature="n#getAuthUrl#0;n#!!top" expanded="false" />
+            <element signature="n#checkActionAuth#0;n#!!top" expanded="false" />
+            <element signature="n#search_time_format#0;n#!!top" expanded="false" />
             <element signature="n#iswap#0;n#!!top" expanded="false" />
             <element signature="n#remove_xss#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Xadmin/View/default/Agent/agentList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="71" column="29" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Xadmin/View/default/Agent/incomeReportHandle.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-228">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Xadmin/View/default/Agent/incomeReport.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1026">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Page.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="45" column="50" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Xadmin/Controller/BaseController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#307#1153#0#PHP" expanded="false" />
+            <element signature="e#449#566#0#PHP" expanded="false" />
+            <element signature="e#509#566#0#PHP" expanded="false" />
+            <element signature="e#575#1147#0#PHP" expanded="false" />
+            <element signature="e#1190#1593#0#PHP" expanded="false" />
+            <element signature="e#1627#3667#0#PHP" expanded="false" />
+            <element signature="e#3684#5986#0#PHP" expanded="false" />
+            <element signature="e#6005#7183#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Common/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="63" column="18" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="18" />
+          <folding>
+            <element signature="e#6#87#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Xadmin/Controller/AgentController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+        <state relative-caret-position="1239">
+          <caret line="185" column="35" selection-start-line="185" selection-start-column="35" selection-end-line="185" selection-end-column="35" />
           <folding>
             <element signature="e#6#88#0#PHP" expanded="true" />
             <element signature="e#228#468#0#PHP" expanded="false" />
@@ -680,45 +807,92 @@
             <element signature="e#1132#1804#0#PHP" expanded="false" />
             <element signature="e#1838#2094#0#PHP" expanded="false" />
             <element signature="e#2126#2953#0#PHP" expanded="false" />
-            <element signature="e#2987#3263#0#PHP" expanded="false" />
-            <element signature="e#3297#3557#0#PHP" expanded="false" />
+            <element signature="e#3516#3792#0#PHP" expanded="false" />
+            <element signature="e#4563#4823#0#PHP" expanded="false" />
+            <marker date="1522306518388" expanded="false" signature="3027:3482" placeholder="{...}" />
+            <marker date="1522306518388" expanded="false" signature="3862:4529" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Common/Model/AgentModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="110" column="47" selection-start-line="110" selection-start-column="47" selection-end-line="110" selection-end-column="47" />
+        <state relative-caret-position="171">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
           <folding>
             <element signature="e#6#88#0#PHP" expanded="true" />
-            <element signature="e#262#613#0#PHP" expanded="false" />
-            <element signature="e#636#1058#0#PHP" expanded="false" />
-            <element signature="e#5222#6484#0#PHP" expanded="false" />
-            <element signature="e#6501#7178#0#PHP" expanded="false" />
-            <element signature="e#7197#7581#0#PHP" expanded="false" />
-            <element signature="e#7600#8552#0#PHP" expanded="false" />
-            <element signature="e#8573#9582#0#PHP" expanded="false" />
-            <element signature="e#9599#12263#0#PHP" expanded="false" />
-            <element signature="e#12280#15272#0#PHP" expanded="false" />
-            <element signature="e#12590#12854#0#PHP" expanded="false" />
-            <element signature="e#12863#13100#0#PHP" expanded="false" />
-            <element signature="e#13109#13719#0#PHP" expanded="false" />
-            <element signature="e#13784#13926#0#PHP" expanded="false" />
-            <element signature="e#13936#14058#0#PHP" expanded="false" />
-            <element signature="e#14067#14189#0#PHP" expanded="false" />
-            <element signature="e#14704#15230#0#PHP" expanded="false" />
+            <element signature="e#430#793#0#PHP" expanded="false" />
+            <element signature="e#816#1227#0#PHP" expanded="false" />
+            <element signature="e#1278#3735#0#PHP" expanded="false" />
+            <element signature="e#1987#2129#0#PHP" expanded="false" />
+            <element signature="e#2139#2261#0#PHP" expanded="false" />
+            <element signature="e#2271#2393#0#PHP" expanded="false" />
+            <element signature="e#3752#4958#0#PHP" expanded="false" />
+            <element signature="e#4975#5616#0#PHP" expanded="false" />
+            <element signature="e#5635#6014#0#PHP" expanded="false" />
+            <element signature="e#6033#6979#0#PHP" expanded="false" />
+            <element signature="e#7307#7456#0#PHP" expanded="false" />
+            <element signature="e#7514#7580#0#PHP" expanded="false" />
+            <element signature="e#8170#9170#0#PHP" expanded="false" />
+            <element signature="e#9689#9838#0#PHP" expanded="false" />
+            <element signature="e#10813#11723#0#PHP" expanded="false" />
+            <element signature="e#13417#15399#0#PHP" expanded="false" />
+            <element signature="e#15564#17280#0#PHP" expanded="false" />
+            <element signature="e#16720#17238#0#PHP" expanded="false" />
+            <element signature="e#17297#19400#0#PHP" expanded="false" />
+            <marker date="1522306554846" expanded="false" signature="252:368" placeholder="{...}" />
+            <marker date="1522306554846" expanded="false" signature="7043:8149" placeholder="{...}" />
+            <marker date="1522306554846" expanded="false" signature="7184:7297" placeholder="..." />
+            <marker date="1522306554846" expanded="false" signature="9223:10794" placeholder="{...}" />
+            <marker date="1522306554846" expanded="false" signature="9301:9390" placeholder="..." />
+            <marker date="1522306554846" expanded="false" signature="9434:9517" placeholder="..." />
+            <marker date="1522306554846" expanded="false" signature="9566:9679" placeholder="..." />
+            <marker date="1522306554846" expanded="false" signature="11783:15547" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Common/Model/BottomModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="55" column="65" selection-start-line="55" selection-start-column="65" selection-end-line="55" selection-end-column="65" />
+        <state relative-caret-position="381">
+          <caret line="52" column="26" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
           <folding>
             <element signature="e#251#493#0#PHP" expanded="false" />
-            <element signature="e#530#1109#0#PHP" expanded="false" />
+            <element signature="e#529#776#0#PHP" expanded="false" />
+            <element signature="e#1465#2044#0#PHP" expanded="false" />
+            <element signature="e#2082#2459#0#PHP" expanded="false" />
+            <element signature="e#2497#2807#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Xadmin/Controller/SystemController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#88#0#PHP" expanded="true" />
+            <element signature="e#213#687#0#PHP" expanded="false" />
+            <element signature="e#703#1187#0#PHP" expanded="false" />
+            <element signature="e#1207#1466#0#PHP" expanded="false" />
+            <element signature="e#1486#1716#0#PHP" expanded="false" />
+            <element signature="e#1733#2183#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Xadmin/Model/ConfigModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="162" column="17" selection-start-line="162" selection-start-column="17" selection-end-line="162" selection-end-column="17" />
+          <folding>
+            <element signature="e#6#88#0#PHP" expanded="true" />
+            <element signature="e#702#1600#0#PHP" expanded="false" />
+            <element signature="e#2384#2747#0#PHP" expanded="false" />
+            <marker date="1522311499020" expanded="false" signature="236:394" placeholder="{...}" />
+            <marker date="1522311499020" expanded="false" signature="444:680" placeholder="{...}" />
+            <marker date="1522311499020" expanded="false" signature="1654:2365" placeholder="{...}" />
+            <marker date="1522311499020" expanded="false" signature="2808:4163" placeholder="{...}" />
           </folding>
         </state>
       </provider>

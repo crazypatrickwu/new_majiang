@@ -109,6 +109,21 @@ class AgentController extends BaseController
         }
     }
 
+    /*
+     * 销售业绩
+     */
+    public function agentSalesVolumeRecored()
+    {
+        $model  =   new AgentModel();
+        list($agent_sales_volume_recored , $agent_sales_volume_total , $data , $show)  =   $model->xadminAgentSalesVolumeRecored();
+
+        $this->assign('agent_sales_volume_recored', $agent_sales_volume_recored);
+        $this->assign('agent_sales_volume_total', floatval($agent_sales_volume_total));
+        $this->assign('data', $data);
+        $this->assign('show', $show);
+        $this->display();
+    }
+
     /**
      * 代理提现
      */
@@ -122,7 +137,32 @@ class AgentController extends BaseController
     }
 
     /**
-     * 代理审核
+     * 提现审核
+     */
+    public function incomeReportHandle()
+    {
+        $model  =   new AgentModel();
+        if(IS_POST){
+            list($flag , $message)   =   $model->xadminIncomeReportHandler();
+            if($flag){
+                $this->success($message , U('Agent/incomeReport'));
+            }else{
+                $this->error($message);
+            }
+        }else{
+            list($flag , $message , $agent_withdrawals)  =   $model->xadminGetIncomeReport();
+            if($flag && $agent_withdrawals) {
+                $this->assign('agent_withdrawals', $agent_withdrawals);
+                $this->display();
+            }else{
+                $this->error($message);
+            }
+        }
+        ;
+    }
+
+    /**
+     * 代理申请
      */
     public function agentExamine()
     {
@@ -131,5 +171,19 @@ class AgentController extends BaseController
         $this->assign('agentList', $agentList);
         $this->assign('show', $show);
         $this->display();
+    }
+
+    /**
+     *申请审核
+     */
+    public function agentExamineHandle()
+    {
+        $model  =   new AgentModel();
+        list($flag , $message)  =   $model->xadminAgentExamineHandler();
+        if($flag){
+            $this->success($message);
+        }else{
+            $this->error($message);
+        }
     }
 }
