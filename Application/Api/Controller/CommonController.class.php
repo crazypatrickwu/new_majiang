@@ -45,6 +45,8 @@ class CommonController  extends RestController
         '3'   =>    '参数校验失败',
         '4'   =>    '用户ID不合法',
         '5'   =>    '用户不存在',
+        '6'   =>    '商品不存在',
+        '7'   =>    '下单失败',
         '1000' =>   '参数不能为空',
         '1001' =>   '用户ID不能为空',
         '1002' =>   'hashid不能为空',
@@ -61,6 +63,13 @@ class CommonController  extends RestController
         '1013' =>   '支付类型错误',
         '1014' =>   '支付系统提示：以返回结果为准',
         '1015' =>   '订单无商品购买',
+        '1016' =>   '邀请码不能为空',
+        '1017' =>   '邀请码错误',
+        '1018' =>   '绑定邀请码失败',
+        '1019' =>   '玩家游戏数据错误',
+        '2001' =>   '玩家信息错误',
+        '2002' =>   '旗力币不足',
+        '2003' =>   '购买成功',
         '6001' =>   '微信获取prepay_id失败'
     ];
 
@@ -139,7 +148,7 @@ class CommonController  extends RestController
             //判断传递参数的类型并且不能为空
             if($val[2] == 1){
                 if(($val[1] == 'Int' && intval($PostData[$val[0]]) <= 0) || ($val[1] == 'String' && empty($PostData[$val[0]]))){
-                    $this->throwError($PostData[$val[3]]);
+                    $this->throwError($val[3]);
                 }
             }
 
@@ -165,13 +174,16 @@ class CommonController  extends RestController
      */
     protected function check_user($uid , $hashid)
     {
-        if(md5($uid . C('DATA_AUTH_KEY')) != $hashid)
-        {
+        if(md5($uid . C('DATA_AUTH_KEY')) != $hashid) {
             $this->throwError(4);
         }
         /**
          * 校验用户存在性
          */
+        $userInfo   =   M('gameuser')->where(['game_user_id' => $uid])->find();
+        if(!empty($userInfo)){
+            $this->throwError(5);
+        }
     }
 
     /**

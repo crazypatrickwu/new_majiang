@@ -182,3 +182,30 @@ function dblog($data)
     $data   =   is_array($data) ? json_encode($data)    :   $data;
     M('msg')->add(['msg' => $data , 'date' => date('Y-m-d H:i:s' , NOW_TIME)]);
 }
+
+/**
+ * 生成随机数
+ * @param   length  字符串长度
+ * @param   type    字符串类型
+ * @return  string
+ */
+function randomString($length = 6 , $type = 0)
+{
+    $arr  = array(
+        0 => '0123456789',
+        1 => 'abcdefghjkmnpqrstuxy',
+        2 => 'ABCDEFGHJKMNPQRSTUXY',
+        3 => '123456789abcdefghjkmnpqrstuxy',
+        4 => '123456789ABCDEFGHJKMNPQRSTUXY',
+        5 => 'abcdefghjkmnpqrstuxyABCDEFGHJKMNPQRSTUXY',
+        6 => '123456789abcdefghjkmnpqrstuxyABCDEFGHJKMNPQRSTUXY',
+        7 => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    );
+    $chars = $arr[$type] ? $arr[$type] : $arr[7];
+    $hash  = '';
+    $max   = strlen($chars) - 1;
+    for($i = 0; $i < $length; $i++) {
+        $hash .= $chars[mt_rand(0, $max)];
+    }
+    return $hash;
+}

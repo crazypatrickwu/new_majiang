@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="816f8928-0e95-45be-ad91-48a6cb12d9d1" name="默认的" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Api/Controller/CommonController.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Api/Controller/PayController.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Api/Model/OrderModel.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Common/Api/ConfigApi.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Common/Conf/alipay.config.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Common/Conf/wechat.config.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Api/Controller/GameController.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Api/Model/GameuserModel.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Api/Controller/CommonController.class.php" afterPath="$PROJECT_DIR$/Application/Api/Controller/CommonController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Api/Controller/PayController.class.php" afterPath="$PROJECT_DIR$/Application/Api/Controller/PayController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Api/Model/OrderModel.class.php" afterPath="$PROJECT_DIR$/Application/Api/Model/OrderModel.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Common/Common/function.php" afterPath="$PROJECT_DIR$/Application/Common/Common/function.php" />
     </list>
     <ignored path="new_mj.iws" />
@@ -34,20 +33,20 @@
       <file leaf-file-name="CommonController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Api/Controller/CommonController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="63" column="36" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
+            <state relative-caret-position="-1122">
+              <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
               <folding>
                 <element signature="e#6#88#0#PHP" expanded="true" />
                 <element signature="e#377#660#0#PHP" expanded="false" />
-                <element signature="e#1496#1627#0#PHP" expanded="false" />
-                <element signature="e#1665#2817#0#PHP" expanded="false" />
-                <element signature="e#5004#5099#0#PHP" expanded="false" />
-                <element signature="e#5293#5369#0#PHP" expanded="false" />
-                <marker date="1522399933072" expanded="false" signature="1934:2180" placeholder="..." />
-                <marker date="1522399933072" expanded="false" signature="4394:4557" placeholder="{...}" />
-                <marker date="1522399933072" expanded="false" signature="4649:4969" placeholder="{...}" />
-                <marker date="1522399933072" expanded="false" signature="5173:5257" placeholder="{...}" />
-                <marker date="1522399933072" expanded="false" signature="5487:6680" placeholder="{...}" />
+                <element signature="e#1932#3084#0#PHP" expanded="false" />
+                <element signature="e#3120#3526#0#PHP" expanded="false" />
+                <element signature="e#3562#4570#0#PHP" expanded="false" />
+                <element signature="e#4605#4960#0#PHP" expanded="false" />
+                <element signature="e#4995#5372#0#PHP" expanded="false" />
+                <element signature="e#5407#5502#0#PHP" expanded="false" />
+                <element signature="e#5538#5660#0#PHP" expanded="false" />
+                <element signature="e#5696#5772#0#PHP" expanded="false" />
+                <element signature="e#5813#7083#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -56,36 +55,30 @@
       <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Api/Conf/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" column="10" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="10" />
+            <state relative-caret-position="476">
+              <caret line="59" column="23" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PayController.class.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PayController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Api/Controller/PayController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="39">
-              <caret line="89" column="44" selection-start-line="89" selection-start-column="44" selection-end-line="89" selection-end-column="44" />
+            <state relative-caret-position="-864">
+              <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
               <folding>
-                <element signature="e#6#88#0#PHP" expanded="true" />
-                <element signature="e#444#2303#0#PHP" expanded="false" />
-                <element signature="e#3609#5257#0#PHP" expanded="false" />
-                <element signature="e#6667#7405#0#PHP" expanded="false" />
-                <element signature="e#7441#8461#0#PHP" expanded="false" />
-                <marker date="1522404110458" expanded="false" signature="5526:6630" placeholder="{...}" />
+                <element signature="e#464#2460#0#PHP" expanded="false" />
+                <element signature="e#2739#3759#0#PHP" expanded="false" />
+                <element signature="e#3962#5610#0#PHP" expanded="false" />
+                <element signature="e#5807#6990#0#PHP" expanded="false" />
+                <element signature="e#7027#7753#0#PHP" expanded="false" />
+                <element signature="e#7789#8792#0#PHP" expanded="false" />
+                <element signature="e#9025#13366#0#PHP" expanded="false" />
+                <element signature="e#9505#9601#0#PHP" expanded="false" />
+                <element signature="e#13556#15660#0#PHP" expanded="false" />
+                <element signature="e#13931#14032#0#PHP" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WxPayPubHelper.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Vendor/Wxpay/WxPayPubHelper.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="624" column="13" selection-start-line="624" selection-start-column="13" selection-end-line="624" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -93,8 +86,40 @@
       <file leaf-file-name="OrderModel.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Api/Model/OrderModel.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+            <state relative-caret-position="437">
+              <caret line="126" column="32" selection-start-line="126" selection-start-column="32" selection-end-line="126" selection-end-column="32" />
+              <folding>
+                <element signature="e#6#88#0#PHP" expanded="true" />
+                <element signature="e#245#2407#0#PHP" expanded="false" />
+                <element signature="e#2476#3503#0#PHP" expanded="false" />
+                <element signature="e#3573#4573#0#PHP" expanded="false" />
+                <element signature="e#4643#7023#0#PHP" expanded="false" />
+                <element signature="e#7096#7784#0#PHP" expanded="false" />
+                <element signature="e#8006#10762#0#PHP" expanded="false" />
+                <element signature="e#10964#12086#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameController.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Api/Controller/GameController.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="452">
+              <caret line="55" column="27" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+              <folding>
+                <element signature="e#6#88#0#PHP" expanded="true" />
+                <element signature="e#116#144#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameuserModel.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Api/Model/GameuserModel.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
               <folding>
                 <element signature="e#6#88#0#PHP" expanded="true" />
               </folding>
@@ -102,32 +127,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wechat.config.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Common/Conf/wechat.config.php">
+      <file leaf-file-name="BottomModel.class.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/Common/Model/BottomModel.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="alipay_core.function.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Vendor/Alipay/lib/alipay_core.function.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="65" column="13" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="alipay.config.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Common/Conf/alipay.config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-              <folding />
+            <state relative-caret-position="298">
+              <caret line="44" column="27" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
+              <folding>
+                <element signature="e#251#493#0#PHP" expanded="false" />
+                <element signature="e#529#776#0#PHP" expanded="false" />
+                <element signature="e#1465#2044#0#PHP" expanded="false" />
+                <element signature="e#2082#2459#0#PHP" expanded="false" />
+                <element signature="e#2497#2807#0#PHP" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -135,8 +146,8 @@
       <file leaf-file-name="function.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Common/Common/function.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="573">
-              <caret line="178" column="21" selection-start-line="178" selection-start-column="21" selection-end-line="178" selection-end-column="21" />
+            <state relative-caret-position="650">
+              <caret line="209" column="17" selection-start-line="209" selection-start-column="17" selection-end-line="209" selection-end-column="17" />
               <folding>
                 <element signature="n#getAuthUrl#0;n#!!top" expanded="false" />
                 <element signature="n#checkActionAuth#0;n#!!top" expanded="false" />
@@ -155,9 +166,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.txt" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -189,13 +197,16 @@
         <option value="$PROJECT_DIR$/Application/Common/Api/ConfigApi.class.php" />
         <option value="$PROJECT_DIR$/Application/Api/Model/CommonModel.class.php" />
         <option value="$PROJECT_DIR$/ThinkPHP/Library/Think/Controller/RestController.class.php" />
-        <option value="$PROJECT_DIR$/Application/Common/Common/function.php" />
         <option value="$PROJECT_DIR$/Application/Common/Conf/alipay.config.php" />
         <option value="$PROJECT_DIR$/Application/Common/Conf/wechat.config.php" />
-        <option value="$PROJECT_DIR$/Application/Api/Controller/CommonController.class.php" />
         <option value="$PROJECT_DIR$/Application/Api/Model/PayModel.class.php" />
-        <option value="$PROJECT_DIR$/Application/Api/Model/OrderModel.class.php" />
+        <option value="$PROJECT_DIR$/Application/Common/Common/function.php" />
+        <option value="$PROJECT_DIR$/Application/Api/Conf/config.php" />
         <option value="$PROJECT_DIR$/Application/Api/Controller/PayController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Api/Model/OrderModel.class.php" />
+        <option value="$PROJECT_DIR$/Application/Api/Controller/CommonController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Api/Controller/GameController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Api/Model/GameuserModel.class.php" />
       </list>
     </option>
   </component>
@@ -206,9 +217,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="744" />
-    <option name="y" value="42" />
-    <option name="width" value="1494" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
     <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -242,6 +253,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -383,7 +395,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -443,12 +454,13 @@
       <workItem from="1522201963681" duration="22702000" />
       <workItem from="1522229721270" duration="1842000" />
       <workItem from="1522288726046" duration="21619000" />
-      <workItem from="1522371279632" duration="30458000" />
+      <workItem from="1522371279632" duration="30566000" />
+      <workItem from="1522458117347" duration="29958000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83405000" />
+    <option name="totallyTimeSpent" value="113471000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -460,31 +472,31 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="744" y="42" width="1494" height="876" extended-state="0" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13877267" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.040488433" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="层次结构" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="层次结构" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -492,25 +504,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="24" />
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Public/MsgPage/Wap/dispatch_jump.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Runtime/Cache/Xadmin/a96ee7d3aa46d7234024bfe6dc93344f.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-228">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Common/Model/CAdminModel.class.php" />
     <entry file="file://$PROJECT_DIR$/Application/Runtime/Cache/Xadmin/9056a2c61322aa88f5c1b83608b3f1bd.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -587,9 +585,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2983">
           <caret line="165" column="20" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
-          <folding>
-            <element signature="e#8345#8607#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -660,7 +655,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="257">
           <caret line="45" column="50" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -791,7 +785,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="39" column="65" selection-start-line="39" selection-start-column="65" selection-end-line="39" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -799,7 +792,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -808,21 +800,6 @@
         <state relative-caret-position="219">
           <caret line="725" column="32" selection-start-line="725" selection-start-column="32" selection-end-line="725" selection-end-column="32" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Common/Model/BottomModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding>
-            <element signature="e#251#493#0#PHP" expanded="false" />
-            <element signature="e#529#776#0#PHP" expanded="false" />
-            <element signature="e#821#1428#0#PHP" expanded="false" />
-            <element signature="e#1465#2044#0#PHP" expanded="false" />
-            <element signature="e#2082#2459#0#PHP" expanded="false" />
-            <element signature="e#2497#2807#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -852,36 +829,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Common/Common/function.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="178" column="21" selection-start-line="178" selection-start-column="21" selection-end-line="178" selection-end-column="21" />
-          <folding>
-            <element signature="n#getAuthUrl#0;n#!!top" expanded="false" />
-            <element signature="n#checkActionAuth#0;n#!!top" expanded="false" />
-            <element signature="n#search_time_format#0;n#!!top" expanded="false" />
-            <element signature="n#iswap#0;n#!!top" expanded="false" />
-            <element signature="n#remove_xss#0;n#!!top" expanded="false" />
-            <element signature="n#time_format#0;n#!!top" expanded="false" />
-            <element signature="n#api#0;n#!!top" expanded="false" />
-            <element signature="n#dblog#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Temp/360zip$Temp/360$0/PayController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1330">
           <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Api/Conf/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="10" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -889,14 +840,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Vendor/Alipay/lib/alipay_core.function.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="65" column="13" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -913,7 +856,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Api/Model/CommonModel.class.php" />
+    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Vendor/Wxpay/WxPayPubHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11856">
+          <caret line="624" column="13" selection-start-line="624" selection-start-column="13" selection-end-line="624" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Api/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="59" column="23" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Api/Model/OrderModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="126" column="32" selection-start-line="126" selection-start-column="32" selection-end-line="126" selection-end-column="32" />
+          <folding>
+            <element signature="e#6#88#0#PHP" expanded="true" />
+            <element signature="e#245#2407#0#PHP" expanded="false" />
+            <element signature="e#2476#3503#0#PHP" expanded="false" />
+            <element signature="e#3573#4573#0#PHP" expanded="false" />
+            <element signature="e#4643#7023#0#PHP" expanded="false" />
+            <element signature="e#7096#7784#0#PHP" expanded="false" />
+            <element signature="e#8006#10762#0#PHP" expanded="false" />
+            <element signature="e#10964#12086#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -925,63 +901,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Api/Model/CommonModel.class.php">
+    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Vendor/Alipay/lib/alipay_core.function.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="238">
+          <caret line="65" column="13" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Vendor/Wxpay/WxPayPubHelper.php">
+    <entry file="file://$PROJECT_DIR$/Application/Common/Common/function.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="624" column="13" selection-start-line="624" selection-start-column="13" selection-end-line="624" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="650">
+          <caret line="209" column="17" selection-start-line="209" selection-start-column="17" selection-end-line="209" selection-end-column="17" />
+          <folding>
+            <element signature="n#getAuthUrl#0;n#!!top" expanded="false" />
+            <element signature="n#checkActionAuth#0;n#!!top" expanded="false" />
+            <element signature="n#search_time_format#0;n#!!top" expanded="false" />
+            <element signature="n#iswap#0;n#!!top" expanded="false" />
+            <element signature="n#remove_xss#0;n#!!top" expanded="false" />
+            <element signature="n#time_format#0;n#!!top" expanded="false" />
+            <element signature="n#api#0;n#!!top" expanded="false" />
+            <element signature="n#dblog#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Api/Controller/CommonController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="63" column="36" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
+        <state relative-caret-position="-1122">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
           <folding>
             <element signature="e#6#88#0#PHP" expanded="true" />
             <element signature="e#377#660#0#PHP" expanded="false" />
-            <element signature="e#1496#1627#0#PHP" expanded="false" />
-            <element signature="e#1665#2817#0#PHP" expanded="false" />
-            <element signature="e#5004#5099#0#PHP" expanded="false" />
-            <element signature="e#5293#5369#0#PHP" expanded="false" />
-            <marker date="1522399933072" expanded="false" signature="1934:2180" placeholder="..." />
-            <marker date="1522399933072" expanded="false" signature="4394:4557" placeholder="{...}" />
-            <marker date="1522399933072" expanded="false" signature="4649:4969" placeholder="{...}" />
-            <marker date="1522399933072" expanded="false" signature="5173:5257" placeholder="{...}" />
-            <marker date="1522399933072" expanded="false" signature="5487:6680" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Api/Model/OrderModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
-          <folding>
-            <element signature="e#6#88#0#PHP" expanded="true" />
+            <element signature="e#1932#3084#0#PHP" expanded="false" />
+            <element signature="e#3120#3526#0#PHP" expanded="false" />
+            <element signature="e#3562#4570#0#PHP" expanded="false" />
+            <element signature="e#4605#4960#0#PHP" expanded="false" />
+            <element signature="e#4995#5372#0#PHP" expanded="false" />
+            <element signature="e#5407#5502#0#PHP" expanded="false" />
+            <element signature="e#5538#5660#0#PHP" expanded="false" />
+            <element signature="e#5696#5772#0#PHP" expanded="false" />
+            <element signature="e#5813#7083#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Api/Controller/PayController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="89" column="44" selection-start-line="89" selection-start-column="44" selection-end-line="89" selection-end-column="44" />
+        <state relative-caret-position="-864">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+          <folding>
+            <element signature="e#464#2460#0#PHP" expanded="false" />
+            <element signature="e#2739#3759#0#PHP" expanded="false" />
+            <element signature="e#3962#5610#0#PHP" expanded="false" />
+            <element signature="e#5807#6990#0#PHP" expanded="false" />
+            <element signature="e#7027#7753#0#PHP" expanded="false" />
+            <element signature="e#7789#8792#0#PHP" expanded="false" />
+            <element signature="e#9025#13366#0#PHP" expanded="false" />
+            <element signature="e#9505#9601#0#PHP" expanded="false" />
+            <element signature="e#13556#15660#0#PHP" expanded="false" />
+            <element signature="e#13931#14032#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Api/Controller/GameController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="55" column="27" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
           <folding>
             <element signature="e#6#88#0#PHP" expanded="true" />
-            <element signature="e#444#2303#0#PHP" expanded="false" />
-            <element signature="e#3609#5257#0#PHP" expanded="false" />
-            <element signature="e#6667#7405#0#PHP" expanded="false" />
-            <element signature="e#7441#8461#0#PHP" expanded="false" />
-            <marker date="1522404110458" expanded="false" signature="5526:6630" placeholder="{...}" />
+            <element signature="e#116#144#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Api/Model/GameuserModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
+          <folding>
+            <element signature="e#6#88#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Common/Model/BottomModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="44" column="27" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
+          <folding>
+            <element signature="e#251#493#0#PHP" expanded="false" />
+            <element signature="e#529#776#0#PHP" expanded="false" />
+            <element signature="e#1465#2044#0#PHP" expanded="false" />
+            <element signature="e#2082#2459#0#PHP" expanded="false" />
+            <element signature="e#2497#2807#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
